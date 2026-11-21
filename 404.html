@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>صفحہ دستیاب نہیں (404) - فکرِ حق</title>
+  
+  <!-- گوگل فونٹ: نوٹو نستعلیق اردو -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-page: #F9F5F0;         /* ہلکا کریمی/بھورا پس منظر */
+      --card-bg: #FFFFFF;         /* صاف سفید کارڈ */
+      --brown-dark: #3E2723;      /* گہرا چاکلیٹ براؤن */
+      --brown-primary: #5D4037;   /* مرکزی براؤن رنگ */
+      --brown-accent: #8D6E63;    /* ہلکا براؤن بارڈر اور آرائش */
+      --brown-light: #EFEBE9;     /* ہلکا براؤن شیڈ */
+      --text-body: #4E342E;       /* تحریر کا رنگ */
+      --text-muted: #795548;      /* مدھم تحریر */
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Noto Nastaliq Urdu', serif;
+      background-color: var(--bg-page);
+      color: var(--text-body);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .error-box {
+      max-width: 600px;
+      width: 100%;
+      background-color: var(--card-bg);
+      border: 1px solid #D7CCC8;
+      border-top: 5px solid var(--brown-primary);
+      border-radius: 12px;
+      padding: 40px 28px;
+      text-align: center;
+      box-shadow: 0 8px 24px rgba(62, 39, 35, 0.08);
+    }
+
+    .site-name {
+      display: inline-block;
+      background-color: var(--brown-light);
+      color: var(--brown-dark);
+      padding: 4px 18px;
+      border-radius: 20px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 18px;
+    }
+
+    .error-number {
+      font-family: system-ui, -apple-system, sans-serif;
+      font-size: clamp(4.5rem, 14vw, 7rem);
+      font-weight: 800;
+      color: var(--brown-primary);
+      line-height: 1;
+      margin-bottom: 10px;
+      direction: ltr;
+    }
+
+    .divider {
+      width: 80px;
+      height: 2px;
+      background-color: var(--brown-accent);
+      margin: 15px auto 22px;
+      border-radius: 2px;
+    }
+
+    .error-heading {
+      font-size: clamp(1.35rem, 4vw, 1.85rem);
+      font-weight: 700;
+      color: var(--brown-dark);
+      margin-bottom: 15px;
+      line-height: 1.8;
+    }
+
+    .error-text {
+      font-size: 1rem;
+      color: var(--text-muted);
+      line-height: 2.1;
+      margin-bottom: 30px;
+    }
+
+    .btn-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 10px 26px;
+      border-radius: 8px;
+      font-family: 'Noto Nastaliq Urdu', serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background-color 0.25s ease, color 0.25s ease;
+    }
+
+    .btn-primary {
+      background-color: var(--brown-primary);
+      color: #FFFFFF;
+      border: 1px solid var(--brown-primary);
+    }
+
+    .btn-primary:hover {
+      background-color: var(--brown-dark);
+      border-color: var(--brown-dark);
+    }
+
+    .btn-outline {
+      background-color: transparent;
+      color: var(--brown-primary);
+      border: 1px solid var(--brown-accent);
+    }
+
+    .btn-outline:hover {
+      background-color: var(--brown-light);
+      color: var(--brown-dark);
+    }
+
+    .footer-text {
+      margin-top: 30px;
+      padding-top: 18px;
+      border-top: 1px solid var(--brown-light);
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    @media (max-width: 480px) {
+      .error-box {
+        padding: 30px 18px;
+      }
+
+      .btn-group {
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <main class="error-box">
+    <div class="site-name">فکرِ حق</div>
+    
+    <div class="error-number">404</div>
+    <div class="divider"></div>
+
+    <h1 class="error-heading">مطلوبہ صفحہ دستیاب نہیں ہے</h1>
+    
+    <p class="error-text">
+      معذرت! آپ جس صفحے کی تلاش میں ہیں وہ موجود نہیں ہے یا اس کا ربط تبدیل ہو چکا ہے۔ براہِ کرم مرکزی صفحے پر واپس جائیں۔
+    </p>
+
+    <div class="btn-group">
+      <a href="/" class="btn btn-primary">مرکزی صفحے پر جائیں</a>
+      <button onclick="history.back()" class="btn btn-outline">واپس جائیں</button>
+    </div>
+
+    <footer class="footer-text">
+      جملہ حقوق بحق <strong>فکرِ حق</strong> محفوظ ہیں
+    </footer>
+  </main>
+
+</body>
+</html>

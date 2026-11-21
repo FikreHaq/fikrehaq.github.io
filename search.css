@@ -1,0 +1,541 @@
+/* ========================================================
+   فکر حق - پریمیم سرچ تھیم (ہائی پرفارمنس 1200+ کارڈز ورژن)
+   ======================================================== */
+
+:root {
+    --rt-white: #ffffff;
+    --rt-cream: #FBF4EC;
+    --rt-pink-1: #F5E6D3;
+    --rt-pink-2: #E8C9B0;
+    --rt-pink-3: #D4A574;
+    --rt-brown-1: #B8866B;
+    --rt-brown-2: #8B5E3C;
+    --rt-brown-3: #6B4423;
+    --rt-gold: #C9A88A;
+    --rt-dark: #3D2817;
+    --rt-shadow-pink: rgba(184,134,107,0.28);
+    --rt-shadow-brown: rgba(107,68,35,0.38);
+    --rt-gradient-main: linear-gradient(135deg,#D4A574 0%,#B8866B 50%,#8B5E3C 100%);
+    --rt-gradient-soft: linear-gradient(135deg,#F5E6D3 0%,#E8C9B0 100%);
+    --rt-font-global: 'Noto Nastaliq Urdu', 'Amiri', serif;
+    --rt-font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --rt-text-main: #3D2817;
+    --rt-bg-surface: rgba(255, 255, 255, 0.92);
+    
+    --theme-pdf: #8B5E3C;
+    --theme-audio: #D4A574;
+    --theme-video: #6B4423;
+    --theme-image: #B8866B;
+    --theme-gif: #C9A88A;
+    --theme-zip: #6B4423;
+    --theme-docs: #8B5E3C;
+    --theme-google: #B8866B;
+    --theme-other: #A67C5C;
+}
+
+/* ========================================================
+   1. سرچ بار ڈیزائن
+   ======================================================== */
+.search-wrapper-main {
+    margin: 40px auto;
+    font-family: var(--rt-font-global);
+    width: 100%;
+    max-width: 750px;
+    padding: 0 20px;
+    box-sizing: border-box;
+    text-align: center;
+    direction: rtl;
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    background: var(--rt-bg-surface);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 2px solid rgba(212, 165, 116, 0.4);
+    border-radius: 18px;
+    padding: 14px 24px;
+    gap: 16px;
+    box-shadow:
+        0 6px 0 var(--rt-pink-3),
+        0 12px 25px var(--rt-shadow-pink),
+        inset 0 2px 4px rgba(255,255,255,0.6);
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.search-box::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255,255,255,0.5), transparent);
+    transition: left 0.7s;
+    pointer-events: none;
+}
+.search-box:hover::before { left: 100%; }
+
+.search-box:focus-within {
+    border-color: var(--rt-brown-2);
+    transform: translateY(-3px);
+    box-shadow:
+        0 9px 0 var(--rt-brown-2),
+        0 18px 35px var(--rt-shadow-brown),
+        inset 0 2px 4px rgba(255,255,255,0.7);
+}
+
+.search-icon {
+    width: 32px;
+    height: 32px;
+    font-size: 24px;
+    color: var(--rt-brown-2);
+    background: transparent !important;
+    box-shadow: none !important;
+    padding: 0;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.25s ease, color 0.25s ease;
+}
+
+.search-box:focus-within .search-icon {
+    transform: rotate(-15deg) scale(1.15);
+    color: var(--rt-brown-3);
+}
+
+#smartSearch {
+    border: none;
+    outline: none;
+    width: 100%;
+    font-size: 18px;
+    background: transparent;
+    color: var(--rt-text-main);
+    font-family: var(--rt-font-global);
+    text-align: right;
+    direction: rtl;
+    font-weight: 600;
+}
+
+#smartSearch::placeholder {
+    color: var(--rt-brown-1);
+    font-size: 16px;
+    opacity: 0.75;
+}
+
+.action-buttons { 
+    display: flex; 
+    align-items: center; 
+    gap: 8px; 
+}
+
+.action-svg {
+    font-size: 20px;
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--rt-brown-2);
+    cursor: pointer;
+    opacity: 0.85;
+    transition: transform 0.2s ease, background 0.2s ease, opacity 0.2s ease;
+    border-radius: 10px;
+    background: transparent;
+}
+
+.action-svg:hover {
+    opacity: 1;
+    transform: scale(1.1) rotate(-5deg);
+    background: var(--rt-gradient-soft);
+    color: var(--rt-brown-3);
+}
+
+.search-counter {
+    display: none;
+    margin-top: 18px;
+    font-size: 15px;
+    font-family: var(--rt-font-global);
+    color: #fff;
+    background: var(--rt-gradient-main);
+    padding: 8px 24px;
+    border-radius: 50px;
+    font-weight: 700;
+    box-shadow: 0 4px 0 var(--rt-brown-2), 0 8px 16px var(--rt-shadow-pink);
+    letter-spacing: 0.5px;
+}
+
+/* ========================================================
+   2. Custom Filter Tabs Design
+   ======================================================== */
+.tabs-container {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: 25px auto 15px auto;
+    direction: rtl;
+    max-width: 100%;
+}
+
+.tabs-scroll-area {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding: 6px 4px;
+}
+.tabs-scroll-area::-webkit-scrollbar { display: none; }
+
+.filter-tab {
+    font-family: var(--rt-font-global);
+    font-size: 15px;
+    font-weight: 700;
+    padding: 10px 20px;
+    background: #ffffff;
+    border-radius: 12px;
+    cursor: pointer;
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex-shrink: 0;
+    box-shadow: 0 4px 0 var(--rt-pink-2), 0 6px 12px var(--rt-shadow-pink);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border: 1.5px solid rgba(212,165,116,0.35);
+}
+
+.filter-tab:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 0 var(--rt-pink-3), 0 10px 18px var(--rt-shadow-brown);
+}
+
+.filter-tab.tab-active {
+    background: var(--rt-gradient-main);
+    color: #fff !important;
+    border-color: var(--rt-brown-2);
+    box-shadow: 0 4px 0 var(--rt-brown-2), 0 8px 16px var(--rt-shadow-brown);
+}
+
+.tab-count {
+    font-size: 12px;
+    font-family: var(--rt-font-sans);
+    padding: 2px 8px;
+    border-radius: 12px;
+    margin-right: 4px;
+    font-weight: 700;
+    background: var(--rt-gradient-soft);
+    color: var(--rt-brown-3);
+}
+.filter-tab.tab-active .tab-count { background: rgba(255,255,255,0.25); color: #fff; }
+
+.filter-tab[data-target="PDF"] { color: var(--theme-pdf); }
+.filter-tab[data-target="AUDIO"] { color: var(--theme-audio); }
+.filter-tab[data-target="VIDEO"] { color: var(--theme-video); }
+.filter-tab[data-target="IMAGE"] { color: var(--theme-image); }
+.filter-tab[data-target="GIF"] { color: var(--theme-gif); }
+.filter-tab[data-target="ZIP"] { color: var(--theme-zip); }
+.filter-tab[data-target="DOCS"] { color: var(--theme-docs); }
+.filter-tab[data-target="GOOGLE"] { color: var(--theme-google); }
+.filter-tab[data-target="OTHER"] { color: var(--theme-other); }
+
+/* ========================================================
+   3. Premium Link Cards (مکھن کی طرح سموتھ رینڈرنگ کے لیے آپٹیمائزڈ)
+   ======================================================== */
+.link-segment-container {
+    position: relative;
+    overflow: hidden;
+    display: block;
+    margin: 0 auto 20px auto;
+    padding: 0;
+    border-radius: 20px;
+    direction: ltr;
+    unicode-bidi: embed;
+    width: 100%;
+    max-width: 650px;
+    box-sizing: border-box;
+    box-shadow: 0 7px 0 var(--rt-pink-2), 0 12px 22px var(--rt-shadow-pink);
+    
+    /* 1200+ کارڈز کو الٹرا فاسٹ رکھنے کے لیے اہم پراپرٹیز */
+    content-visibility: auto;
+    contain-intrinsic-size: 1px 140px;
+    contain: layout style paint;
+    
+    opacity: 0;
+    transform: translate3d(0, 24px, 0);
+    transition: opacity 0.45s ease-out, transform 0.45s ease-out;
+}
+
+/* سرچ کے دوران کارڈ چھپانے کے لیے تیز کلاس */
+.link-segment-container.card-hidden {
+    display: none !important;
+}
+
+.link-segment-container.card-visible {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+}
+
+.link-segment-container.card-visible:hover {
+    transform: translate3d(0, -6px, 0);
+    box-shadow: 0 11px 0 var(--rt-pink-3), 0 18px 30px var(--rt-shadow-brown);
+}
+
+.archive-badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: #fff;
+    font-size: 12px;
+    font-family: var(--rt-font-sans);
+    font-weight: 700;
+    padding: 0 14px;
+    height: 28px;
+    line-height: 28px;
+    text-align: center;
+    border-radius: 0 0 0 12px;
+    z-index: 5;
+}
+
+.ext-badge {
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 12px;
+    font-family: var(--rt-font-sans);
+    font-weight: 700;
+    padding: 0 14px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    border-radius: 0 0 12px 0;
+    z-index: 5;
+}
+.ext-badge i { font-size: 14px; }
+
+.link-segment-container a {
+    display: block;
+    direction: rtl;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 34px 24px 20px 24px;
+    text-decoration: none !important;
+    text-align: center !important;
+    cursor: pointer;
+    border: none;
+    margin: 0;
+    position: relative;
+    z-index: 2;
+}
+
+/* یہاں سے بھاری backdrop-filter ہٹا کر ہلکا اور صاف بیک گراؤنڈ دیا گیا ہے */
+.link-segment-container .card-meta-info {
+    display: block;
+    unicode-bidi: plaintext;
+    text-align: center;
+    font-size: 15px;
+    font-family: var(--rt-font-global);
+    background: rgba(255, 255, 255, 0.88);
+    padding: 12px 18px;
+    border-radius: 12px;
+    margin-top: 0;
+    margin-bottom: 12px;
+    font-weight: 600;
+    line-height: 1.8;
+    border: 1px dashed rgba(139,94,60,0.35);
+    color: var(--rt-brown-3);
+}
+
+.link-segment-container .link-title-text {
+    display: block;
+    font-size: 1.25rem;
+    font-weight: 700;
+    line-height: 1.7;
+    margin-top: 4px;
+    margin-bottom: 0;
+    font-family: var(--rt-font-global);
+}
+
+/* Card Themes */
+.link-segment-container.type-pdf { border: 1.5px solid rgba(139,94,60,0.35); background: linear-gradient(135deg, #ffffff 0%, #F5E6D3 100%); }
+.link-segment-container.type-pdf .ext-badge { color: var(--theme-pdf); background: #F5E6D3; }
+.link-segment-container.type-pdf a { color: var(--theme-pdf) !important; }
+.link-segment-container.type-pdf .archive-badge { background: var(--theme-pdf); }
+
+.link-segment-container.type-audio { border: 1.5px solid rgba(212,165,116,0.4); background: linear-gradient(135deg, #ffffff 0%, #FBF4EC 100%); }
+.link-segment-container.type-audio .ext-badge { color: var(--theme-audio); background: #FBF4EC; }
+.link-segment-container.type-audio a { color: var(--theme-audio) !important; }
+.link-segment-container.type-audio .archive-badge { background: var(--theme-audio); }
+
+.link-segment-container.type-video { border: 1.5px solid rgba(107,68,35,0.35); background: linear-gradient(135deg, #ffffff 0%, #E8C9B0 100%); }
+.link-segment-container.type-video .ext-badge { color: var(--theme-video); background: #E8C9B0; }
+.link-segment-container.type-video a { color: var(--theme-video) !important; }
+.link-segment-container.type-video .archive-badge { background: var(--theme-video); }
+
+.link-segment-container.type-image { border: 1.5px solid rgba(184,134,107,0.35); background: linear-gradient(135deg, #ffffff 0%, #F5E6D3 100%); }
+.link-segment-container.type-image .ext-badge { color: var(--theme-image); background: #F5E6D3; }
+.link-segment-container.type-image a { color: var(--theme-image) !important; }
+.link-segment-container.type-image .archive-badge { background: var(--theme-image); }
+
+.link-segment-container.type-gif { border: 1.5px solid rgba(201,168,138,0.4); background: linear-gradient(135deg, #ffffff 0%, #FBF4EC 100%); }
+.link-segment-container.type-gif .ext-badge { color: var(--theme-gif); background: #FBF4EC; }
+.link-segment-container.type-gif a { color: var(--theme-gif) !important; }
+.link-segment-container.type-gif .archive-badge { background: var(--theme-gif); }
+
+.link-segment-container.type-zip { border: 1.5px solid rgba(107,68,35,0.35); background: linear-gradient(135deg, #ffffff 0%, #E8C9B0 100%); }
+.link-segment-container.type-zip .ext-badge { color: var(--theme-zip); background: #E8C9B0; }
+.link-segment-container.type-zip a { color: var(--theme-zip) !important; }
+.link-segment-container.type-zip .archive-badge { background: var(--theme-zip); }
+
+.link-segment-container.type-docs { border: 1.5px solid rgba(139,94,60,0.35); background: linear-gradient(135deg, #ffffff 0%, #F5E6D3 100%); }
+.link-segment-container.type-docs .ext-badge { color: var(--theme-docs); background: #F5E6D3; }
+.link-segment-container.type-docs a { color: var(--theme-docs) !important; }
+.link-segment-container.type-docs .archive-badge { background: var(--theme-docs); }
+
+.link-segment-container.type-google { border: 1.5px solid rgba(184,134,107,0.35); background: linear-gradient(135deg, #ffffff 0%, #FBF4EC 100%); }
+.link-segment-container.type-google .ext-badge { color: var(--theme-google); background: #FBF4EC; }
+.link-segment-container.type-google a { color: var(--theme-google) !important; }
+.link-segment-container.type-google .archive-badge { background: var(--theme-google); }
+
+.link-segment-container.type-other { border: 1.5px solid rgba(166,124,92,0.35); background: linear-gradient(135deg, #ffffff 0%, #E8C9B0 100%); }
+.link-segment-container.type-other .ext-badge { color: var(--theme-other); background: #E8C9B0; }
+.link-segment-container.type-other a { color: var(--theme-other) !important; }
+.link-segment-container.type-other .archive-badge { background: var(--theme-other); }
+
+.link-segment-container.theme-dominated { border: 1.5px solid rgba(139,94,60,0.4); background: linear-gradient(135deg, #ffffff 0%, #F5E6D3 100%); }
+.link-segment-container.theme-dominated .ext-badge { color: var(--rt-brown-3); background: var(--rt-pink-1); }
+.link-segment-container.theme-dominated a { color: var(--rt-brown-3) !important; }
+.link-segment-container.theme-dominated .archive-badge { background: var(--rt-gradient-main); }
+
+/* ========================================================
+   4. Modal Styling
+   ======================================================== */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(61, 40, 23, 0.65);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    align-items: center;
+    justify-content: center;
+}
+.modal-active { display: flex !important; }
+
+.modal-content {
+    background: linear-gradient(145deg, #fff, #FBF4EC);
+    padding: 32px;
+    border-radius: 22px;
+    width: 90%;
+    max-width: 480px;
+    position: relative;
+    direction: rtl;
+    text-align: right;
+    box-shadow: 0 10px 0 var(--rt-brown-2), 0 25px 50px var(--rt-shadow-brown);
+    font-family: var(--rt-font-global);
+    border: 1px solid rgba(212,165,116,0.3);
+}
+
+.modal-title {
+    color: var(--rt-brown-3);
+    font-size: 22px;
+    border-bottom: 2px solid var(--rt-pink-3);
+    padding-bottom: 14px;
+    margin-top: 0;
+    font-weight: 700;
+}
+
+.close-btn {
+    position: absolute;
+    top: 18px;
+    left: 22px;
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--rt-brown-1);
+    transition: transform 0.25s, background 0.25s;
+    line-height: 1;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: var(--rt-gradient-soft);
+}
+.close-btn:hover { color: #fff; background: var(--rt-gradient-main); transform: rotate(90deg); }
+
+.help-item { margin-bottom: 16px; line-height: 1.8; }
+.help-item p { margin: 6px 0 0 0; color: var(--rt-brown-2); font-size: 15px; }
+
+.code-highlight {
+    display: inline-block;
+    font-weight: 700;
+    background: var(--rt-gradient-soft);
+    padding: 3px 10px;
+    border-radius: 8px;
+    color: var(--rt-brown-3);
+    font-family: var(--rt-font-sans);
+    font-size: 13px;
+    border: 1px solid rgba(212,165,116,0.3);
+}
+
+.ok-btn {
+    background: var(--rt-gradient-main);
+    color: #fff;
+    border: none;
+    padding: 14px 24px;
+    border-radius: 14px;
+    width: 100%;
+    cursor: pointer;
+    margin-top: 20px;
+    font-size: 16px;
+    font-weight: 700;
+    font-family: var(--rt-font-global);
+    box-shadow: 0 6px 0 var(--rt-brown-2), 0 10px 20px var(--rt-shadow-pink);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.ok-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 0 var(--rt-brown-2), 0 14px 26px var(--rt-shadow-brown); }
+
+/* ========================================================
+   5. Print & Responsive
+   ======================================================== */
+@media print {
+    .search-wrapper-main, .tabs-container { display: none !important; }
+    .link-segment-container {
+        content-visibility: visible !important;
+        opacity: 1 !important;
+        transform: none !important;
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+        box-shadow: none !important;
+        border: 1px solid #ddd !important;
+        margin-bottom: 15px !important;
+    }
+    .link-segment-container a, .link-title-text, .card-meta-info { color: #000 !important; }
+    .archive-badge, .ext-badge { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+}
+
+@media (max-width: 600px) {
+    .search-wrapper-main { margin: 22px auto; }
+    .search-box { padding: 10px 14px; gap: 12px; }
+    .search-icon { width: 28px; height: 28px; font-size: 22px; }
+    #smartSearch { font-size: 16px; }
+    .filter-tab { padding: 8px 14px; font-size: 14px; }
+    .link-segment-container { border-radius: 16px; }
+    .link-segment-container .link-title-text { font-size: 1.1rem; }
+    .link-segment-container a { padding: 30px 18px 16px 18px; }
+    .modal-content { padding: 24px; border-radius: 18px; }
+}
