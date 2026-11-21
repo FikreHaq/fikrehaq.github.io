@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>بہار شریعت حصہ سوم - فرض علوم - محب الرضا مفتی زبیر چشتی صاحب</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="nav-container">
+    <a href="../index.html" class="logo">
+      <div class="logo-icon"><i class="fas fa-mosque"></i></div>
+      <span>فکر حق</span>
+    </a>
+    
+    <!-- Desktop Links -->
+    <ul class="nav-links">
+      <li><a href="index.html"><i class="fas fa-home"></i> سر ورق</a></li>
+      <li><a href="1.html">حصہ 1</a></li>
+      <li><a href="2.html">حصہ 2</a></li>
+      <li><a href="3.html" class="active">حصہ 3</a></li>
+      <li><a href="4.html">حصہ 4</a></li>
+    </ul>
+    
+    <a href="index.html" class="btn-3d small">بہارِ شریعت <i class="fas fa-heart"></i></a>
+    
+    <!-- Mobile Menu Button -->
+    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open Menu">
+      <i class="fas fa-bars"></i>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE SIDEBAR -->
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+<div class="mobile-sidebar" id="mobileSidebar">
+  <div class="sidebar-header">
+    <a href="../index.html" class="logo" style="font-size: 1.3rem;">
+      <div class="logo-icon" style="width: 40px; height: 40px; font-size: 1.1rem;"><i class="fas fa-mosque"></i></div>
+      <span>فکر حق</span>
+    </a>
+    <button class="close-sidebar" id="closeSidebar" aria-label="Close Menu">
+      <i class="fas fa-times"></i>
+    </button>
+  </div>
+  <ul class="mobile-nav-links">
+    <li><a href="index.html" class="mobile-link"><i class="fas fa-home"></i> بہارِ شریعت</a></li>
+    <li><a href="1.html" class="mobile-link"><i class="fas fa-plus-circle"></i>حصہ 1</a></li>
+    <li><a href="2.html" class="mobile-link"><i class="fas fa-history"></i>حصہ 2</a></li>
+    <li><a href="3.html" class="mobile-link active"><i class="fas fa-three"></i> حصہ 3</a></li>
+    <li><a href="4.html" class="mobile-link"><i class="fas fa-three"></i> حصہ 4</a></li>
+  </ul>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-content fade-up">
+    <div class="bismillah">بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ</div>
+    <div class="salam">
+      اَلصَّلٰوۃُ وَالسَّلَامُ عَلَیْکَ یَا رَسُوْلَ اللهِ<br>
+      وَعَلٰی اٰلِکَ وَاَصْحٰبِکَ یَا حَبِیْبَ اللهِ
+    </div>
+    <div class="badge"><i class="fas fa-star"></i> اہلسنت و جماعت</div>
+    <h1>فکرحق</h1>
+    <div class="tagline">علماء حق اہلسنت کے بیانات کا مرکز</div>
+    <p>ہماری کاوش ہے کہ اہلسنت و جماعت کے علماء کرام کے علمی و دینی بیانات کو ایک پلیٹ فارم پر جمع کیا جائے تاکہ عوام الناس کو دینِ حق کی سمجھ آسان ہو۔</p>
+    <div class="hero-buttons">
+      <a href="#scholars" class="btn-3d"><i class="fas fa-play-circle"></i> بیانات ملاحظہ کریں</a>
+    </div>
+  </div>
+</section>
+
+<section>
+    
+<!-- =======================
+     2. HTML Structure (سرچ باکس، فلٹر ٹیبز اور موڈل)
+     ==================== -->
+<div class="search-wrapper-main">
+    <div class="search-box">
+        <!-- Search Icon -->
+        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        
+        <input type="text" id="smartSearch" placeholder="تلاش کریں (نام، نمبر جیسے 5 یا 1-10)..." autocomplete="off">
+        
+        <div class="action-buttons">
+            <!-- Clear Button -->
+            <svg id="clearSearch" class="action-svg" style="display:none;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" title="صاف کریں">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+            <!-- Info/Help Button -->
+            <svg id="infoBtn" class="action-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" title="تلاش کا طریقہ">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="16" x2="12" y2="12"></line>
+                <line x1="12" y1="8" x2="12.01" y2="8"></line>
+            </svg>
+        </div>
+    </div>
+
+    <!-- Filter Tabs -->
+    <div id="tabsContainer" class="tabs-container"></div>
+
+    <!-- Results Counter -->
+    <div id="searchCounter" class="search-counter"></div>
+</div>
+
+<!-- Help Modal -->
+<div id="helpModal" class="modal-overlay">
+    <div class="modal-content">
+        <span id="closeModal" class="close-btn">&times;</span>
+        <h3 class="modal-title">سمارٹ سرچ استعمال کرنے کا طریقہ</h3>
+        <div class="help-item">
+            <strong>1. نام یا تفصیل سے تلاش:</strong>
+            <p>کتاب، آڈیو یا مصنف کا نام لکھیں، اعراب (زبر، زیر، پیش) کی فکر کیے بغیر تلاش کریں۔</p>
+        </div>
+        <div class="help-item">
+            <strong>2. مخصوص نمبر سے تلاش:</strong>
+            <p>کسی خاص کارڈ پر جانے کے لیے اس کا نمبر لکھیں مثلاً: <span class="code-highlight">5</span> یا <span class="code-highlight">12</span></p>
+        </div>
+        <div class="help-item">
+            <strong>3. رینج اور متعدد تلاش:</strong>
+            <p>ایک ساتھ کئی کارڈز دیکھنے کے لیے کوما یا ڈیش استعمال کریں مثلاً: <span class="code-highlight">1-5</span> یا <span class="code-highlight">2, 7, 10-15</span></p>
+        </div>
+        <button id="okBtn" class="ok-btn">سمجھ گیا</button>
+    </div>
+</div>
+
+<div style="text-align: center;"><br />00:55:00 | 18.89MB<br /><a href="https://archive.org/download/FAC03/01%20%D9%86%D9%85%D8%A7%D8%B2%20%DA%A9%DB%92%20%D9%85%D8%AA%D8%B9%D9%84%D9%82%20%D8%A2%DB%8C%D8%A7%D8%AA%20%DA%A9%D8%B1%DB%8C%D9%85%DB%81%20%D9%88%20%D8%A7%D8%AD%D8%A7%D8%AF%DB%8C%D8%AB%20%DA%A9%D8%A7%20%D8%A8%DB%8C%D8%A7%D9%86%20%D8%A8%DB%81%D8%A7%D8%B1%20%D8%B4%D8%B1%DB%8C%D8%B9%D8%AA%20%D8%AD%D8%B5%DB%81%20%D8%B3%D9%88%D9%85%20.mp3">01 نماز کے متعلق آیات کریمہ و احادیث کا بیان</a><br /><br />00:31:09 | 7.13MB<br /><a href="https://archive.org/download/FAC03/02%20%D9%86%D9%85%D8%A7%D8%B2%20%DA%A9%DB%92%20%D9%85%D8%AA%D8%B9%D9%84%D9%82%20%D8%A2%DB%8C%D8%A7%D8%AA%20%DA%A9%D8%B1%DB%8C%D9%85%DB%81%20%D9%88%20%D8%A7%D8%AD%D8%A7%D8%AF%DB%8C%D8%AB%20%D9%85%D8%A8%D8%A7%D8%B1%DA%A9%DB%81%20%DA%A9%D8%A7%20%D8%A8%DB%8C%D8%A7%D9%86%20%D8%A8%DB%81%D8%A7%D8%B1%20%D8%B4%D8%B1%DB%8C%D8%B9%D8%AA%20%D8%AD%D8%B5%DB%81%20%D8%B3%D9%88%D9%85%20.mp3">02 نماز کے متعلق آیات کریمہ و احادیث مبارکہ کا بیان</a><br /><br />00:24:30 | 8.42MB<br /><a href="https://archive.org/download/FAC03/03%20%D9%86%D9%85%D8%A7%D8%B2%20%DA%A9%DB%92%20%D9%88%D9%82%D8%AA%D9%88%DA%BA%20%DA%A9%D8%A7%20%D8%A8%DB%8C%D8%A7%D9%86%20%D8%A8%DB%81%D8%A7%D8%B1%20%D8%B4%D8%B1%DB%8C%D8%B9%D8%AA%20%D8%AD%D8%B5%DB%81%20%D8%B3%D9%88%D9%85%20.mp3">03 نماز کے وقتوں کا بیان</a><br /><br />00:50:16 | 17.26MB<br /><a href="https://archive.org/download/FAC03/04%20%D9%86%D9%85%D8%A7%D8%B2%20%DA%A9%DB%92%20%D9%88%D9%82%D8%AA%D9%88%DA%BA%20%DA%A9%D8%A7%20%D8%A8%DB%8C%D8%A7%D9%86%20%D8%A8%DB%81%D8%A7%D8%B1%20%D8%B4%D8%B1%DB%8C%D8%B9%D8%AA%20%D8%AD%D8%B5%DB%81%20%D8%B3%D9%88%D9%85%20.mp3">04 نماز کے وقتوں کا بیان</a><br /><br />00:45:28 | 15.61MB<br /><a href="https://archive.org/download/FAC03/05%20%D8%A7%D9%88%D9%82%D8%A7%D8%AA%20%D9%85%D8%B3%D8%AA%D8%AD%D8%A8%DB%81%20%DA%A9%D8%A7%20%D8%A8%DB%8C%D8%A7%D9%86%20%D8%A7%D9%88%D8%B1%20%D9%85%D8%B3%D9%B8%D9%84%DB%81%20%D8%AC%D9%85%D8%B9%20%D8%A8%DB%8C%D9%86%20%D8%A7%D9%84%D8%B5%D9%84%D8%A7%D8%AA%DB%8C%D9%86%20%DA%A9%DB%8C%20%D9%88%D8%B6%D8%A7%D8%AD%D8%AA%20%D8%A8%DB%81%D8%A7%D8%B1%20%D8%B4%D8%B1%DB%8C%D8%B9%D8%AA%20%D8%AD%D8%B5%DB%81%20%D8%B3%D9%88%D9%85%20.mp3">05 اوقات مستحبہ کا بیان اور مسٸلہ جمع بین الصلاتین کی وضاحت</a><br /><br />00:47:24 | 16.28MB<br /><a href="https://archive.org/download/FAC03/06%20%D8%A7%D9%88%D9%82%D8%A7%D8%AA%20%D9%85%DA%A9%D8%B1%D9%88%DB%81%20%DA%A9%D8%A7%20%D8%A8%DB%8C%D8%A7%D9%86%20%D8%A8%DB%81%D8%A7%D8%B1%20%D8%B4%D8%B1%DB%8C%D8%B9%D8%AA%20%D8%AD%D8%B5%DB%81%20%D8%B3%D9%88%D9%85%20.mp3">06 اوقات مکروہ کا بیان</a><br /><br />00:32:16 | 11.08MB<br /><a href="https://archive.org/download/FAC03/07%20%D8%A7%D8%B0%D8%A7%D9%86%20%DA%A9%DB%8C%20%D9%81%D8%B6%DB%8C%D9%84%D8%AA%20%D9%85%DB%8C%DA%BA%20%D8%A7%D8%AD%D8%A7%D8%AF%DB%8C%D8%AB%20%DA%A9%D8%A7%20%D8%A8%DB%8C%D8%A7%D9%86%20%D8%A8%DB%81%D8%A7%D8%B1%20%D8%B4%D8%B1%DB%8C%D8%B9%D8%AA%20%D8%AD%D8%B5%DB%81%20%D8%B3%D9%88%D9%85%20.mp3">07 اذان کی فضیلت میں احادیث کا بیان</a><br /><br />00:33:23 | 11.46MB<br /><a href="https://archive.org/download/FAC03/08%20%D8%A7%D8%B0%D8%A7%D9%86%20%DA%A9%DB%92%20%D9%85%D8%AA%D8%B9%D9%84%D9%82%20%D8%A7%D8%AD%DA%A9%D8%A7%D9%85%D9%90%20%D9%81%D9%82%DB%81%DB%8C%DB%81%20%DA%A9%D8%A7%20%D8%A8%DB%8C%D8%A7%D9%86%20-%20%D8%A8%DB%81%D8%A7%D8%B1%D9%90%20%D8%B4%D8%B1%DB%8C%D8%B9%D8%AA%20%D8%AD%D8%B5%DB%81%20%D8%B3%D9%88%D9%85%20.mp3">08 اذان کے متعلق احکامِ فقہیہ کا بیان - بہارِ شریعت حصہ سوم</a><br /><br />00:30:14 | 10.39MB<br /><a href="https://archive.org/download/FAC03/09%20%D8%A7%D8%B0%D8%A7%D9%86%20%DA%A9%DB%92%20%D9%85%D8%AA%D8%B9%D9%84%D9%82%20%D8%A7%D8%AD%DA%A9%D8%A7%D9%85%20%D9%81%D9%82%DB%81%DB%8C%DB%81%20%DA%A9%D8%A7%20%D8%A8%DB%8C%D8%A7%D9%86%20%D8%A8%DB%81%D8%A7%D8%B1%20%D8%B4%D8%B1%DB%8C%D8%B9%D8%AA%20%D8%AD%D8%B5%DB%81%20%D8%B3%D9%88%D9%85%20.mp3">09 اذان کے متعلق احکام فقہیہ کا بیان</a><br /><br />00:28:49 | 9.90MB<br /><a href="https://archive.org/download/FAC03/10%20%D9%86%D9%85%D8%A7%D8%B2%20%DA%A9%DB%8C%20%D8%B4%D8%B1%D8%A7%D8%A6%D8%B7%20%DA%A9%D8%A7%20%D8%A8%DB%8C%D8%A7%D9%86%20%D8%A8%DB%81%D8%A7%D8%B1%20%D8%B4%D8%B1%DB%8C%D8%B9%D8%AA%20%D8%AD%D8%B5%DB%81%20%D8%B3%D9%88%D9%85%20.mp3">10 نماز کی شرائط کا بیان</a><br /><br />00:23:26 | 8.05MB<br /><a href="https://archive.org/download/FAC03/11%20%D9%86%D9%85%D8%A7%D8%B2%20%DA%A9%DB%8C%20%D8%B4%D8%B1%D8%A7%D8%A6%D8%B7%20%D8%AF%D9%88%D8%B3%D8%B1%DB%8C%20%D8%B4%D8%B1%D8%B7%20%D8%B3%D8%AA%D8%B1%20%D8%B9%D9%88%D8%B1%D8%AA%20%DA%A9%D8%A7%20%D8%A8%DB%8C%D8%A7%D9%86%20%D8%A8%DB%81%D8%A7%D8%B1%20%D8%B4%D8%B1%DB%8C%D8%B9%D8%AA%20%D8%AD%D8%B5%DB%81%20%D8%B3%D9%88%D9%85%20.mp3">11 نماز کی شرائط دوسری شرط ستر عورت کا بیان</a><br /><br />00:28:53 | 9.92MB<br /><a href="https://archive.org/download/FAC03/12%20%D9%86%D9%85%D8%A7%D8%B2%20%DA%A9%DB%8C%20%D8%B4%D8%B1%D8%A7%D8%A6%D8%B7%20%D8%AF%D9%88%D8%B3%D8%B1%DB%8C%20%D8%B4%D8%B1%D8%B7%20%D8%B3%D8%AA%D8%B1%20%D8%B9%D9%88%D8%B1%D8%AA%20%DA%A9%D8%A7%20%D8%A8%DB%8C%D8%A7%D9%86%20%D8%A8%DB%81%D8%A7%D8%B1%20%D8%B4%D8%B1%DB%8C%D8%B9%D8%AA%20%D8%AD%D8%B5%DB%81%20%D8%B3%D9%88%D9%85%20.mp3">12 نماز کی شرائط دوسری شرط ستر عورت کا بیان</a><br /><br />00:18:08 | 6.23MB<br /><a href="https://archive.org/download/FAC03/13%20%D9%86%D9%85%D8%A7%D8%B2%20%DA%A9%DB%8C%20%D8%B4%D8%B1%D8%A7%D8%A6%D8%B7%20%D8%AA%DB%8C%D8%B3%D8%B1%DB%8C%20%D8%B4%D8%B1%D8%B7%20%D8%A7%D8%B3%D8%AA%D9%82%D8%A8%D8%A7%D9%84%20%D9%82%D8%A8%D9%84%DB%81%20%DA%A9%D8%A7%20%D8%A8%DB%8C%D8%A7%D9%86%20%D8%A8%DB%81%D8%A7%D8%B1%20%D8%B4%D8%B1%DB%8C%D8%B9%D8%AA%20%D8%AD%D8%B5%DB%81%20%D8%B3%D9%88%D9%85%20.mp3">13 نماز کی شرائط تیسری شرط استقبال قبلہ کا بیان</a><br /><br />00:22:28 | 7.72MB<br /><a href="https://archive.org/download/FAC03/14%20%D9%86%D9%85%D8%A7%D8%B2%20%DA%A9%DB%8C%20%D8%B4%D8%B1%D8%A7%D8%A6%D8%B7%20%D8%AA%DB%8C%D8%B3%D8%B1%DB%8C%20%D8%B4%D8%B1%D8%B7%20%D8%A7%D8%B3%D8%AA%D9%82%D8%A8%D8%A7%D9%84%20%D9%82%D8%A8%D9%84%DB%81%20%DA%A9%D8%A7%20%D8%A8%DB%8C%D8%A7%D9%86%20%D8%A8%DB%81%D8%A7%D8%B1%20%D8%B4%D8%B1%DB%8C%D8%B9%D8%AA%20%D8%AD%D8%B5%DB%81%20%D8%B3%D9%88%D9%85%20.mp3">14 نماز کی شرائط تیسری شرط استقبال قبلہ کا بیان</a><br /><br />00:30:28 | 10.46MB<br /><a href="https://archive.org/download/FAC03/15%20%D9%86%D9%85%D8%A7%D8%B2%20%DA%A9%DB%8C%20%D8%B4%D8%B1%D8%A7%D8%A6%D8%B7%20%D8%AA%DB%8C%D8%B3%D8%B1%DB%8C%20%D8%B4%D8%B1%D8%B7%20%D8%A7%D8%B3%D8%AA%D9%82%D8%A8%D8%A7%D9%84%20%D9%82%D8%A8%D9%84%DB%81%20%DA%A9%D8%A7%20%D8%A8%DB%8C%D8%A7%D9%86%20%D8%A8%DB%81%D8%A7%D8%B1%20%D8%B4%D8%B1%DB%8C%D8%B9%D8%AA%20%D8%AD%D8%B5%DB%81%20%D8%B3%D9%88%D9%85%20.mp3">15 نماز کی شرائط تیسری شرط استقبال قبلہ کا بیان</a><br /><br />00:35:27 | 12.17MB<br /><a href="https://archive.org/download/FAC03/16%20%D9%86%D9%85%D8%A7%D8%B2%20%DA%A9%DB%8C%20%D8%B4%D8%B1%D8%A7%D8%A6%D8%B7%20%D9%BE%D8%A7%D9%86%DA%86%D9%88%DB%8C%DA%BA%20%D8%B4%D8%B1%D8%B7%20%D9%86%DB%8C%D8%AA%20%DA%A9%D8%A7%20%D8%A8%DB%8C%D8%A7%D9%86%20%D8%A8%DB%81%D8%A7%D8%B1%D8%B4%D8%B1%DB%8C%D8%B9%D8%AA%20%D8%AD%D8%B5%DB%81%20%D8%B3%D9%88%D9%85%20.mp3">16 نماز کی شرائط پانچویں شرط نیت کا بیان</a><br /><br />00:33:11 | 11.39MB<br /><a href="https://archive.org/download/FAC03/17%20%D9%86%D9%85%D8%A7%D8%B2%20%DA%A9%DB%8C%20%D8%B4%D8%B1%D8%A7%D8%A6%D8%B7%20%D9%BE%D8%A7%D9%86%DA%86%D9%88%DB%8C%DA%BA%20%D8%B4%D8%B1%D8%B7%20%D9%86%DB%8C%D8%AA%20%DA%A9%D8%A7%20%D8%A8%DB%8C%D8%A7%D9%86%20%D8%A8%DB%81%D8%A7%D8%B1%D8%B4%D8%B1%DB%8C%D8%B9%D8%AA%20%D8%AD%D8%B5%DB%81%20%D8%B3%D9%88%D9%85%20.mp3">17 نماز کی شرائط پانچویں شرط نیت کا بیان</a><br /><br />00:18:25 | 6.33MB<br /><a href="https://archive.org/download/FAC03/18%20%D9%86%D9%85%D8%A7%D8%B2%20%DA%A9%DB%8C%20%D8%B4%D8%B1%D8%A7%D8%A6%D8%B7%20%D9%BE%D8%A7%D9%86%DA%86%D9%88%DB%8C%DA%BA%20%D8%B4%D8%B1%D8%B7%20%D9%86%DB%8C%D8%AA%20%DA%A9%D8%A7%20%D8%A8%DB%8C%D8%A7%D9%86%20%D8%A8%DB%81%D8%A7%D8%B1%20%D8%B4%D8%B1%DB%8C%D8%B9%D8%AA%20%D8%AD%D8%B5%DB%81%20%D8%B3%D9%88%D9%85%20.mp3">18 نماز کی شرائط پانچویں شرط نیت کا بیان</a><br /><br />00:36:20 | 12.48MB<br /><a href="https://archive.org/download/FAC03/19%20%D9%86%D9%85%D8%A7%D8%B2%20%DA%A9%DB%8C%20%D8%B4%D8%B1%D8%A7%D8%A6%D8%B7%20%DA%86%DA%BE%D9%B9%DB%8C%20%D8%B4%D8%B1%D8%B7%20%D8%AA%DA%A9%D8%A8%DB%8C%D8%B1%20%D8%AA%D8%AD%D8%B1%DB%8C%D9%85%DB%81%20%DA%A9%D8%A7%20%D8%A8%DB%8C%D8%A7%D9%86%20%D8%A8%DB%81%D8%A7%D8%B1%D8%B4%D8%B1%DB%8C%D8%B9%D8%AA%20%D8%AD%D8%B5%DB%81%20%D8%B3%D9%88%D9%85%20.mp3">19 نماز کی شرائط چھٹی شرط تکبیر تحریمہ کا بیان</a><br /><br />00:18:27 | 6.34MB<br /><a href="https://archive.org/download/FAC03/20%20%D9%86%D9%85%D8%A7%D8%B2%20%D9%BE%DA%91%DA%BE%D9%86%DB%92%20%DA%A9%D8%A7%20%D8%B7%D8%B1%DB%8C%D9%82%DB%81%20%D8%A8%DB%81%D8%A7%D8%B1%20%D8%B4%D8%B1%DB%8C%D8%B9%D8%AA%20%D8%AD%D8%B5%DB%81%20%D8%B3%D9%88%D9%85%20.mp3">20 نماز پڑھنے کا طریقہ</a><br /><br />00:31:35 | 10.85MB<br /><a href="https://archive.org/download/FAC03/21%20%D9%86%D9%85%D8%A7%D8%B2%20%DA%A9%DB%92%20%D9%81%D8%B1%D8%A7%D8%A6%D8%B6%20%DA%A9%D8%A7%20%D8%A8%DB%8C%D8%A7%D9%86%20%D8%A8%DB%81%D8%A7%D8%B1%20%D8%B4%D8%B1%DB%8C%D8%B9%D8%AA%20%D8%AD%D8%B5%DB%81%20%D8%B3%D9%88%D9%85%20.mp3">21 نماز کے فرائض کا بیان</a><br /><br />00:25:03 | 8.60MB<br /><a href="https://archive.org/download/FAC03/22%20%D9%86%D9%85%D8%A7%D8%B2%20%DA%A9%DB%92%20%D9%81%D8%B1%D8%A7%D8%A6%D8%B6%20%D8%AA%DB%8C%D8%B3%D8%B1%D8%A7%20%D9%81%D8%B1%D8%B6%20%D9%82%D8%B1%D8%A7%D8%AA%20%DA%A9%D8%A7%20%D8%A8%DB%8C%D8%A7%D9%86%20%D8%A8%DB%81%D8%A7%D8%B1%20%D8%B4%D8%B1%DB%8C%D8%B9%D8%AA%20%D8%AD%D8%B5%DB%81%20%D8%B3%D9%88%D9%85%20.mp3">22 نماز کے فرائض تیسرا فرض قرات کا بیان</a><br /><br />00:17:59 | 6.18MB<br /><a href="https://archive.org/download/FAC03/23%20%D9%86%D9%85%D8%A7%D8%B2%20%DA%A9%DB%92%20%D9%81%D8%B1%D8%A7%D8%A6%D8%B6%20%DA%86%DA%BE%D9%B9%DB%92%20%D8%A7%D9%88%D8%B1%20%D8%B3%D8%A7%D8%AA%D9%88%DB%8C%DA%BA%20%D9%81%D8%B1%D8%B6%20%DA%A9%D8%A7%20%D8%A8%DB%8C%D8%A7%D9%86%20%D8%A8%DB%81%D8%A7%D8%B1%20%D8%B4%D8%B1%DB%8C%D8%B9%D8%AA%20%D8%AD%D8%B5%DB%81%20%D8%B3%D9%88%D9%85%20.mp3">23 نماز کے فرائض چھٹے اور ساتویں فرض کا بیان</a><br /><br />00:18:54 | 6.49MB<br /><a href="https://archive.org/download/FAC03/24%20%D9%86%D9%85%D8%A7%D8%B2%20%DA%A9%DB%92%20%D9%88%D8%A7%D8%AC%D8%A8%D8%A7%D8%AA%20%DA%A9%D8%A7%20%D8%A8%DB%8C%D8%A7%D9%86%20%D8%A8%DB%81%D8%A7%D8%B1%20%D8%B4%D8%B1%DB%8C%D8%B9%D8%AA%20%D8%AD%D8%B5%DB%81%20%D8%B3%D9%88%D9%85%20.mp3">24 نماز کے واجبات کا بیان</a><br /><br />00:28:47 | 9.89MB<br /><a href="https://archive.org/download/FAC03/25%20%D9%86%D9%85%D8%A7%D8%B2%20%DA%A9%DB%8C%20%D8%B3%D9%86%D8%AA%D9%88%DA%BA%20%DA%A9%D8%A7%20%D8%A8%DB%8C%D8%A7%D9%86%20%D8%A8%DB%81%D8%A7%D8%B1%20%D8%B4%D8%B1%DB%8C%D8%B9%D8%AA%20%D8%AD%D8%B5%DB%81%20%D8%B3%D9%88%D9%85.mp3">25 نماز کی سنتوں کا بیان</a><br /><br />00:32:14 | 11.07MB<br /><a href="https://archive.org/download/FAC03/26%20%D9%86%D9%85%D8%A7%D8%B2%20%DA%A9%DB%8C%20%D8%B3%D9%86%D8%AA%D9%88%DA%BA%20%DA%A9%D8%A7%20%D8%A8%DB%8C%D8%A7%D9%86%20%D8%A8%DB%81%D8%A7%D8%B1%D8%B4%D8%B1%DB%8C%D8%B9%D8%AA%20%D8%AD%D8%B5%DB%81%20%D8%B3%D9%88%D9%85.mp3">26 نماز کی سنتوں کا بیان</a><br /><br />00:24:59 | 8.58MB<br /><a href="https://archive.org/download/FAC03/27%20%D8%AF%D8%B1%D9%88%D8%AF%20%D8%B4%D8%B1%DB%8C%D9%81%20%DA%A9%DB%92%20%D9%81%D8%B6%D8%A7%D8%A6%D9%84%20%D9%88%20%D9%85%D8%B3%D8%A7%D8%A6%D9%84%20%D8%A8%DB%81%D8%A7%D8%B1%20%D8%B4%D8%B1%DB%8C%D8%B9%D8%AA%20%D8%AD%D8%B5%DB%81%20%D8%B3%D9%88%D9%85%20.mp3">27 درود شریف کے فضائل و مسائل</a><br /><br />00:32:11 | 11.05MB<br /><a href="https://archive.org/download/FAC03/28%20%D9%86%D9%85%D8%A7%D8%B2%20%DA%A9%DB%8C%20%D8%B3%D9%86%D8%AA%D9%88%DA%BA%20%DA%A9%D8%A7%20%D8%A8%DB%8C%D8%A7%D9%86%20%D8%A8%DB%81%D8%A7%D8%B1%20%D8%B4%D8%B1%DB%8C%D8%B9%D8%AA%20%D8%AD%D8%B5%DB%81%20%D8%B3%D9%88%D9%85.mp3">28 نماز کی سنتوں کا بیان</a><br /><br />00:39:57 | 13.72MB<br /><a href="https://archive.org/download/FAC03/29%20%D9%86%D9%85%D8%A7%D8%B2%20%DA%A9%DB%92%20%D9%85%D8%B3%D8%AA%D8%AD%D8%A8%D8%A7%D8%AA%20%D8%A7%D9%88%D8%B1%20%D9%86%D9%85%D8%A7%D8%B2%20%DA%A9%DB%92%20%D8%A8%D8%B9%D8%AF%20%DA%A9%DB%92%20%D8%A7%D8%B2%DA%A9%D8%A7%D8%B1%20%D8%A8%DB%81%D8%A7%D8%B1%20%D8%B4%D8%B1%DB%8C%D8%B9%D8%AA%20%D8%AD%D8%B5%DB%81%20%D8%B3%D9%88%D9%85.mp3">29 نماز کے مستحبات اور نماز کے بعد کے ازکار</a><br /><br />00:25:50 | 8.87MB<br /><a href="https://archive.org/download/FAC03/30%20%D9%82%D8%B1%D8%A2%D9%86%20%D9%85%D8%AC%DB%8C%D8%AF%20%D9%BE%DA%91%DA%BE%D9%86%DB%92%20%DA%A9%D8%A7%20%D8%A8%DB%8C%D8%A7%D9%86%20%D8%A8%DB%81%D8%A7%D8%B1%D8%B4%D8%B1%DB%8C%D8%B9%D8%AA%20%D8%AD%D8%B5%DB%81%20%D8%B3%D9%88%D9%85%20.mp3">30 قرآن مجید پڑھنے کا بیان</a><br /><br />00:45:33 | 15.64MB<br /><a href="https://archive.org/download/FAC03/31%20%DA%A8%D8%B1%D8%A2%D9%86%20%D9%85%D8%AC%DB%8C%D8%AF%20%D9%BE%DA%91%DA%BE%D9%86%DB%92%DA%A9%D8%A7%20%D8%A8%DB%8C%D8%A7%D9%86%20%D8%A8%DB%81%D8%A7%D8%B1%20%D8%B4%D8%B1%DB%8C%D8%B9%D8%AA%20%D8%AD%D8%B5%DB%81%20%D8%B3%D9%88%D9%85%20.mp3">31 ڨرآن مجید پڑھنےکا بیان</a><br /><br />00:24:56 | 8.56MB<br /><a href="https://archive.org/download/FAC03/32%20%D9%85%D8%B3%D8%A7%D9%B8%D9%84%20%D9%82%D8%B1%D8%A7%D8%AA%20%D8%A8%D8%B1%D9%88%D9%86%20%D9%86%D9%85%D8%A7%D8%B2%20%D8%A8%DB%81%D8%A7%D8%B1%20%D8%B4%D8%B1%DB%8C%D8%B9%D8%AA%20%D8%AD%D8%B5%DB%81%20%D8%B3%D9%88%D9%85.mp3">32 مساٸل قرات برون نماز</a><br /><br />00:23:14 | 7.98MB<br /><a href="https://archive.org/download/FAC03/33%20%D9%82%D8%B1%D8%A7%D9%B8%D8%AA%20%D9%85%DB%8C%DA%BA%20%D8%BA%D9%84%D8%B7%DB%8C%20%DB%81%D9%88%20%D8%AC%D8%A7%D9%86%DB%92%20%DA%A9%D8%A7%20%D8%A8%DB%8C%D8%A7%D9%86%20%D8%A8%DB%81%D8%A7%D8%B1%20%D8%B4%D8%B1%DB%8C%D8%B9%D8%AA%20%D8%AD%D8%B5%DB%81%20%D8%B3%D9%88%D9%85.mp3">33 قراٸت میں غلطی ہو جانے کا بیان</a><br /><br />00:27:41 | 9.51MB<br /><a href="https://archive.org/download/FAC03/34%20%D8%A7%D9%85%D8%A7%D9%85%D8%AA%20%DA%A9%D8%A7%20%D8%A8%DB%8C%D8%A7%D9%86%20%D8%A8%DB%81%D8%A7%D8%B1%20%D8%B4%D8%B1%DB%8C%D8%B9%D8%AA%20%D8%AD%D8%B5%DB%81%20%D8%B3%D9%88%D9%85%20.mp3">34 امامت کا بیان</a><br /><br />00:29:17 | 10.06MB<br /><a href="https://archive.org/download/FAC03/35%20%D8%A7%D9%85%D8%A7%D9%85%D8%AA%20%DA%A9%D8%A7%20%D8%A8%DB%8C%D8%A7%D9%86%20%D8%A7%D8%AD%DA%A9%D8%A7%D9%85%20%D9%81%D9%82%DB%81%DB%8C%DB%81%20%D8%A8%DB%81%D8%A7%D8%B1%20%D8%B4%D8%B1%DB%8C%D8%B9%D8%AA%20%D8%AD%D8%B5%DB%81%20%D8%B3%D9%88%D9%85.mp3">35 امامت کا بیان احکام فقہیہ</a><br /><br />00:29:15 | 10.05MB<br /><a href="https://archive.org/download/FAC03/36%20%D8%A7%D9%82%D8%AA%D8%AF%D8%A7%20%DA%A9%DB%8C%2013%20%D8%B4%D8%B1%D8%B7%DB%8C%DA%BA%20%D8%A8%DB%81%D8%A7%D8%B1%20%D8%B4%D8%B1%DB%8C%D8%B9%D8%AA%20%D8%AD%D8%B5%DB%81%20%D8%B3%D9%88%D9%85%20.mp3">36 اقتدا کی 13 شرطیں</a><br /><br />00:26:00 | 8.93MB<br /><a href="https://archive.org/download/FAC03/37%20%D8%A7%D9%82%D8%AA%D8%AF%D8%A7%20%DA%A9%DB%92%20%D8%A7%D8%AD%DA%A9%D8%A7%D9%85%20%D8%A8%DB%81%D8%A7%D8%B1%20%D8%B4%D8%B1%DB%8C%D8%B9%D8%AA%20%D8%AD%D8%B5%DB%81%20%D8%B3%D9%88%D9%85%20.mp3">37 اقتدا کے احکام</a><br /><br />00:47:46 | 16.40MB<br /><a href="https://archive.org/download/FAC03/38%20%D8%A7%D9%85%D8%A7%D9%85%D8%AA%20%DA%A9%D8%A7%20%D8%B2%DB%8C%D8%A7%D8%AF%DB%81%20%D8%AD%D9%82%D8%AF%D8%A7%D8%B1%20%DA%A9%D9%88%D9%86%20%DB%81%DB%92%20%D8%A8%DB%81%D8%A7%D8%B1%20%D8%B4%D8%B1%DB%8C%D8%B9%D8%AA%20%D8%AD%D8%B5%DB%81%20%D8%B3%D9%88%D9%85.mp3">38 امامت کا زیادہ حقدار کون ہے</a><br /><br />00:40:13 | 13.81MB<br /><a href="https://archive.org/download/FAC03/39%20%D8%A7%D9%85%D8%A7%D9%85%D8%AA%20%DA%A9%D8%A7%20%D8%B2%DB%8C%D8%A7%D8%AF%DB%81%20%D8%AD%D9%82%D8%AF%D8%A7%D8%B1%20%DA%A9%D9%88%D9%86%20%DB%81%DB%92%D8%A8%DB%81%D8%A7%D8%B1%20%D8%B4%D8%B1%DB%8C%D8%B9%D8%AA%20%D8%AD%D8%B5%DB%81%20%D8%B3%D9%88%D9%85.mp3">39 امامت کا زیادہ حقدار کون ہے</a><br /><br />00:29:32 | 10.15MB<br /><a href="https://archive.org/download/FAC03/40%20%D8%AC%D9%85%D8%A7%D8%B9%D8%AA%20%DA%A9%DB%92%20%D9%85%D8%AA%D8%B9%D9%84%D9%82%20%D8%A7%D8%AD%D8%A7%D8%AF%DB%8C%D8%AB%20%DA%A9%D8%A7%20%D8%A8%DB%8C%D8%A7%D9%86%20%D8%A8%DB%81%D8%A7%D8%B1%20%D8%B4%D8%B1%DB%8C%D8%B9%D8%AA%20%D8%AD%D8%B5%DB%81%20%D8%B3%D9%88%D9%85%20.mp3">40 جماعت کے متعلق احادیث کا بیان</a><br /><br />00:36:01 | 12.37MB<br /><a href="https://archive.org/download/FAC03/41%20%D8%AC%D9%85%D8%A7%D8%B9%D8%AA%20%DA%A9%DB%92%20%D9%85%D8%AA%D8%B9%D9%84%D9%82%20%D8%A7%D8%AD%D8%A7%D8%AF%DB%8C%D8%AB%20%DA%A9%D8%A7%20%D8%A8%DB%8C%D8%A7%D9%86%20%D8%A8%DB%81%D8%A7%D8%B1%20%D8%B4%D8%B1%DB%8C%D8%B9%D8%AA%20%D8%AD%D8%B5%DB%81%20%D8%B3%D9%88%D9%85.mp3">41 جماعت کے متعلق احادیث کا بیان</a><br /><br />00:31:42 | 10.88MB<br /><a href="https://archive.org/download/FAC03/42%20%D8%AC%D9%85%D8%A7%D8%B9%D8%AA%20%DA%A9%DB%92%20%D9%85%D8%AA%D8%B9%D9%84%D9%82%20%D8%A7%D8%AD%DA%A9%D8%A7%D9%85%20%D9%81%D9%82%DB%81%DB%8C%DB%81%20%D8%A8%DB%81%D8%A7%D8%B1%20%D8%B4%D8%B1%DB%8C%D8%B9%D8%AA%20%D8%AD%D8%B5%DB%81%20%D8%B3%D9%88%D9%85.mp3">42 جماعت کے متعلق احکام فقہیہ</a><br /><br />00:23:35 | 8.10MB<br /><a href="https://archive.org/download/FAC03/43%20%D8%AC%D9%85%D8%A7%D8%B9%D8%AA%20%DA%A9%DB%92%20%D9%85%D8%AA%D8%B9%D9%84%D9%82%DB%81%20%D8%A7%D8%AD%DA%A9%D8%A7%D9%85%20%D9%81%D9%82%DB%81%DB%8C%DB%81%20%D8%A8%DB%81%D8%A7%D8%B1%20%D8%B4%D8%B1%DB%8C%D8%B9%D8%AA%20%D8%AD%D8%B5%DB%81%20%D8%B3%D9%88%D9%85.mp3">43 جماعت کے متعلقہ احکام فقہیہ</a><br /><br />00:38:57 | 13.37MB<br /><a href="https://archive.org/download/FAC03/44%20%D9%85%D9%82%D8%AA%D8%AF%DB%8C%20%DA%A9%DB%8C%20%DA%86%D8%A7%D8%B1%20%D9%82%D8%B3%D9%85%D9%88%DA%BA%20%DA%A9%D8%A7%20%D8%A8%DB%8C%D8%A7%D9%86%20%D8%A8%DB%81%D8%A7%D8%B1%D8%B4%D8%B1%DB%8C%D8%B9%D8%AA%20%D8%AD%D8%B5%DB%81%20%D8%B3%D9%88%D9%85%20.mp3">44 مقتدی کی چار قسموں کا بیان</a><br /><br />00:25:44 | 8.84MB<br /><a href="https://archive.org/download/FAC03/45%20%D9%85%D9%82%D8%AA%D8%AF%DB%8C%20%DA%A9%DB%8C%20%DA%86%D8%A7%D8%B1%20%D9%82%D8%B3%D9%85%D9%88%DA%BA%20%DA%A9%D8%A7%20%D8%AA%D9%82%D8%B5%DB%8C%D9%84%DB%8C%20%D8%A8%DB%8C%D8%A7%D9%86%20%D8%A8%DB%81%D8%A7%D8%B1%20%D8%B4%D8%B1%DB%8C%D8%B9%D8%AA%20%D8%AD%D8%B5%DB%81%20%D8%B3%D9%88%D9%85.mp3">45 مقتدی کی چار قسموں کا تقصیلی بیان</a><br /><br />00:24:52 | 8.54MB<br /><a href="https://archive.org/download/FAC03/46%20%D9%86%D9%85%D8%A7%D8%B2%20%D9%85%DB%8C%DA%BA%20%D8%A8%DB%92%20%D9%88%D8%B6%D9%88%20%DB%81%D9%88%D9%86%DB%92%20%DA%A9%D8%A7%20%D8%A8%DB%8C%D8%A7%D9%86%20%D8%A8%DB%81%D8%A7%D8%B1%20%D8%B4%D8%B1%DB%8C%D8%B9%D8%AA%20%D8%AD%D8%B5%DB%81%20%D8%B3%D9%88%D9%85.mp3">46 نماز میں بے وضو ہونے کا بیان</a><br /><br />00:27:23 | 9.40MB<br /><a href="https://archive.org/download/FAC03/47%20%D8%AE%DB%8C%D9%84%D9%81%DB%81%20%DA%A9%D8%B1%D9%86%DB%92%20%DA%A9%D8%A7%20%D8%A8%DB%8C%D8%A7%D9%86%20%D8%A8%DB%81%D8%A7%D8%B1%20%D8%B4%D8%B1%DB%8C%D8%B9%D8%AA%20%D8%AD%D8%B5%DB%81%20%D8%B3%D9%88%D9%85%20.mp3">47 خیلفہ کرنے کا بیان</a><br /><br />00:32:49 | 11.27MB<br /><a href="https://archive.org/download/FAC03/48%20%D9%86%D9%85%D8%A7%D8%B2%20%D9%81%D8%A7%D8%B3%D8%AF%20%DA%A9%D8%B1%D9%86%DB%92%20%D9%88%D8%A7%D9%84%DB%8C%20%DA%86%DB%8C%D8%B2%D9%88%DA%BA%20%DA%A9%D8%A7%D8%A8%DB%8C%D8%A7%D9%86%20%D8%A8%DB%81%D8%A7%D8%B1%20%D8%B4%D8%B1%DB%8C%D8%B9%D8%AA%20%D8%AD%D8%B5%DB%81%20%D8%B3%D9%88%D9%85.mp3">48 نماز فاسد کرنے والی چیزوں کابیان</a><br /><br />00:36:58 | 12.70MB<br /><a href="https://archive.org/download/FAC03/49%20%D9%86%D9%85%D8%A7%D8%B2%20%D9%81%D8%A7%D8%B3%D8%AF%20%DA%A9%D8%B1%D9%86%DB%92%20%D9%88%D8%A7%D9%84%DB%8C%20%DA%86%DB%8C%D8%B2%D9%88%DA%BA%20%DA%A9%D8%A7%20%D8%A8%DB%8C%D8%A7%D9%86%20%20%D8%A8%DB%81%D8%A7%D8%B1%20%D8%B4%D8%B1%DB%8C%D8%B9%D8%AA%20%D8%AD%D8%B5%DB%81%20%D8%B3%D9%88%D9%85.mp3">49 نماز فاسد کرنے والی چیزوں کا بیان</a><br /><br />00:39:49 | 13.68MB<br /><a href="https://archive.org/download/FAC03/50%20%D9%86%D9%85%D8%A7%D8%B2%20%D9%81%D8%A7%D8%B3%D8%AF%20%DA%A9%D8%B1%D9%86%DB%92%20%D9%88%D8%A7%D9%84%DB%8C%20%DA%86%DB%8C%D8%B2%D9%88%DA%BA%20%DA%A9%D8%A7%20%D8%A8%DB%8C%D8%A7%D9%86%20%D8%A8%DB%81%D8%A7%D8%B1%20%D8%B4%D8%B1%DB%8C%D8%B9%D8%AA%20%D8%AD%D8%B5%DB%81%20%D8%B3%D9%88%D9%85%20.mp3">50 نماز فاسد کرنے والی چیزوں کا بیان</a><br /><br />00:33:51 | 7.75MB<br /><a href="https://archive.org/download/FAC03/51%20%D9%86%D9%85%D8%A7%D8%B2%20%DA%A9%DB%92%20%D9%85%DA%A9%D8%B1%D9%88%DB%81%D8%A7%D8%AA%20%DA%A9%D8%A7%20%D8%A8%DB%8C%D8%A7%D9%86%20%D8%A8%DB%81%D8%A7%D8%B1%20%D8%B4%D8%B1%DB%8C%D8%B9%D8%AA%20%D8%AD%D8%B5%DB%81%20%D8%B3%D9%88%D9%85%20.mp3">51 نماز کے مکروہات کا بیان</a><br /><br />00:38:26 | 13.20MB<br /><a href="https://archive.org/download/FAC03/52%20%D9%86%D9%85%D8%A7%D8%B2%20%DA%A9%DB%92%20%D9%85%DA%A9%D8%B1%D9%88%DB%81%D8%A7%D8%AA%20%DA%A9%D8%A7%20%D8%A8%DB%8C%D8%A7%D9%86%20%D8%A8%DB%81%D8%A7%D8%B1%20%D8%B1%DB%8C%D8%B9%D8%AA%20%D8%AD%D8%B5%DB%81%20%D8%B3%D9%88%D9%85%20.mp3">52 نماز کے مکروہات کا بیان بہار ریعت حصہ سوم</a><br /><br />00:31:16 | 7.16MB<br /><a href="https://archive.org/download/FAC03/53%20%D9%86%D9%85%D8%A7%D8%B2%20%DA%A9%DB%92%20%D9%85%DA%A9%D8%B1%D9%88%DB%81%D8%A7%D8%AA%20%DA%A9%D8%A7%20%D8%A8%DB%8C%D8%A7%D9%86%20%D8%A8%DB%81%D8%A7%D8%B1%20%D8%B4%D8%B1%DB%8C%D8%B9%D8%AA%20%D8%AD%D8%B5%DB%81%20%D8%B3%D9%88%D9%85%20.mp3">53 نماز کے مکروہات کا بیان</a><br /><br />00:44:29 | 10.18MB<br /><a href="https://archive.org/download/FAC03/54%20%D9%86%D9%85%D8%A7%D8%B2%20%DA%A9%DB%92%20%D9%85%DA%A9%D8%B1%D9%88%DB%81%D8%A7%D8%AA%20%DA%A9%D8%A7%20%D8%A8%DB%8C%D8%A7%D9%86%20%D8%A8%DB%81%D8%A7%D8%B1%20%D8%B4%D8%B1%DB%8C%D8%B9%D8%AA%20%D8%AD%D8%B5%DB%81%20%D8%B3%D9%88%D9%85%20.mp3">54 نماز کے مکروہات کا بیان</a><br /><br />00:29:44 | 6.81MB<br /><a href="https://archive.org/download/FAC03/55%20%D8%A7%D8%AD%DA%A9%D8%A7%D9%85%D9%90%20%D9%85%D8%B3%D8%AC%D8%AF%20%DA%A9%D8%A7%20%D8%A8%DB%8C%D8%A7%D9%86%20%D8%A8%DB%81%D8%A7%D8%B1%20%D8%B4%D8%B1%DB%8C%D8%B9%D8%AA%20%D8%AD%D8%B5%DB%81%20%D8%B3%D9%88%D9%85%20.mp3">55 احکامِ مسجد کا بیان</a><br /><br />00:39:48 | 9.11MB<br /><a href="https://archive.org/download/FAC03/56%20%D8%A7%D8%AD%DA%A9%D8%A7%D9%85%D9%90%20%D9%85%D8%B3%D8%AC%D8%AF%20%DA%A9%D8%A7%20%D8%A8%DB%8C%D8%A7%D9%86%20%D8%A8%DB%81%D8%A7%D8%B1%20%D8%B4%D8%B1%DB%8C%D8%B9%D8%AA%20%D8%AD%D8%B5%DB%81%20%D8%B3%D9%88%D9%85.mp3">56 احکامِ مسجد کا بیان</a><br /><br />56 files| 587.2MB<br /><a href="https://archive.org/compress/FAC03/formats=VBR%20MP3&file=/FAC03.zip">تمام فائلوں کی زپ فائل</a></div>
+
+<div class="bs-pagination">
+  <!-- RTL میں پچھلا تیر دائیں طرف ہوتا ہے -->
+  <a href="2.html">&laquo;</a>
+  <a href="1.html">1</a>
+  <a href="2.html">2</a>
+  <!-- صفحات کے نمبر -->
+  <span class="active">3</span>
+  <a href="4.html">4</a>
+  
+  <!-- RTL میں اگلا تیر بائیں طرف ہوتا ہے -->
+  <a href="4.html">&raquo;</a>
+</div>
+
+</section>
+    
+<!-- FOOTER -->
+<footer class="fh-footer" id="fhpage-custom-footer" dir="rtl" lang="ur">
+    <div class="fh-footer-inner" id="fhpage-footer-inner-box">
+        <div class="fh-footer-brand" id="fhpage-footer-brand-box">
+            <h3 class="fh-footer-title" id="fhpage-footer-brand-title">فکر حق</h3>
+            <p class="fh-footer-desc" id="fhpage-footer-brand-desc">علمی، تحقیقی اور اصلاحی مواد کا منظم مخزن</p>
+        </div>
+
+        <div class="fh-footer-stats" id="fhpage-footer-stats-box" aria-label="وزٹ شماریات">
+            <!-- 1. سیشن کے مطابق کُل وزٹس -->
+            <div class="fh-stat-pill" id="fhpage-total-visits-pill">
+                <span class="fh-stat-label" id="fhpage-total-visits-label">کُل زائرین</span>
+                <strong class="fh-stat-value" id="fhpage-total-visits-count">0</strong>
+            </div>
+
+            <!-- 2. سیشن کے مطابق اس صفحے کے وزٹس -->
+            <div class="fh-stat-pill" id="fhpage-page-visits-pill">
+                <span class="fh-stat-label" id="fhpage-page-visits-label">اس صفحے کے زائرین</span>
+                <strong class="fh-stat-value" id="fhpage-page-visits-count">0</strong>
+            </div>
+
+            <!-- 3. نیا خانہ: ہر اوپن/ریفریش پر بڑھنے والے کُل ملاحظات -->
+            <div class="fh-stat-pill" id="fhpage-total-views-pill">
+                <span class="fh-stat-label" id="fhpage-total-views-label">کُل ملاحظات</span>
+                <strong class="fh-stat-value" id="fhpage-total-views-count">0</strong>
+            </div>
+
+            <!-- 4. نیا خانہ: ہر اوپن/ریفریش پر بڑھنے والے اس صفحے کے ملاحظات -->
+            <div class="fh-stat-pill" id="fhpage-page-views-pill">
+                <span class="fh-stat-label" id="fhpage-page-views-label">اس صفحے کے ملاحظات</span>
+                <strong class="fh-stat-value" id="fhpage-page-views-count">0</strong>
+            </div>
+
+            <!-- 5. نیا خانہ: پوری ویب سائٹ پر براہِ راست موجود افراد -->
+            <div class="fh-stat-pill fh-stat-live" id="fhpage-live-total-pill">
+                <span class="fh-stat-label" id="fhpage-live-total-label">ویب سائٹ پر آن لائن</span>
+                <strong class="fh-stat-value" id="fhpage-live-total-count">...</strong>
+            </div>
+
+            <!-- 6. نیا خانہ: اس صفحے پر براہِ راست موجود افراد -->
+            <div class="fh-stat-pill fh-stat-live" id="fhpage-live-page-pill">
+                <span class="fh-stat-label" id="fhpage-live-page-label">اس صفحے پر آن لائن زائرین</span>
+                <strong class="fh-stat-value" id="fhpage-live-page-count">...</strong>
+            </div>
+        </div>
+
+        <div class="fh-footer-bottom" id="fhpage-footer-bottom-bar">
+            <p class="fh-copyright" id="fhpage-copyright-text">
+                &copy; <span id="fhpage-copyright-year-val">2026</span> <strong>فکر حق</strong> — جملہ حقوق محفوظ ہیں۔
+            </p>
+        </div>
+    </div>
+</footer>
+
+<script type="module" src="../counter.js"></script>
+
+  <!-- آپ کی اپنی JS فائل (Firebase scripts کے بعد ہونی چاہیے) -->
+  <script src="../custom.js"></script>
+  <script src="../search.js"></script>
+  <script src="../mediaplayer.js"></script>
+</body>
+</html>

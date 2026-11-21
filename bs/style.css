@@ -1,0 +1,103 @@
+<!-- Custom Theme Pagination Navigation Box -->
+
+  :root{
+    --pink-1:#F5E6D3;
+    --pink-2:#E8C9B0;
+    --pink-3:#D4A574;
+    --brown-1:#B8866B;
+    --brown-2:#8B5E3C;
+    --brown-3:#6B4423;
+    --gold:#C9A88A;
+    --cream:#FBF4EC;
+    --dark:#3D2817;
+    --shadow-pink:rgba(184,134,107,0.35);
+    --shadow-brown:rgba(107,68,35,0.45);
+    --gradient-main:linear-gradient(135deg,#D4A574 0%,#B8866B 50%,#8B5E3C 100%);
+    --gradient-soft:linear-gradient(135deg,#F5E6D3 0%,#E8C9B0 100%);
+    --gradient-premium:linear-gradient(135deg,#C9A88A 0%,#D4A574 50%,#B8866B 100%);
+  }
+
+.bs-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 40px 0 20px 0;
+  padding: 15px;
+  direction: rtl;
+  font-family: 'Noto Nastaliq Urdu', 'Amiri', serif;
+}
+
+.bs-pagination a, 
+.bs-pagination span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  padding: 8px 18px;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--brown-3, #6B4423);
+  background: var(--gradient-soft, linear-gradient(135deg, #F5E6D3 0%, #E8C9B0 100%));
+  border: 1px solid var(--pink-3, #D4A574);
+  border-radius: 12px;
+  box-shadow: 
+    0 4px 0 var(--pink-3, #D4A574),
+    0 8px 15px var(--shadow-pink, rgba(184, 134, 107, 0.35));
+  transition: all 0.25s cubic-bezier(.4, 0, .2, 1);
+}
+
+/* ماؤس لے جانے (Hover) پر */
+.bs-pagination a:hover {
+  background: var(--gradient-main, linear-gradient(135deg, #D4A574 0%, #B8866B 50%, #8B5E3C 100%));
+  color: #ffffff;
+  border-color: var(--brown-2, #8B5E3C);
+  transform: translateY(-3px);
+  box-shadow: 
+    0 6px 0 var(--brown-2, #8B5E3C),
+    0 12px 20px var(--shadow-brown, rgba(107, 68, 35, 0.45));
+}
+
+/* کلک کرنے (Active Click) پر 3D دباؤ کا اثر */
+.bs-pagination a:active {
+  transform: translateY(2px);
+  box-shadow: 
+    0 2px 0 var(--brown-2, #8B5E3C),
+    0 4px 8px var(--shadow-pink, rgba(184, 134, 107, 0.35));
+}
+
+/* موجودہ فعال صفحہ (Active Page) */
+.bs-pagination .active {
+  background: var(--gradient-main, linear-gradient(135deg, #D4A574 0%, #B8866B 50%, #8B5E3C 100%));
+  color: #ffffff;
+  border-color: var(--brown-2, #8B5E3C);
+  box-shadow: 
+    0 4px 0 var(--brown-2, #8B5E3C),
+    0 8px 16px var(--shadow-brown, rgba(107, 68, 35, 0.45)),
+    inset 0 2px 4px rgba(255, 255, 255, 0.3);
+  cursor: default;
+}
+
+/* غیر فعال بٹن (مثلاً پہلے صفحے پر "پچھلا" بٹن) */
+.bs-pagination .disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  background: var(--cream, #FBF4EC);
+  color: var(--brown-1, #B8866B);
+  box-shadow: none;
+}
+
+/* موبائل اسکرین کے لیے ایڈجسٹمنٹ */
+@media (max-width: 500px) {
+  .bs-pagination {
+    gap: 8px;
+  }
+  .bs-pagination a, 
+  .bs-pagination span {
+    padding: 6px 14px;
+    font-size: 0.92rem;
+    min-width: 38px;
+  }
+}

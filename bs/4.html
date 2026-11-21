@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>بہار شریعت حصہ چہارم - فرض علوم - محب الرضا مفتی زبیر چشتی صاحب</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="nav-container">
+    <a href="../index.html" class="logo">
+      <div class="logo-icon"><i class="fas fa-mosque"></i></div>
+      <span>فکر حق</span>
+    </a>
+    
+    <!-- Desktop Links -->
+    <ul class="nav-links">
+      <li><a href="index.html"><i class="fas fa-home"></i> سر ورق</a></li>
+      <li><a href="1.html">حصہ 1</a></li>
+      <li><a href="2.html">حصہ 2</a></li>
+      <li><a href="3.html">حصہ 3</a></li>
+      <li><a href="4.html" class="active">حصہ 4</a></li>
+    </ul>
+    
+    <a href="index.html" class="btn-3d small">بہارِ شریعت <i class="fas fa-heart"></i></a>
+    
+    <!-- Mobile Menu Button -->
+    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open Menu">
+      <i class="fas fa-bars"></i>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE SIDEBAR -->
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+<div class="mobile-sidebar" id="mobileSidebar">
+  <div class="sidebar-header">
+    <a href="../index.html" class="logo" style="font-size: 1.3rem;">
+      <div class="logo-icon" style="width: 40px; height: 40px; font-size: 1.1rem;"><i class="fas fa-mosque"></i></div>
+      <span>فکر حق</span>
+    </a>
+    <button class="close-sidebar" id="closeSidebar" aria-label="Close Menu">
+      <i class="fas fa-times"></i>
+    </button>
+  </div>
+  <ul class="mobile-nav-links">
+    <li><a href="index.html" class="mobile-link"><i class="fas fa-home"></i> بہارِ شریعت</a></li>
+    <li><a href="1.html" class="mobile-link"><i class="fas fa-plus-circle"></i>حصہ 1</a></li>
+    <li><a href="2.html" class="mobile-link"><i class="fas fa-history"></i>حصہ 2</a></li>
+    <li><a href="3.html" class="mobile-link"><i class="fas fa-three"></i> حصہ 3</a></li>
+    <li><a href="4.html" class="mobile-link active"><i class="fas fa-three"></i> حصہ 4</a></li>
+  </ul>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-content fade-up">
+    <div class="bismillah">بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ</div>
+    <div class="salam">
+      اَلصَّلٰوۃُ وَالسَّلَامُ عَلَیْکَ یَا رَسُوْلَ اللهِ<br>
+      وَعَلٰی اٰلِکَ وَاَصْحٰبِکَ یَا حَبِیْبَ اللهِ
+    </div>
+    <div class="badge"><i class="fas fa-star"></i> اہلسنت و جماعت</div>
+    <h1>فکرحق</h1>
+    <div class="tagline">علماء حق اہلسنت کے بیانات کا مرکز</div>
+    <p>ہماری کاوش ہے کہ اہلسنت و جماعت کے علماء کرام کے علمی و دینی بیانات کو ایک پلیٹ فارم پر جمع کیا جائے تاکہ عوام الناس کو دینِ حق کی سمجھ آسان ہو۔</p>
+    <div class="hero-buttons">
+      <a href="#scholars" class="btn-3d"><i class="fas fa-play-circle"></i> بیانات ملاحظہ کریں</a>
+    </div>
+  </div>
+</section>
+
+<section>
+    
+<!-- =======================
+     2. HTML Structure (سرچ باکس، فلٹر ٹیبز اور موڈل)
+     ==================== -->
+<div class="search-wrapper-main">
+    <div class="search-box">
+        <!-- Search Icon -->
+        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        
+        <input type="text" id="smartSearch" placeholder="تلاش کریں (نام، نمبر جیسے 5 یا 1-10)..." autocomplete="off">
+        
+        <div class="action-buttons">
+            <!-- Clear Button -->
+            <svg id="clearSearch" class="action-svg" style="display:none;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" title="صاف کریں">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+            <!-- Info/Help Button -->
+            <svg id="infoBtn" class="action-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" title="تلاش کا طریقہ">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="16" x2="12" y2="12"></line>
+                <line x1="12" y1="8" x2="12.01" y2="8"></line>
+            </svg>
+        </div>
+    </div>
+
+    <!-- Filter Tabs -->
+    <div id="tabsContainer" class="tabs-container"></div>
+
+    <!-- Results Counter -->
+    <div id="searchCounter" class="search-counter"></div>
+</div>
+
+<!-- Help Modal -->
+<div id="helpModal" class="modal-overlay">
+    <div class="modal-content">
+        <span id="closeModal" class="close-btn">&times;</span>
+        <h3 class="modal-title">سمارٹ سرچ استعمال کرنے کا طریقہ</h3>
+        <div class="help-item">
+            <strong>1. نام یا تفصیل سے تلاش:</strong>
+            <p>کتاب، آڈیو یا مصنف کا نام لکھیں، اعراب (زبر، زیر، پیش) کی فکر کیے بغیر تلاش کریں۔</p>
+        </div>
+        <div class="help-item">
+            <strong>2. مخصوص نمبر سے تلاش:</strong>
+            <p>کسی خاص کارڈ پر جانے کے لیے اس کا نمبر لکھیں مثلاً: <span class="code-highlight">5</span> یا <span class="code-highlight">12</span></p>
+        </div>
+        <div class="help-item">
+            <strong>3. رینج اور متعدد تلاش:</strong>
+            <p>ایک ساتھ کئی کارڈز دیکھنے کے لیے کوما یا ڈیش استعمال کریں مثلاً: <span class="code-highlight">1-5</span> یا <span class="code-highlight">2, 7, 10-15</span></p>
+        </div>
+        <button id="okBtn" class="ok-btn">سمجھ گیا</button>
+    </div>
+</div>
+    
+<div>
+<span class="meta">00:56:43 | 12.98MB</span><br>
+<a href="https://archive.org/download/FAC04/01%20%D9%88%D8%AA%D8%B1%20%DA%A9%D8%A7%20%D8%A8%DB%8C%D8%A7%D9%86%20%D8%A8%DB%81%D8%A7%D8%B1%20%D8%B4%D8%B1%DB%8C%D8%B9%D8%AA%20%D8%AD%D8%B5%DB%81%20%DA%86%DB%81%D8%A7%D8%B1%D9%85.mp3" target="_blank">01 وتر کا بیان بہار شریعت حصہ چہارم</a><br>
+<br>
+<span class="meta">00:22:57 | 07.88MB</span><br>
+<a href="https://archive.org/download/FAC04/02%20%D8%B3%D9%86%D9%86%20%D9%88%20%D9%86%D9%88%D8%A7%D9%81%D9%84%20%DA%A9%D8%A7%20%D8%A8%DB%8C%D8%A7%D9%86%20%D8%A8%DB%81%D8%A7%D8%B1%20%D8%B4%D8%B1%DB%8C%D8%B9%D8%AA%20%D8%AD%D8%B5%DB%81%20%DA%86%DB%81%D8%A7%D8%B1%D9%85.mp3" target="_blank">02 سنن و نوافل کا بیان بہار شریعت حصہ چہارم</a><br>
+<br>
+<span class="meta">00:47:03 | 10.77MB</span><br>
+<a href="https://archive.org/download/FAC04/03%20%D9%85%D8%B3%D8%A7%D9%B8%D9%84%20%D9%81%D9%82%DB%81%DB%8C%DB%81%20%D8%A8%DB%81%D8%A7%D8%B1%20%D8%B4%D8%B1%DB%8C%D8%B9%D8%AA%20%D8%AD%D8%B5%DB%81%20%DA%86%DB%81%D8%A7%D8%B1%D9%85%20.mp3" target="_blank">03 مساٸل فقہیہ بہار شریعت حصہ چہارم </a><br>
+<br>
+<span class="meta">00:42:29 | 09.72MB</span><br>
+<a href="https://archive.org/download/FAC04/04%20%D9%85%D8%B3%D8%A7%D9%B8%D9%84%D9%90%20%D9%81%D9%82%DB%81%DB%8C%DB%81%20%DA%A9%D8%A7%20%D8%A8%DB%8C%D8%A7%D9%86%20%D8%A8%DB%81%D8%A7%D8%B1%20%D8%B4%D8%B1%DB%8C%D8%B9%D8%AA%20%D8%AD%D8%B5%DB%81%20%DA%86%DB%81%D8%A7%D8%B1%D9%85.mp3" target="_blank">04 مساٸلِ فقہیہ کا بیان بہار شریعت حصہ چہارم</a><br>
+<br>
+<span class="meta">00:22:28 | 05.14MB</span><br>
+<a href="https://archive.org/download/FAC04/05%20%D9%85%D8%B3%D8%A7%D9%B8%D9%84%D9%90%20%20%D9%81%D9%82%DB%81%DB%8C%DB%81%20%D8%A8%DB%81%D8%A7%D8%B1%20%D8%B4%D8%B1%DB%8C%D8%B9%D8%AA%20%D8%AD%D8%B5%DB%81%20%DA%86%DB%81%D8%A7%D8%B1%D9%85.mp3" target="_blank">05 مساٸلِ  فقہیہ بہار شریعت حصہ چہارم</a><br>
+<br>
+<span class="meta">00:47:12 | 10.80MB</span><br>
+<a href="https://archive.org/download/FAC04/06%20%D9%85%D8%B3%D8%A7%D8%A6%D9%84%20%D9%81%D9%82%DB%81%DB%8C%DB%81%20%D8%A8%DB%81%D8%A7%D8%B1%20%D8%B4%D8%B1%DB%8C%D8%B9%D8%AA%20%D8%AD%D8%B5%DB%81%20%DA%86%DB%81%D8%A7%D8%B1%D9%85%20.mp3" target="_blank">06 مسائل فقہیہ بہار شریعت حصہ چہارم </a><br>
+<br>
+<span class="meta">00:40:05 | 09.18MB</span><br>
+<a href="https://archive.org/download/FAC04/07%20%D9%86%D9%85%D8%A7%D8%B2%20%D8%AA%DB%81%D8%AC%D8%AF%20%DA%A9%D8%A7%20%D8%A8%DB%8C%D8%A7%D9%86%20%D8%A8%DB%81%D8%A7%D8%B1%20%D8%B4%D8%B1%DB%8C%D8%B9%D8%AA%20%D8%AD%D8%B5%DB%81%20%DA%86%DB%81%D8%A7%D8%B1%D9%85.mp3" target="_blank">07 نماز تہجد کا بیان بہار شریعت حصہ چہارم</a><br>
+<br>
+</div>
+    
+<br /><br /><br />
+<div class="bs-pagination">
+  <!-- RTL میں پچھلا تیر دائیں طرف ہوتا ہے -->
+  <a href="3.html">&laquo;</a>
+  <a href="1.html">1</a>
+  <a href="2.html">2</a>
+  <a href="3.html">3</a>
+  <!-- صفحات کے نمبر -->
+  <span class="active">4</span>
+
+  <!-- RTL میں اگلا تیر بائیں طرف ہوتا ہے -->
+  <span class="disable">&raquo;</span>
+</div>
+
+</section>
+    
+<!-- FOOTER -->
+<footer class="fh-footer" id="fhpage-custom-footer" dir="rtl" lang="ur">
+    <div class="fh-footer-inner" id="fhpage-footer-inner-box">
+        <div class="fh-footer-brand" id="fhpage-footer-brand-box">
+            <h3 class="fh-footer-title" id="fhpage-footer-brand-title">فکر حق</h3>
+            <p class="fh-footer-desc" id="fhpage-footer-brand-desc">علمی، تحقیقی اور اصلاحی مواد کا منظم مخزن</p>
+        </div>
+
+        <div class="fh-footer-stats" id="fhpage-footer-stats-box" aria-label="وزٹ شماریات">
+            <!-- 1. سیشن کے مطابق کُل وزٹس -->
+            <div class="fh-stat-pill" id="fhpage-total-visits-pill">
+                <span class="fh-stat-label" id="fhpage-total-visits-label">کُل زائرین</span>
+                <strong class="fh-stat-value" id="fhpage-total-visits-count">0</strong>
+            </div>
+
+            <!-- 2. سیشن کے مطابق اس صفحے کے وزٹس -->
+            <div class="fh-stat-pill" id="fhpage-page-visits-pill">
+                <span class="fh-stat-label" id="fhpage-page-visits-label">اس صفحے کے زائرین</span>
+                <strong class="fh-stat-value" id="fhpage-page-visits-count">0</strong>
+            </div>
+
+            <!-- 3. نیا خانہ: ہر اوپن/ریفریش پر بڑھنے والے کُل ملاحظات -->
+            <div class="fh-stat-pill" id="fhpage-total-views-pill">
+                <span class="fh-stat-label" id="fhpage-total-views-label">کُل ملاحظات</span>
+                <strong class="fh-stat-value" id="fhpage-total-views-count">0</strong>
+            </div>
+
+            <!-- 4. نیا خانہ: ہر اوپن/ریفریش پر بڑھنے والے اس صفحے کے ملاحظات -->
+            <div class="fh-stat-pill" id="fhpage-page-views-pill">
+                <span class="fh-stat-label" id="fhpage-page-views-label">اس صفحے کے ملاحظات</span>
+                <strong class="fh-stat-value" id="fhpage-page-views-count">0</strong>
+            </div>
+
+            <!-- 5. نیا خانہ: پوری ویب سائٹ پر براہِ راست موجود افراد -->
+            <div class="fh-stat-pill fh-stat-live" id="fhpage-live-total-pill">
+                <span class="fh-stat-label" id="fhpage-live-total-label">ویب سائٹ پر آن لائن</span>
+                <strong class="fh-stat-value" id="fhpage-live-total-count">...</strong>
+            </div>
+
+            <!-- 6. نیا خانہ: اس صفحے پر براہِ راست موجود افراد -->
+            <div class="fh-stat-pill fh-stat-live" id="fhpage-live-page-pill">
+                <span class="fh-stat-label" id="fhpage-live-page-label">اس صفحے پر آن لائن زائرین</span>
+                <strong class="fh-stat-value" id="fhpage-live-page-count">...</strong>
+            </div>
+        </div>
+
+        <div class="fh-footer-bottom" id="fhpage-footer-bottom-bar">
+            <p class="fh-copyright" id="fhpage-copyright-text">
+                &copy; <span id="fhpage-copyright-year-val">2026</span> <strong>فکر حق</strong> — جملہ حقوق محفوظ ہیں۔
+            </p>
+        </div>
+    </div>
+</footer>
+
+<script type="module" src="../counter.js"></script>
+
+  <!-- آپ کی اپنی JS فائل (Firebase scripts کے بعد ہونی چاہیے) -->
+  <script src="../custom.js"></script>
+  <script src="../search.js"></script>
+  <script src="../mediaplayer.js"></script>
+</body>
+</html>
