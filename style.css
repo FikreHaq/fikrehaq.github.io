@@ -1,0 +1,1056 @@
+@import url('search.css');
+@import url('mediaplayer.css');
+@import url('buttons.css');
+@import url('footer.css');
+
+/* ===== بنیادی رنگ اور متغیرات (CSS Variables) ===== */
+:root {
+  --pink-1: #F5E6D3;
+  --pink-2: #E8C9B0;
+  --pink-3: #D4A574;
+  --brown-1: #B8866B;
+  --brown-2: #8B5E3C;
+  --brown-3: #6B4423;
+  --gold: #C9A88A;
+  --cream: #FBF4EC;
+  --dark: #3D2817;
+  --shadow-pink: rgba(184, 134, 107, 0.35);
+  --shadow-brown: rgba(107, 68, 35, 0.45);
+  --gradient-main: linear-gradient(135deg, #D4A574 0%, #B8866B 50%, #8B5E3C 100%);
+  --gradient-soft: linear-gradient(135deg, #F5E6D3 0%, #E8C9B0 100%);
+  --gradient-premium: linear-gradient(135deg, #C9A88A 0%, #D4A574 50%, #B8866B 100%);
+}
+
+/* ===== بنیادی ترتیبات (Reset & Base) ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 95px;
+}
+
+body {
+  font-family: 'Noto Nastaliq Urdu', 'Amiri', serif;
+  background:
+    radial-gradient(circle at 20% 10%, rgba(212, 165, 116, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(184, 134, 107, 0.12) 0%, transparent 50%),
+    linear-gradient(180deg, var(--cream) 0%, #F5E6D3 100%);
+  color: var(--dark);
+  min-height: 100vh;
+  overflow-x: clip;
+  line-height: 1.9;
+}
+
+section[id],
+div[id] {
+  scroll-margin-top: 95px;
+}
+
+/* ===== 3D پریمیم بٹنز (3D Premium Buttons) ===== */
+.btn-3d {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 16px 38px;
+  font-family: inherit;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #fff;
+  background: var(--gradient-main);
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  text-decoration: none;
+  letter-spacing: 0.5px;
+  box-shadow:
+    0 6px 0 var(--brown-1),
+    0 10px 20px var(--shadow-pink),
+    inset 0 2px 4px rgba(255, 255, 255, 0.4),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.15);
+  transition: all 0.25s cubic-bezier(.4, 0, .2, 1);
+  transform: translateY(0);
+  overflow: hidden;
+}
+
+.btn-3d::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.45), transparent);
+  transition: left 0.6s;
+}
+
+.btn-3d:hover::before {
+  left: 100%;
+}
+
+.btn-3d:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    0 9px 0 var(--brown-1),
+    0 16px 30px var(--shadow-brown),
+    inset 0 2px 4px rgba(255, 255, 255, 0.45),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.btn-3d:active {
+  transform: translateY(3px);
+  box-shadow:
+    0 2px 0 var(--brown-1),
+    0 4px 10px var(--shadow-pink),
+    inset 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.btn-3d.outline {
+  background: transparent;
+  color: var(--brown-1);
+  border: 2px solid var(--pink-2);
+  box-shadow:
+    0 6px 0 var(--pink-3),
+    0 10px 20px var(--shadow-pink),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.6);
+}
+
+.btn-3d.outline:hover {
+  background: var(--gradient-soft);
+  color: var(--brown-3);
+}
+
+.btn-3d.small {
+  padding: 10px 22px;
+  font-size: 0.95rem;
+  border-radius: 10px;
+}
+
+/* ===== نیویگیشن بار (Navbar) ===== */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(251, 244, 236, 0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(212, 165, 116, 0.4);
+  box-shadow: 0 4px 30px rgba(107, 68, 35, 0.08);
+  padding: 15px 0;
+}
+
+.nav-container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--brown-3);
+  text-decoration: none;
+  font-family: 'Amiri', serif !important;
+}
+
+.logo-icon {
+  width: 48px;
+  height: 48px;
+  background: var(--gradient-main);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 1.4rem;
+  box-shadow:
+    0 4px 0 var(--brown-1),
+    0 8px 16px var(--shadow-pink);
+}
+
+.nav-links {
+  display: flex;
+  gap: 8px;
+  list-style: none;
+}
+
+.nav-links a {
+  padding: 10px 18px;
+  color: var(--brown-1);
+  text-decoration: none;
+  font-weight: 700;
+  border-radius: 10px;
+  transition: all 0.3s;
+}
+
+.nav-links a:hover {
+  background: var(--gradient-soft);
+  color: var(--brown-3);
+  transform: translateY(-2px);
+}
+
+.nav-links a.active {
+  background: var(--gradient-soft);
+  color: var(--brown-3);
+  box-shadow: inset 0 2px 4px rgba(184, 134, 107, 0.15), 0 2px 8px var(--shadow-pink);
+  border: 1px solid rgba(212, 165, 116, 0.6);
+  position: relative;
+}
+
+.nav-links a.active::after {
+  content: "";
+  position: absolute;
+  bottom: 4px;
+  left: 18px;
+  right: 18px;
+  height: 3px;
+  background: var(--gradient-main);
+  border-radius: 2px;
+  box-shadow: 0 2px 4px var(--shadow-pink);
+}
+
+/* ===== موبائل سائیڈ بار (Mobile Sidebar - GPU Accelerated) ===== */
+.mobile-menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.6rem;
+  color: var(--pink-3);
+  cursor: pointer;
+  padding: 5px;
+}
+
+.mobile-sidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 300px;
+  height: 100vh;
+  background: var(--cream);
+  box-shadow: -5px 0 25px rgba(107, 68, 35, 0.2);
+  z-index: 1001;
+  transform: translateX(100%);
+  visibility: hidden;
+  transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1), visibility 0.35s;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  will-change: transform;
+}
+
+.mobile-sidebar.active {
+  transform: translateX(0);
+  visibility: visible;
+}
+
+.sidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(61, 40, 23, 0.6);
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  will-change: opacity;
+}
+
+.sidebar-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid var(--pink-3);
+}
+
+.close-sidebar {
+  background: var(--gradient-soft);
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  color: var(--brown-3);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+}
+
+.close-sidebar:hover {
+  background: var(--gradient-main);
+  color: #fff;
+}
+
+.mobile-nav-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.mobile-nav-links a {
+  position: relative;
+  z-index: 2;
+  text-decoration: none;
+  color: var(--brown-3);
+  font-size: 1.15rem;
+  font-weight: 700;
+  padding: 12px 15px;
+  border-radius: 10px;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.mobile-nav-links a:hover {
+  background: var(--gradient-soft);
+  padding-right: 25px;
+}
+
+.mobile-nav-links a i {
+  color: var(--pink-2);
+  width: 25px;
+  text-align: center;
+}
+
+.mobile-nav-links a.active {
+  background: var(--gradient-soft);
+  color: var(--brown-3);
+  padding-right: 25px;
+  border-right: 4px solid var(--brown-1);
+  box-shadow: 0 4px 15px rgba(184, 134, 107, 0.15);
+}
+
+.mobile-nav-links a.active i {
+  color: var(--brown-3);
+}
+
+/* ===== ہیرو سیکشن (Hero Section) ===== */
+.hero {
+  padding: 80px 30px 100px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(212, 165, 116, 0.22) 0%, transparent 60%);
+  animation: pulse 8s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 0.6; }
+  50% { transform: scale(1.1); opacity: 1; }
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.bismillah {
+  font-family: 'Amiri', serif;
+  font-size: 2.2rem;
+  color: var(--brown-1);
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+.salam {
+  font-family: 'Amiri', serif;
+  font-size: 1.3rem;
+  color: var(--brown-1);
+  margin-bottom: 40px;
+  line-height: 2;
+}
+
+.hero h1 {
+  font-family: 'Amiri', serif !important;
+  font-size: clamp(3rem, 8vw, 5rem);
+  font-weight: 700;
+  background: var(--gradient-main);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+  line-height: 1.4;
+}
+
+.hero .tagline {
+  font-size: 1.4rem;
+  color: var(--brown-1);
+  margin-bottom: 15px;
+  font-weight: 700;
+}
+
+.hero p {
+  font-size: 1.15rem;
+  color: var(--brown-3);
+  margin-bottom: 40px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  opacity: 0.9;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 20px;
+  background: var(--gradient-soft);
+  border: 1px solid var(--pink-3);
+  border-radius: 50px;
+  color: var(--brown-3);
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 12px var(--shadow-pink);
+}
+
+/* ===== عمومی سیکشنز (General Sections) ===== */
+section {
+  padding: 80px 15px;
+  position: relative;
+}
+
+.container {
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.section-title h2 {
+  font-size: 2.8rem;
+  color: var(--brown-3);
+  margin-bottom: 15px;
+  position: relative;
+  display: inline-block;
+  font-family: 'Amiri', serif !important;
+}
+
+.section-title h2::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: var(--gradient-main);
+  border-radius: 2px;
+  box-shadow: 0 3px 8px var(--shadow-pink);
+}
+
+.section-title p {
+  font-size: 1.15rem;
+  color: var(--brown-1);
+  margin-top: 25px;
+}
+
+/* ===== زمرہ جات کارڈز (Category Cards) ===== */
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+}
+
+.cat-card {
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(212, 165, 116, 0.45);
+  border-radius: 20px;
+  padding: 35px 25px;
+  text-align: center;
+  transition: all 0.4s cubic-bezier(.4, 0, .2, 1);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(107, 68, 35, 0.08);
+}
+
+.cat-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--gradient-main);
+  transform: scaleX(0);
+  transition: transform 0.4s;
+}
+
+.cat-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px var(--shadow-pink);
+  border-color: var(--pink-3);
+}
+
+.cat-card:hover::before {
+  transform: scaleX(1);
+}
+
+.cat-icon {
+  width: 70px;
+  height: 70px;
+  margin: 0 auto 20px;
+  background: var(--gradient-main);
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 1.8rem;
+  box-shadow:
+    0 5px 0 var(--brown-1),
+    0 10px 20px var(--shadow-pink);
+  transition: transform 0.3s;
+}
+
+.cat-card:hover .cat-icon {
+  transform: rotate(-8deg) scale(1.05);
+}
+
+.cat-card h3 {
+  font-size: 1.4rem;
+  color: var(--brown-3);
+  margin-bottom: 10px;
+}
+
+.cat-card p {
+  color: var(--brown-1);
+  font-size: 1rem;
+}
+
+/* ===== زمرہ جات بٹنز گرڈ (Category Buttons Grid) ===== */
+.category-buttons-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+.category-buttons-grid .btn-3d {
+  flex: 0 1 240px;
+  justify-content: center;
+  min-width: 160px;
+  text-align: center;
+}
+
+/* ===== علماء و مشائخ کارڈز (Scholars Section) ===== */
+.scholars-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+.scholar-card {
+  background: linear-gradient(145deg, #fff, var(--cream));
+  border-radius: 22px;
+  padding: 30px 25px;
+  margin: 0 auto;
+  text-align: center;
+  border: 1px solid rgba(212, 165, 116, 0.4);
+  box-shadow:
+    0 10px 30px rgba(107, 68, 35, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  transition: all 0.4s;
+  position: relative;
+  overflow: hidden;
+  max-width: 400px;
+}
+
+.scholar-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--gradient-main);
+  opacity: 0;
+  transition: opacity 0.4s;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.scholar-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.scholar-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 25px 50px var(--shadow-brown);
+}
+
+.scholar-avatar {
+  width: 130px;
+  height: 130px;
+  margin: 0 auto 20px;
+  background: var(--gradient-premium);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  border: 4px solid #fff;
+  box-shadow:
+    0 6px 0 var(--brown-1),
+    0 12px 25px var(--shadow-pink);
+  text-align: center;
+  padding: 10px;
+  transition: transform 0.3s;
+}
+
+.scholar-card:hover .scholar-avatar {
+  transform: scale(1.05);
+}
+
+.avatar-title {
+  font-family: 'Amiri', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.3;
+  display: block;
+}
+
+.scholar-role {
+  display: inline-block;
+  padding: 6px 18px;
+  background: var(--gradient-soft);
+  color: var(--brown-3);
+  border-radius: 50px;
+  font-size: 0.9rem;
+  margin-bottom: 15px;
+  font-weight: 700;
+  border: 1px solid rgba(212, 165, 116, 0.5);
+}
+
+.scholar-name {
+  font-family: 'Noto Nastaliq Urdu', serif;
+  font-size: 1.15rem;
+  color: var(--brown-3);
+  font-weight: 700;
+  margin: 15px 0;
+  line-height: 2.2;
+  background: var(--gradient-soft);
+  padding: 12px 15px;
+  border-radius: 12px;
+  border: 1px solid rgba(212, 165, 116, 0.45);
+  box-shadow: 0 4px 10px rgba(184, 134, 107, 0.1);
+}
+
+.scholar-desc {
+  color: var(--brown-1);
+  margin-bottom: 25px;
+  font-size: 1rem;
+}
+
+/* ===== تازہ ترین بیانات (Latest Bayanat) ===== */
+.bayan-list {
+  display: grid;
+  gap: 25px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.bayan-item {
+  display: flex;
+  gap: 25px;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(212, 165, 116, 0.45);
+  border-radius: 18px;
+  padding: 25px;
+  transition: all 0.3s;
+  box-shadow: 0 6px 20px rgba(107, 68, 35, 0.08);
+}
+
+.bayan-item:hover {
+  transform: translateX(-8px);
+  box-shadow: 0 15px 35px var(--shadow-pink);
+  border-color: var(--pink-3);
+}
+
+.bayan-icon {
+  flex-shrink: 0;
+  width: 70px;
+  height: 70px;
+  background: var(--gradient-main);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 1.6rem;
+  box-shadow:
+    0 5px 0 var(--brown-1),
+    0 10px 20px var(--shadow-pink);
+}
+
+.bayan-info {
+  flex: 1;
+}
+
+.bayan-info h3 {
+  font-size: 1.25rem;
+  color: var(--brown-3);
+  margin-bottom: 6px;
+}
+
+.bayan-info p {
+  color: var(--brown-1);
+  font-size: 0.98rem;
+  margin-bottom: 10px;
+}
+
+.bayan-meta {
+  display: flex;
+  gap: 18px;
+  font-size: 0.88rem;
+  color: var(--pink-2);
+  font-weight: 700;
+}
+
+.bayan-meta span {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* ===== تعارف سیکشن (About Section) ===== */
+.about-section {
+  background: linear-gradient(135deg, rgba(212, 165, 116, 0.14), rgba(184, 134, 107, 0.08));
+  border-radius: 30px;
+  padding: 60px 40px;
+  text-align: center;
+  border: 1px solid rgba(212, 165, 116, 0.4);
+  box-shadow: 0 20px 50px rgba(107, 68, 35, 0.08);
+}
+
+.about-section p {
+  font-size: 1.2rem;
+  color: var(--brown-3);
+  max-width: 800px;
+  margin: 0 auto 40px;
+  line-height: 2.2;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 25px;
+  margin-top: 40px;
+}
+
+.stat-box {
+  background: #fff;
+  padding: 30px 20px;
+  border-radius: 18px;
+  border: 1px solid rgba(212, 165, 116, 0.45);
+  box-shadow:
+    0 8px 0 var(--pink-2),
+    0 12px 25px var(--shadow-pink);
+  transition: all 0.3s;
+}
+
+.stat-box:hover {
+  transform: translateY(-5px);
+  box-shadow:
+    0 12px 0 var(--pink-2),
+    0 20px 35px var(--shadow-brown);
+}
+
+.stat-num {
+  font-size: 2.8rem;
+  font-weight: 700;
+  background: var(--gradient-main);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 8px;
+}
+
+.stat-label {
+  color: var(--brown-1);
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+
+/* ===== نیوز لیٹر (Newsletter Section) ===== */
+.newsletter {
+  background: var(--gradient-main);
+  border-radius: 25px;
+  padding: 50px 30px;
+  text-align: center;
+  color: #fff;
+  box-shadow:
+    0 10px 0 var(--brown-3),
+    0 20px 40px var(--shadow-brown);
+  margin: 60px auto;
+  max-width: 900px;
+  position: relative;
+  overflow: hidden;
+}
+
+.newsletter::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
+}
+
+.newsletter h3 {
+  font-size: 2rem;
+  margin-bottom: 12px;
+  position: relative;
+}
+
+.newsletter p {
+  margin-bottom: 25px;
+  opacity: 0.95;
+  position: relative;
+}
+
+.newsletter-form {
+  display: flex;
+  gap: 12px;
+  max-width: 500px;
+  margin: 0 auto;
+  position: relative;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.newsletter-form input {
+  flex: 1;
+  min-width: 220px;
+  padding: 14px 20px;
+  border: none;
+  border-radius: 12px;
+  font-family: inherit;
+  font-size: 1rem;
+  background: rgba(255, 255, 255, 0.96);
+  color: var(--brown-3);
+  outline: none;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+.newsletter-form button {
+  padding: 14px 30px;
+  background: var(--brown-3);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  font-family: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow:
+    0 4px 0 var(--dark),
+    0 8px 16px rgba(0, 0, 0, 0.3);
+  transition: all 0.2s;
+}
+
+.newsletter-form button:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 6px 0 var(--dark),
+    0 12px 24px rgba(0, 0, 0, 0.35);
+}
+
+/* ===== سمارٹ اسکرول بٹن (Smart Auto-Hide Scroll Button) ===== */
+#scrollToTopBtn {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  width: 42px;
+  height: 42px;
+  background: var(--gradient-main);
+  color: #fff;
+  border: 1.5px solid rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow:
+    0 3px 0 var(--brown-1),
+    0 6px 15px var(--shadow-pink);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(15px) scale(0.9);
+  transition: opacity 0.35s ease, visibility 0.35s ease, transform 0.35s cubic-bezier(.4, 0, .2, 1);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#scrollToTopBtn.show {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0) scale(1);
+}
+
+#scrollToTopBtn:hover {
+  transform: translateY(-3px) scale(1.04);
+  box-shadow:
+    0 5px 0 var(--brown-1),
+    0 10px 20px var(--shadow-brown);
+}
+
+#scrollToTopBtn:active {
+  transform: translateY(1px) scale(0.97);
+  box-shadow:
+    0 1px 0 var(--brown-1),
+    0 3px 8px var(--shadow-pink);
+}
+
+#scrollToTopBtn svg {
+  width: 18px;
+  height: 18px;
+  transition: transform 0.3s cubic-bezier(.4, 0, .2, 1);
+}
+
+#scrollToTopBtn.scroll-down svg {
+  transform: rotate(180deg);
+}
+
+/* ===== اینیمیشنز (Animations) ===== */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-up {
+  animation: fadeUp 0.8s ease-out both;
+}
+
+/* ===== ریسپانسیو میڈیا کوئریز (Responsive Queries) ===== */
+@media (max-width: 900px) {
+  .nav-links,
+  .nav-container .btn-3d.small {
+    display: none;
+  }
+
+  .mobile-menu-btn {
+    display: block;
+  }
+
+  .hero h1 {
+    font-size: 2.8rem !important;
+  }
+
+  .bismillah {
+    font-size: 1.6rem;
+  }
+
+  .section-title h2 {
+    font-size: 2rem;
+  }
+
+  .bayan-item {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .scholar-avatar {
+    width: 110px;
+    height: 110px;
+  }
+
+  .avatar-title {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .category-buttons-grid {
+    gap: 20px;
+    padding: 5px;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .category-buttons-grid .btn-3d {
+    width: 100%;
+    max-width: 320px;
+    flex: 0 1 auto;
+    font-size: 0.95rem;
+    padding: 14px 20px;
+    min-width: unset;
+  }
+}
+
+@media (max-width: 500px) {
+  .hero h1 {
+    font-size: 2.2rem !important;
+  }
+
+  .btn-3d {
+    padding: 14px 28px;
+    font-size: 1rem;
+  }
+
+  .scholar-avatar {
+    width: 100px;
+    height: 100px;
+  }
+
+  .avatar-title {
+    font-size: 1.2rem;
+  }
+}
