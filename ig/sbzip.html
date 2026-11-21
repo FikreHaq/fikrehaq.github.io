@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>امام الغیرت - زپ فائلیں سابقہ بیانات مبارک</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="../style.css">
+
+</head>
+<body>
+
+    <!-- NAVBAR (ig Folder Specific) -->
+<nav class="navbar">
+  <div class="nav-container">
+    <a href="../index.html" class="logo">
+      <div class="logo-icon"><i class="fas fa-mosque"></i></div>
+      <span>فکر حق</span>
+    </a>
+    
+    <!-- Desktop Links -->
+    <ul class="nav-links">
+      <li><a href="index.html"><i class="fas fa-home"></i> صفحہ اول</a></li>
+      <li><a href="nb.html">نئے بیانات</a></li>
+      <li><a href="sb.html">سابقہ بیانات</a></li>
+      <li><a href="guf.html">گفتگوئیں</a></li>
+    </ul>
+    
+    <a href="index.html" class="btn-3d small">امام الغیرت<i class="fas fa-heart"></i></a>
+    
+    <!-- Mobile Menu Button -->
+    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open Menu">
+      <i class="fas fa-bars"></i>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE SIDEBAR -->
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+<div class="mobile-sidebar" id="mobileSidebar">
+  <div class="sidebar-header">
+    <a href="../index.html" class="logo" style="font-size: 1.3rem;">
+      <div class="logo-icon" style="width: 40px; height: 40px; font-size: 1.1rem;"><i class="fas fa-mosque"></i></div>
+      <span>فکر حق</span>
+    </a>
+    <button class="close-sidebar" id="closeSidebar" aria-label="Close Menu">
+      <i class="fas fa-times"></i>
+    </button>
+  </div>
+  <ul class="mobile-nav-links">
+    <li><a href="index.html" class="mobile-link"><i class="fas fa-home"></i> صفحہ اول</a></li>
+    <li><a href="nb.html" class="mobile-link"><i class="fas fa-plus-circle"></i> نئے بیانات</a></li>
+    <li><a href="sb.html" class="mobile-link"><i class="fas fa-history"></i> سابقہ بیانات</a></li>
+    <li><a href="guf.html" class="mobile-link"><i class="fas fa-comments"></i> گفتگوئیں</a></li>
+    <li><a href="nbzip.html" class="mobile-link"><i class="fas fa-file-archive"></i> نئے بیانات (Zip)</a></li>
+    <li><a href="sbzip.html" class="mobile-link active"><i class="fas fa-file-zipper"></i> سابقہ بیانات (Zip)</a></li>
+  </ul>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-content fade-up">
+    <div class="bismillah">بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ</div>
+    <div class="salam">
+      اَلصَّلٰوۃُ وَالسَّلَامُ عَلَیْکَ یَا رَسُوْلَ اللهِ<br>
+      وَعَلٰی اٰلِکَ وَاَصْحٰبِکَ یَا حَبِیْبَ اللهِ
+    </div>
+    <div class="badge"><i class="fas fa-star"></i> اہلسنت و جماعت</div>
+    <h1>فکرحق</h1>
+    <div class="tagline">علماء حق اہلسنت کے بیانات کا مرکز</div>
+    <p>ہماری کاوش ہے کہ اہلسنت و جماعت کے علماء کرام کے علمی و دینی بیانات کو ایک پلیٹ فارم پر جمع کیا جائے تاکہ عوام الناس کو دینِ حق کی سمجھ آسان ہو۔</p>
+    <div class="hero-buttons">
+      <a href="#scholars" class="btn-3d"><i class="fas fa-play-circle"></i> بیانات ملاحظہ کریں</a>
+    </div>
+  </div>
+</section>
+
+<section><!-- ========================================================
+     2. HTML Structure (سرچ باکس، فلٹر ٹیبز اور موڈل)
+     ======================================================== -->
+<div class="search-wrapper-main">
+    <div class="search-box">
+        <!-- Search Icon -->
+        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        
+        <input type="text" id="smartSearch" placeholder="تلاش کریں (نام، نمبر جیسے 5 یا 1-10)..." autocomplete="off">
+        
+        <div class="action-buttons">
+            <!-- Clear Button -->
+            <svg id="clearSearch" class="action-svg" style="display:none;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" title="صاف کریں">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+            <!-- Info/Help Button -->
+            <svg id="infoBtn" class="action-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" title="تلاش کا طریقہ">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="16" x2="12" y2="12"></line>
+                <line x1="12" y1="8" x2="12.01" y2="8"></line>
+            </svg>
+        </div>
+    </div>
+
+    <!-- Filter Tabs -->
+    <div id="tabsContainer" class="tabs-container"></div>
+
+    <!-- Results Counter -->
+    <div id="searchCounter" class="search-counter"></div>
+</div>
+
+<!-- Help Modal -->
+<div id="helpModal" class="modal-overlay">
+    <div class="modal-content">
+        <span id="closeModal" class="close-btn">&times;</span>
+        <h3 class="modal-title">سمارٹ سرچ استعمال کرنے کا طریقہ</h3>
+        <div class="help-item">
+            <strong>1. نام یا تفصیل سے تلاش:</strong>
+            <p>کتاب، آڈیو یا مصنف کا نام لکھیں، اعراب (زبر، زیر، پیش) کی فکر کیے بغیر تلاش کریں۔</p>
+        </div>
+        <div class="help-item">
+            <strong>2. مخصوص نمبر سے تلاش:</strong>
+            <p>کسی خاص کارڈ پر جانے کے لیے اس کا نمبر لکھیں مثلاً: <span class="code-highlight">5</span> یا <span class="code-highlight">12</span></p>
+        </div>
+        <div class="help-item">
+            <strong>3. رینج اور متعدد تلاش:</strong>
+            <p>ایک ساتھ کئی کارڈز دیکھنے کے لیے کوما یا ڈیش استعمال کریں مثلاً: <span class="code-highlight">1-5</span> یا <span class="code-highlight">2, 7, 10-15</span></p>
+        </div>
+        <button id="okBtn" class="ok-btn">سمجھ گیا</button>
+    </div>
+</div>
+
+<div style="text-align: center;">
+<br />1.94 GB | 69 بیانات<br /><a href="https://archive.org/compress/igsb01/formats=VBR%20MP3&amp;file=/igsb01.zip">زپ فائل ڈاؤن لوڈ کیجیے</a><br />1.94 GB | 76 بیانات<br /><a href="https://archive.org/compress/Igsb02/formats=VBR%20MP3&amp;file=/Igsb02.zip">زپ فائل ڈاؤن لوڈ کیجیے</a><br />1.88 GB | 69 بیانات<br /><a href="https://archive.org/compress/IGSB03/formats=VBR%20MP3&amp;file=/IGSB03.zip">زپ فائل ڈاؤن لوڈ کیجیے</a><br />1.94 GB | 79 بیانات<br /><a href="https://archive.org/compress/IGSB04/formats=VBR%20MP3&amp;file=/IGSB04.zip">زپ فائل ڈاؤن لوڈ کیجیے</a><br />1.93 GB | 85 بیانات<br /><a href="https://archive.org/compress/IGSB05/formats=VBR%20MP3&amp;file=/IGSB05.zip">زپ فائل ڈاؤن لوڈ کیجیے</a><br />1.94 GB | 75 بیانات<br /><a href="https://archive.org/compress/IGSB06/formats=VBR%20MP3&amp;file=/IGSB06.zip">زپ فائل ڈاؤن لوڈ کیجیے</a><br />1.94 GB | 75 بیانات<br /><a href="https://archive.org/compress/IGSB07/formats=VBR%20MP3&amp;file=/IGSB07.zip">زپ فائل ڈاؤن لوڈ کیجیے</a><br />1.94 GB | 69 بیانات<br /><a href="https://archive.org/compress/IGSB08/formats=VBR%20MP3&amp;file=/IGSB08.zip">زپ فائل ڈاؤن لوڈ کیجیے</a><br />1.92 GB | 76 بیانات<br /><a href="https://archive.org/compress/IGSB09/formats=VBR%20MP3&amp;file=/IGSB09.zip">زپ فائل ڈاؤن لوڈ کیجیے</a><br />1.93 GB | 71 بیانات<br /><a href="https://archive.org/compress/IGSB10/formats=VBR%20MP3&amp;file=/IGSB10.zip">زپ فائل ڈاؤن لوڈ کیجیے</a><br />1.95 GB | 72 بیانات<br /><a href="https://archive.org/compress/IGSB11/formats=VBR%20MP3&amp;file=/IGSB11.zip">زپ فائل ڈاؤن لوڈ کیجیے</a><br />1.95 GB | 66 بیانات<br /><a href="https://archive.org/compress/IGSB12/formats=VBR%20MP3&amp;file=/IGSB12.zip">زپ فائل ڈاؤن لوڈ کیجیے</a><br />1.89 GB | 60 بیانات<br /><a href="https://archive.org/compress/IGSB013/formats=VBR%20MP3&amp;file=/IGSB013.zip">زپ فائل ڈاؤن لوڈ کیجیے</a><br />1.89 GB | 71 بیانات<br /><a href="https://archive.org/compress/ISB14/formats=VBR%20MP3&amp;file=/ISB14.zip">زپ فائل ڈاؤن لوڈ کیجیے</a><br />1.87 GB | 65 بیانات<br /><a href="https://archive.org/compress/IGSB15/formats=VBR%20MP3&amp;file=/IGSB15.zip">زپ فائل ڈاؤن لوڈ کیجیے</a><br />1.88 GB | 65 بیانات<br /><a href="https://archive.org/compress/IGSB16/formats=VBR%20MP3&amp;file=/IGSB16.zip">زپ فائل ڈاؤن لوڈ کیجیے</a><br />0.90 GB | 35 بیانات<br /><a href="https://archive.org/compress/IGSB17/formats=VBR%20MP3&amp;file=/IGSB17.zip">زپ فائل ڈاؤن لوڈ کیجیے</a><br />کل بیانات (تمام فولڈرز): 1178<br />کل زپ فائلیں: 17<br />مجموعی سائز: 31.63 GB<br /></div>
+
+</section>
+
+<footer class="fh-footer" id="fhpage-custom-footer" dir="rtl" lang="ur">
+    <div class="fh-footer-inner" id="fhpage-footer-inner-box">
+        <div class="fh-footer-brand" id="fhpage-footer-brand-box">
+            <h3 class="fh-footer-title" id="fhpage-footer-brand-title">فکر حق</h3>
+            <p class="fh-footer-desc" id="fhpage-footer-brand-desc">علمی، تحقیقی اور اصلاحی مواد کا منظم مخزن</p>
+        </div>
+
+        <div class="fh-footer-stats" id="fhpage-footer-stats-box" aria-label="وزٹ شماریات">
+            <!-- 1. سیشن کے مطابق کُل وزٹس -->
+            <div class="fh-stat-pill" id="fhpage-total-visits-pill">
+                <span class="fh-stat-label" id="fhpage-total-visits-label">کُل زائرین</span>
+                <strong class="fh-stat-value" id="fhpage-total-visits-count">0</strong>
+            </div>
+
+            <!-- 2. سیشن کے مطابق اس صفحے کے وزٹس -->
+            <div class="fh-stat-pill" id="fhpage-page-visits-pill">
+                <span class="fh-stat-label" id="fhpage-page-visits-label">اس صفحے کے زائرین</span>
+                <strong class="fh-stat-value" id="fhpage-page-visits-count">0</strong>
+            </div>
+
+            <!-- 3. نیا خانہ: ہر اوپن/ریفریش پر بڑھنے والے کُل ملاحظات -->
+            <div class="fh-stat-pill" id="fhpage-total-views-pill">
+                <span class="fh-stat-label" id="fhpage-total-views-label">کُل ملاحظات</span>
+                <strong class="fh-stat-value" id="fhpage-total-views-count">0</strong>
+            </div>
+
+            <!-- 4. نیا خانہ: ہر اوپن/ریفریش پر بڑھنے والے اس صفحے کے ملاحظات -->
+            <div class="fh-stat-pill" id="fhpage-page-views-pill">
+                <span class="fh-stat-label" id="fhpage-page-views-label">اس صفحے کے ملاحظات</span>
+                <strong class="fh-stat-value" id="fhpage-page-views-count">0</strong>
+            </div>
+
+            <!-- 5. نیا خانہ: پوری ویب سائٹ پر براہِ راست موجود افراد -->
+            <div class="fh-stat-pill fh-stat-live" id="fhpage-live-total-pill">
+                <span class="fh-stat-label" id="fhpage-live-total-label">ویب سائٹ پر آن لائن</span>
+                <strong class="fh-stat-value" id="fhpage-live-total-count">...</strong>
+            </div>
+
+            <!-- 6. نیا خانہ: اس صفحے پر براہِ راست موجود افراد -->
+            <div class="fh-stat-pill fh-stat-live" id="fhpage-live-page-pill">
+                <span class="fh-stat-label" id="fhpage-live-page-label">اس صفحے پر آن لائن زائرین</span>
+                <strong class="fh-stat-value" id="fhpage-live-page-count">...</strong>
+            </div>
+        </div>
+
+        <div class="fh-footer-bottom" id="fhpage-footer-bottom-bar">
+            <p class="fh-copyright" id="fhpage-copyright-text">
+                &copy; <span id="fhpage-copyright-year-val">2026</span> <strong>فکر حق</strong> — جملہ حقوق محفوظ ہیں۔
+            </p>
+        </div>
+    </div>
+</footer>
+
+<script type="module" src="../counter.js"></script>
+
+  <script src="../custom.js"></script>
+  <script src="../search.js"></script>
+  <script src="../mediaplayer.js"></script>
+</body>
+</html>
