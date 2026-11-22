@@ -1,0 +1,104 @@
+<style>
+  .contact-form-section {
+  max-width: 650px;
+  margin: 40px auto;
+  padding: 0 15px;
+}
+
+.contact-box {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 28px 24px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  border: 1px solid #f0d6df;
+}
+
+.contact-box h2 {
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.contact-box p {
+  text-align: center;
+  margin-bottom: 22px;
+  opacity: 0.85;
+}
+
+.fh-contact-form .form-group {
+  margin-bottom: 16px;
+}
+
+.fh-contact-form label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 700;
+}
+
+.fh-contact-form input,
+.fh-contact-form textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #d8b4c0;
+  border-radius: 10px;
+  font-family: inherit;
+  font-size: 1rem;
+  box-sizing: border-box;
+  outline: none;
+  transition: border-color 0.25s ease;
+}
+
+.fh-contact-form input:focus,
+.fh-contact-form textarea:focus {
+  border-color: #b85d79;
+}
+
+.fh-contact-form button {
+  width: 100%;
+  justify-content: center;
+  cursor: pointer;
+}
+
+</style>
+
+<section class="contact-form-section" dir="rtl" lang="ur">
+  <div class="contact-box">
+    <h2>ہم سے رابطہ کریں</h2>
+    <p>اپنا پیغام، تجویز یا سوال درج ذیل فارم کے ذریعے ارسال کریں</p>
+
+    <form action="https://formsubmit.co/FikreHaqAS@gmail.com" method="POST" class="fh-contact-form">
+      <!-- اسپیم سے بچاؤ کے لیے پوشیدہ خانہ -->
+      <input type="text" name="_honey" style="display:none">
+      
+      <!-- کیپچا بند کرنے کے لیے (اختیاری) -->
+      <input type="hidden" name="_captcha" value="false">
+      
+      <!-- ای میل کا موضوع -->
+      <input type="hidden" name="_subject" value="فکر حق ویب سائٹ سے نیا پیغام">
+      
+      <!-- فارم بھیجنے کے بعد واپسی کا صفحہ -->
+      <input type="hidden" name="_next" value="https://fikrehaq.github.io/">
+
+      <div class="form-group">
+        <label for="senderName">آپ کا نام</label>
+        <input type="text" id="senderName" name="name" placeholder="اپنا نام درج کریں" required>
+      </div>
+
+      <div class="form-group">
+        <label for="senderEmail">آپ کا ای میل</label>
+        <input type="email" id="senderEmail" name="email" placeholder="example@gmail.com" required>
+      </div>
+
+      <div class="form-group">
+        <label for="messageSubject">موضوع</label>
+        <input type="text" id="messageSubject" name="subject" placeholder="پیغام کا عنوان" required>
+      </div>
+
+      <div class="form-group">
+        <label for="senderMessage">پیغام</label>
+        <textarea id="senderMessage" name="message" rows="5" placeholder="اپنا پیغام تفصیل سے لکھیں..." required></textarea>
+      </div>
+
+      <button type="submit" class="btn-3d">پیغام بھیجیں <i class="fas fa-paper-plane"></i></button>
+    </form>
+  </div>
+</section>
