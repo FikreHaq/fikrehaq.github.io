@@ -19,6 +19,12 @@
   --gradient-main: linear-gradient(135deg, #D4A574 0%, #B8866B 50%, #8B5E3C 100%);
   --gradient-soft: linear-gradient(135deg, #F5E6D3 0%, #E8C9B0 100%);
   --gradient-premium: linear-gradient(135deg, #C9A88A 0%, #D4A574 50%, #B8866B 100%);
+
+  /* لطیف اسلامی جیومیٹرک پیٹرن (SVG Data URI) */
+  --islamic-pattern: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg fill='none' stroke='%238B5E3C' stroke-opacity='0.085' stroke-width='1'%3E%3Cpolygon points='40,6 50,30 74,40 50,50 40,74 30,50 6,40 30,30'/%3E%3Crect x='22' y='22' width='36' height='36' transform='rotate(45 40 40)'/%3E%3Ccircle cx='40' cy='40' r='8'/%3E%3Ccircle cx='0' cy='0' r='6'/%3E%3Ccircle cx='80' cy='0' r='6'/%3E%3Ccircle cx='0' cy='80' r='6'/%3E%3Ccircle cx='80' cy='80' r='6'/%3E%3C/g%3E%3C/svg%3E");
+
+  /* باریک ڈائمنڈ جالی پیٹرن */
+  --lattice-pattern: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 48 48'%3E%3Cg fill='none' stroke='%23B8866B' stroke-opacity='0.075' stroke-width='0.9'%3E%3Cpath d='M24 0 L48 24 L24 48 L0 24 Z'/%3E%3Ccircle cx='24' cy='24' r='4'/%3E%3C/g%3E%3C/svg%3E");
 }
 
 /* ===== بنیادی ترتیبات (Reset & Base) ===== */
@@ -38,7 +44,9 @@ body {
   background:
     radial-gradient(circle at 20% 10%, rgba(212, 165, 116, 0.15) 0%, transparent 50%),
     radial-gradient(circle at 80% 80%, rgba(184, 134, 107, 0.12) 0%, transparent 50%),
+    var(--islamic-pattern),
     linear-gradient(180deg, var(--cream) 0%, #F5E6D3 100%);
+  background-size: auto, auto, 80px 80px, cover;
   color: var(--dark);
   min-height: 100vh;
   overflow-x: clip;
@@ -48,87 +56,6 @@ body {
 section[id],
 div[id] {
   scroll-margin-top: 95px;
-}
-
-/* ===== 3D پریمیم بٹنز (3D Premium Buttons) ===== */
-.btn-3d {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  padding: 16px 38px;
-  font-family: inherit;
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: #fff;
-  background: var(--gradient-main);
-  border: none;
-  border-radius: 14px;
-  cursor: pointer;
-  text-decoration: none;
-  letter-spacing: 0.5px;
-  box-shadow:
-    0 6px 0 var(--brown-1),
-    0 10px 20px var(--shadow-pink),
-    inset 0 2px 4px rgba(255, 255, 255, 0.4),
-    inset 0 -2px 4px rgba(0, 0, 0, 0.15);
-  transition: all 0.25s cubic-bezier(.4, 0, .2, 1);
-  transform: translateY(0);
-  overflow: hidden;
-}
-
-.btn-3d::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.45), transparent);
-  transition: left 0.6s;
-}
-
-.btn-3d:hover::before {
-  left: 100%;
-}
-
-.btn-3d:hover {
-  transform: translateY(-3px);
-  box-shadow:
-    0 9px 0 var(--brown-1),
-    0 16px 30px var(--shadow-brown),
-    inset 0 2px 4px rgba(255, 255, 255, 0.45),
-    inset 0 -2px 4px rgba(0, 0, 0, 0.15);
-}
-
-.btn-3d:active {
-  transform: translateY(3px);
-  box-shadow:
-    0 2px 0 var(--brown-1),
-    0 4px 10px var(--shadow-pink),
-    inset 0 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-.btn-3d.outline {
-  background: transparent;
-  color: var(--brown-1);
-  border: 2px solid var(--pink-2);
-  box-shadow:
-    0 6px 0 var(--pink-3),
-    0 10px 20px var(--shadow-pink),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.6);
-}
-
-.btn-3d.outline:hover {
-  background: var(--gradient-soft);
-  color: var(--brown-3);
-}
-
-.btn-3d.small {
-  padding: 10px 22px;
-  font-size: 0.95rem;
-  border-radius: 10px;
 }
 
 /* ===== نیویگیشن بار (Navbar) ===== */
@@ -237,7 +164,8 @@ div[id] {
   right: 0;
   width: 300px;
   height: 100vh;
-  background: var(--cream);
+  background: var(--islamic-pattern), var(--cream);
+  background-size: 70px 70px, cover;
   box-shadow: -5px 0 25px rgba(107, 68, 35, 0.2);
   z-index: 1001;
   transform: translateX(100%);
@@ -355,6 +283,10 @@ div[id] {
   text-align: center;
   position: relative;
   overflow: hidden;
+  background:
+    radial-gradient(circle at 50% 25%, rgba(212, 165, 116, 0.22) 0%, transparent 65%),
+    var(--islamic-pattern);
+  background-size: cover, 80px 80px;
 }
 
 .hero::before {
@@ -366,6 +298,7 @@ div[id] {
   height: 200%;
   background: radial-gradient(circle, rgba(212, 165, 116, 0.22) 0%, transparent 60%);
   animation: pulse 8s ease-in-out infinite;
+  pointer-events: none;
 }
 
 @keyframes pulse {
@@ -448,15 +381,28 @@ div[id] {
   box-shadow: 0 4px 12px var(--shadow-pink);
 }
 
-/* ===== عمومی سیکشنز (General Sections) ===== */
+/* ===== عمومی سیکشنز اور پس منظر پیٹرن (General Sections & Pattern Backgrounds) ===== */
 section {
   padding: 80px 15px;
   position: relative;
+  background-image: var(--lattice-pattern);
+  background-size: 48px 48px;
+}
+
+section:nth-of-type(even) {
+  background:
+    linear-gradient(180deg, rgba(245, 230, 211, 0.55) 0%, rgba(251, 244, 236, 0.72) 100%),
+    var(--islamic-pattern);
+  background-size: cover, 80px 80px;
+  border-top: 1px solid rgba(212, 165, 116, 0.25);
+  border-bottom: 1px solid rgba(212, 165, 116, 0.25);
 }
 
 .container {
   max-width: 1300px;
   margin: 0 auto;
+  position: relative;
+  z-index: 1;
 }
 
 .section-title {
@@ -500,7 +446,9 @@ section {
 }
 
 .cat-card {
-  background: rgba(255, 255, 255, 0.8);
+  background:
+    radial-gradient(circle at top right, rgba(212, 165, 116, 0.14), transparent 60%),
+    rgba(255, 255, 255, 0.84);
   border: 1px solid rgba(212, 165, 116, 0.45);
   border-radius: 20px;
   padding: 35px 25px;
@@ -565,24 +513,6 @@ section {
   font-size: 1rem;
 }
 
-/* ===== زمرہ جات بٹنز گرڈ (Category Buttons Grid) ===== */
-.category-buttons-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 30px;
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 10px;
-}
-
-.category-buttons-grid .btn-3d {
-  flex: 0 1 240px;
-  justify-content: center;
-  min-width: 160px;
-  text-align: center;
-}
-
 /* ===== علماء و مشائخ کارڈز (Scholars Section) ===== */
 .scholars-grid {
   display: grid;
@@ -591,7 +521,10 @@ section {
 }
 
 .scholar-card {
-  background: linear-gradient(145deg, #fff, var(--cream));
+  background:
+    var(--lattice-pattern),
+    linear-gradient(145deg, rgba(255, 255, 255, 0.94), rgba(251, 244, 236, 0.94));
+  background-size: 48px 48px, cover;
   border-radius: 22px;
   padding: 30px 25px;
   margin: 0 auto;
@@ -702,7 +635,9 @@ section {
   display: flex;
   gap: 25px;
   align-items: center;
-  background: rgba(255, 255, 255, 0.85);
+  background:
+    radial-gradient(circle at left center, rgba(212, 165, 116, 0.1), transparent 55%),
+    rgba(255, 255, 255, 0.88);
   border: 1px solid rgba(212, 165, 116, 0.45);
   border-radius: 18px;
   padding: 25px;
@@ -764,11 +699,14 @@ section {
 
 /* ===== تعارف سیکشن (About Section) ===== */
 .about-section {
-  background: linear-gradient(135deg, rgba(212, 165, 116, 0.14), rgba(184, 134, 107, 0.08));
+  background:
+    var(--islamic-pattern),
+    linear-gradient(135deg, rgba(212, 165, 116, 0.18), rgba(184, 134, 107, 0.1));
+  background-size: 80px 80px, cover;
   border-radius: 30px;
   padding: 60px 40px;
   text-align: center;
-  border: 1px solid rgba(212, 165, 116, 0.4);
+  border: 1px solid rgba(212, 165, 116, 0.45);
   box-shadow: 0 20px 50px rgba(107, 68, 35, 0.08);
 }
 
@@ -788,7 +726,10 @@ section {
 }
 
 .stat-box {
-  background: #fff;
+  background:
+    var(--lattice-pattern),
+    #fff;
+  background-size: 48px 48px, cover;
   padding: 30px 20px;
   border-radius: 18px;
   border: 1px solid rgba(212, 165, 116, 0.45);
@@ -823,7 +764,11 @@ section {
 
 /* ===== نیوز لیٹر (Newsletter Section) ===== */
 .newsletter {
-  background: var(--gradient-main);
+  background:
+    radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.16), transparent 55%),
+    var(--islamic-pattern),
+    var(--gradient-main);
+  background-size: cover, 80px 80px, cover;
   border-radius: 25px;
   padding: 50px 30px;
   text-align: center;
@@ -845,6 +790,7 @@ section {
   width: 400px;
   height: 400px;
   background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
+  pointer-events: none;
 }
 
 .newsletter h3 {
@@ -905,64 +851,6 @@ section {
     0 12px 24px rgba(0, 0, 0, 0.35);
 }
 
-/* ===== سمارٹ اسکرول بٹن (Smart Auto-Hide Scroll Button) ===== */
-#scrollToTopBtn {
-  position: fixed;
-  bottom: 24px;
-  left: 24px;
-  width: 42px;
-  height: 42px;
-  background: var(--gradient-main);
-  color: #fff;
-  border: 1.5px solid rgba(255, 255, 255, 0.6);
-  border-radius: 50%;
-  font-size: 16px;
-  cursor: pointer;
-  box-shadow:
-    0 3px 0 var(--brown-1),
-    0 6px 15px var(--shadow-pink);
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-  transform: translateY(15px) scale(0.9);
-  transition: opacity 0.35s ease, visibility 0.35s ease, transform 0.35s cubic-bezier(.4, 0, .2, 1);
-  z-index: 9999;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-#scrollToTopBtn.show {
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
-  transform: translateY(0) scale(1);
-}
-
-#scrollToTopBtn:hover {
-  transform: translateY(-3px) scale(1.04);
-  box-shadow:
-    0 5px 0 var(--brown-1),
-    0 10px 20px var(--shadow-brown);
-}
-
-#scrollToTopBtn:active {
-  transform: translateY(1px) scale(0.97);
-  box-shadow:
-    0 1px 0 var(--brown-1),
-    0 3px 8px var(--shadow-pink);
-}
-
-#scrollToTopBtn svg {
-  width: 18px;
-  height: 18px;
-  transition: transform 0.3s cubic-bezier(.4, 0, .2, 1);
-}
-
-#scrollToTopBtn.scroll-down svg {
-  transform: rotate(180deg);
-}
-
 /* ===== اینیمیشنز (Animations) ===== */
 @keyframes fadeUp {
   from {
@@ -1017,32 +905,9 @@ section {
   }
 }
 
-@media (max-width: 600px) {
-  .category-buttons-grid {
-    gap: 20px;
-    padding: 5px;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .category-buttons-grid .btn-3d {
-    width: 100%;
-    max-width: 320px;
-    flex: 0 1 auto;
-    font-size: 0.95rem;
-    padding: 14px 20px;
-    min-width: unset;
-  }
-}
-
 @media (max-width: 500px) {
   .hero h1 {
     font-size: 2.2rem !important;
-  }
-
-  .btn-3d {
-    padding: 14px 28px;
-    font-size: 1rem;
   }
 
   .scholar-avatar {
