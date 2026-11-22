@@ -1,0 +1,198 @@
+:root {
+  --pink-1: #F5E6D3;
+  --pink-2: #E8C9B0;
+  --pink-3: #D4A574;
+  --brown-1: #B8866B;
+  --brown-2: #8B5E3C;
+  --brown-3: #6B4423;
+  --gold: #C9A88A;
+  --cream: #FBF4EC;
+  --dark: #3D2817;
+  --shadow-pink: rgba(184, 134, 107, 0.35);
+  --shadow-brown: rgba(107, 68, 35, 0.45);
+  --gradient-main: linear-gradient(135deg, #D4A574 0%, #B8866B 50%, #8B5E3C 100%);
+  --gradient-soft: linear-gradient(135deg, #F5E6D3 0%, #E8C9B0 100%);
+  --gradient-premium: linear-gradient(135deg, #C9A88A 0%, #D4A574 50%, #B8866B 100%);
+
+/* ===== 3D پریمیم بٹنز (3D Premium Buttons) ===== */
+.btn-3d {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 16px 38px;
+  font-family: inherit;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #fff;
+  background: var(--gradient-main);
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  text-decoration: none;
+  letter-spacing: 0.5px;
+  box-shadow:
+    0 6px 0 var(--brown-1),
+    0 10px 20px var(--shadow-pink),
+    inset 0 2px 4px rgba(255, 255, 255, 0.4),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.15);
+  transition: all 0.25s cubic-bezier(.4, 0, .2, 1);
+  transform: translateY(0);
+  overflow: hidden;
+}
+
+.btn-3d::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.45), transparent);
+  transition: left 0.6s;
+}
+
+.btn-3d:hover::before {
+  left: 100%;
+}
+
+.btn-3d:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    0 9px 0 var(--brown-1),
+    0 16px 30px var(--shadow-brown),
+    inset 0 2px 4px rgba(255, 255, 255, 0.45),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.btn-3d:active {
+  transform: translateY(3px);
+  box-shadow:
+    0 2px 0 var(--brown-1),
+    0 4px 10px var(--shadow-pink),
+    inset 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.btn-3d.outline {
+  background: transparent;
+  color: var(--brown-1);
+  border: 2px solid var(--pink-2);
+  box-shadow:
+    0 6px 0 var(--pink-3),
+    0 10px 20px var(--shadow-pink),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.6);
+}
+
+.btn-3d.outline:hover {
+  background: var(--gradient-soft);
+  color: var(--brown-3);
+}
+
+.btn-3d.small {
+  padding: 10px 22px;
+  font-size: 0.95rem;
+  border-radius: 10px;
+}
+
+/* ===== زمرہ جات بٹنز گرڈ (Category Buttons Grid) ===== */
+.category-buttons-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+.category-buttons-grid .btn-3d {
+  flex: 0 1 240px;
+  justify-content: center;
+  min-width: 160px;
+  text-align: center;
+}
+
+/* ===== سمارٹ اسکرول بٹن (Smart Auto-Hide Scroll Button) ===== */
+#scrollToTopBtn {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  width: 42px;
+  height: 42px;
+  background: var(--gradient-main);
+  color: #fff;
+  border: 1.5px solid rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow:
+    0 3px 0 var(--brown-1),
+    0 6px 15px var(--shadow-pink);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(15px) scale(0.9);
+  transition: opacity 0.35s ease, visibility 0.35s ease, transform 0.35s cubic-bezier(.4, 0, .2, 1);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#scrollToTopBtn.show {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0) scale(1);
+}
+
+#scrollToTopBtn:hover {
+  transform: translateY(-3px) scale(1.04);
+  box-shadow:
+    0 5px 0 var(--brown-1),
+    0 10px 20px var(--shadow-brown);
+}
+
+#scrollToTopBtn:active {
+  transform: translateY(1px) scale(0.97);
+  box-shadow:
+    0 1px 0 var(--brown-1),
+    0 3px 8px var(--shadow-pink);
+}
+
+#scrollToTopBtn svg {
+  width: 18px;
+  height: 18px;
+  transition: transform 0.3s cubic-bezier(.4, 0, .2, 1);
+}
+
+#scrollToTopBtn.scroll-down svg {
+  transform: rotate(180deg);
+}
+
+/* ===== بٹنز کے ریسپانسیو اسٹائلز ===== */
+@media (max-width: 600px) {
+  .category-buttons-grid {
+    gap: 20px;
+    padding: 5px;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .category-buttons-grid .btn-3d {
+    width: 100%;
+    max-width: 320px;
+    flex: 0 1 auto;
+    font-size: 0.95rem;
+    padding: 14px 20px;
+    min-width: unset;
+  }
+}
+
+@media (max-width: 500px) {
+  .btn-3d {
+    padding: 14px 28px;
+    font-size: 1rem;
+  }
+}
