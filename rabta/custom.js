@@ -9,10 +9,6 @@
 
     if (!form || !submitBtn || !thankYouBox) return;
 
-    let isSubmitting = false;
-    let currentSenderName = '';
-    const originalBtnHTML = submitBtn.innerHTML;
-
     function showAlert(msg) {
       statusAlert.textContent = msg;
       statusAlert.classList.add('is-visible');
@@ -23,58 +19,50 @@
       statusAlert.classList.remove('is-visible');
     }
 
-    form.addEventListener('submit', function () {
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault();
       hideAlert();
-      isSubmitting = true;
-      currentSenderName = (nameInput && nameInput.value.trim()) ? nameInput.value.trim() : '';
+
+      const senderName = (nameInput && nameInput.value.trim()) ? nameInput.value.trim() : '';
+      const originalBtnHTML = submitBtn.innerHTML;
 
       submitBtn.disabled = true;
       submitBtn.innerHTML = '<span>پیغام بھیجا جا رہا ہے...</span><i class="fas fa-spinner fa-spin"></i>';
-    });
 
-    window.addEventListener('message', function (event) {
-      if (!isSubmitting) return;
-      isSubmitting = false;
+      try {
+        const formData = new FormData(form);
+        const response = await fetch(form.action, {
+          method: 'POST',
+          body: formData,
+          headers: {
+            'Accept': 'application/json'
+          }
+        });
 
-      form.reset();
-      form.style.display = 'none';
+        const data = await response.json();
 
-      if (currentSenderName) {
-        thankYouText.textContent = 'محترم ' + currentSenderName + '، آپ کا پیغام کامیابی کے ساتھ بھیج دیا گیا ہے۔ ہم جلد از جلد اس کا جائزہ لیں گے۔';
-      } else {
-        thankYouText.textContent = 'آپ کا پیغام کامیابی کے ساتھ بھیج دیا گیا ہے۔ ہم جلد از جلد اس کا جائزہ لیں گے۔';
-      }
+        if (response.ok && data.success) {
+          form.reset();
+          form.style.display = 'none';
 
-      thankYouBox.classList.add('is-visible');
-      thankYouBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          if (senderName) {
+            thankYouText.textContent = 'محترم ' + senderName + '، آپ کا پیغام کامیابی کے ساتھ بھیج دیا گیا ہے۔ ہم جلد از جلد اس کا جائزہ لیں گے۔';
+          } else {
+            thankYouText.textContent = 'آپ کا پیغام کامیابی کے ساتھ بھیج دیا گیا ہے۔ ہم جلد از جلد اس کا جائزہ لیں گے۔';
+          }
 
-      submitBtn.disabled = false;
-      submitBtn.innerHTML = originalBtnHTML;
-    });
-
-    // اگر iframe لوڈ ہو جائے (عام صورت میں FormSubmit کا رسپانس آنے پر)
-    const iframe = document.getElementById('fhSubmitFrame');
-    if (iframe) {
-      iframe.addEventListener('load', function () {
-        if (!isSubmitting) return;
-        isSubmitting = false;
-
-        form.reset();
-        form.style.display = 'none';
-
-        if (currentSenderName) {
-          thankYouText.textContent = 'محترم ' + currentSenderName + '، آپ کا پیغام کامیابی کے ساتھ بھیج دیا گیا ہے۔ ہم جلد از جلد اس کا جائزہ لیں گے۔';
+          thankYouBox.classList.add('is-visible');
+          thankYouBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         } else {
-          thankYouText.textContent = 'آپ کا پیغام کامیابی کے ساتھ بھیج دیا گیا ہے۔ ہم جلد از جلد اس کا جائزہ لیں گے۔';
+          showAlert(data.message || 'پیغام ارسال کرنے میں عارضی دشواری پیش آئی ہے۔ براہِ مہربانی چند لمحے بعد دوبارہ کوشش کریں۔');
         }
-
-        thankYouBox.classList.add('is-visible');
-        thankYouBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-
+      } catch (err) {
+        showAlert('انٹرنیٹ کنکشن یا سرور سے رابطے میں دشواری پیش آئی ہے۔ براہِ مہربانی دوبارہ کوشش کریں۔');
+      } finally {
         submitBtn.disabled = false;
         submitBtn.innerHTML = originalBtnHTML;
-      });
-    }
+      }
+    });
 
     if (sendAnotherBtn) {
       sendAnotherBtn.addEventListener('click', function () {
