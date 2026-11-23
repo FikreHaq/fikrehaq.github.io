@@ -208,6 +208,7 @@ body {
 }
 
 .fh-contact-form input,
+.fh-contact-form select,
 .fh-contact-form textarea {
   width: 100%;
   padding: 12px 15px;
@@ -217,12 +218,25 @@ body {
   color: var(--dark);
   font-family: inherit;
   font-size: 1rem;
+  line-height: 1.85;
   box-sizing: border-box;
   outline: none;
   transition: border-color 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
 }
 
+.fh-contact-form select {
+  appearance: none;
+  -webkit-appearance: none;
+  padding-left: 42px;
+  cursor: pointer;
+  background-image: linear-gradient(45deg, transparent 50%, var(--brown-2) 50%), linear-gradient(135deg, var(--brown-2) 50%, transparent 50%);
+  background-position: left 16px center, left 22px center;
+  background-size: 6px 6px, 6px 6px;
+  background-repeat: no-repeat;
+}
+
 .fh-contact-form input:focus,
+.fh-contact-form select:focus,
 .fh-contact-form textarea:focus {
   background-color: var(--cream);
   border-color: var(--brown-2);
@@ -230,8 +244,16 @@ body {
 }
 
 .fh-contact-form textarea {
-  min-height: 140px;
+  min-height: 145px;
   resize: vertical;
+}
+
+.form-help-text {
+  display: block;
+  margin-top: 6px;
+  color: var(--brown-2);
+  font-size: 0.86rem;
+  line-height: 1.8;
 }
 
 .fh-submit-btn {
