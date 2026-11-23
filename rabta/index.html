@@ -151,7 +151,10 @@
         <p>مطلوبہ خانے پُر کر کے اپنا پیغام باآسانی بھیجیے</p>
       </div>
 
-      <form action="https://formsubmit.co/el/maredi" method="POST" class="fh-contact-form" id="fhContactForm">
+      <!-- مخفی فریم تاکہ صفحہ ری لوڈ نہ ہو اور اصل POST بھی مکمل جائے -->
+      <iframe name="fhSubmitFrame" id="fhSubmitFrame" style="display:none;"></iframe>
+
+      <form action="https://formsubmit.co/el/maredi" method="POST" target="fhSubmitFrame" class="fh-contact-form" id="fhContactForm">
         <!-- اسپیم سے بچاؤ کے لیے پوشیدہ خانہ -->
         <input type="text" name="_honey" style="display:none">
 
