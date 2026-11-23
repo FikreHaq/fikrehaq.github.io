@@ -1,0 +1,87 @@
+/* سابقہ بیانات کا سٹائل فہرست*/
+html {
+      scroll-behavior: smooth;
+}
+  /* بلاگر انڈیکس کنٹینر */
+  .ur-alphabet-index {
+    direction: rtl;
+    width: 100%;
+    max-width: 850px;
+    margin: 25px auto;
+    padding: 18px 22px;
+    background-color: #fff8f9; /* ہلکا گلابی پس منظر */
+    border: 1px solid #f3d1d9;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    box-sizing: border-box;
+  }
+  
+  /* حروف کی فلیکس لسٹ */
+  .ur-alphabet-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 8px 10px;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+  }
+  
+  /* لنکس کا انداز (بٹنز) */
+  .ur-alphabet-list a {
+    font-family: "Noto Nastaliq Urdu", "Jameel Noori Nastaleeq", "Urdu Typesetting", sans-serif;
+    font-size: 18px;
+    color: #2d3748;
+    background-color: #ffffff;
+    border: 1px solid #e2bcce;
+    border-radius: 6px;
+    padding: 5px 12px;
+    text-decoration: none;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 38px;
+    box-sizing: border-box;
+    line-height: 1.8;
+    transition: all 0.2s ease;
+  }
+  
+  /* ماؤس اوپر لانے یا ٹیپ کرنے پر (Hover / Active) */
+  .ur-alphabet-list a:hover {
+    color: #ffffff;
+    background-color: #d63384;
+    /* خوبصورت گہرا گلابی رنگ */
+    border-color: #d63384;
+    transform: translateY(-2px);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+.sb-list {
+    font-family: 'Noto Nastaliq Urdu', serif;
+    font-size: 32px;
+    font-weight: bold;
+    color: #d63384; /* گہرا گلابی رنگ */
+    text-align: center !important;
+    line-height: 1.8;
+    margin: 40px auto 20px auto;
+    padding-bottom: 12px;
+    position: relative;
+    display: block;
+    width: 100%;
+    max-width: 300px; /* ضرورت کے مطابق چوڑائی */
+}
+
+/* مرکز میں خوبصورت اور متوازن لکیر */
+.sb-list::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px; /* لکیر کی چوڑائی */
+    height: 3px; /* لکیر کی موٹائی */
+    background-color: #d63384;
+    border-radius: 2px;
+}
+
