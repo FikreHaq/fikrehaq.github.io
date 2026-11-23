@@ -110,27 +110,41 @@
 <main class="contact-main-section" dir="rtl" lang="ur">
   <div class="contact-layout">
 
-    <!-- رہنمائی و تعارفی حصہ (بغیر فون نمبر اور ای میل کے) -->
-    <aside class="contact-info-card" aria-label="رابطہ کی رہنمائی">
-      <h2><i class="fas fa-book-open"></i> رابطہ کی رہنمائی</h2>
+    <!-- رہنمائی و تعارفی حصہ -->
+    <aside class="contact-info-card" aria-label="رابطہ اور دینی رہنمائی">
+      <h2><i class="fas fa-book-open"></i> رابطہ و دینی رہنمائی</h2>
       <p class="contact-info-lead">
-        ہماری کوشش ہے کہ قارئین و سامعین کا ہر پیغام باقاعدگی سے دیکھا جائے اور ویب سائٹ کے مواد کو مزید منظم و مفید بنایا جائے۔
+        ہماری دلی کوشش ہے کہ قارئین و سامعین کا ہر پیغام اور دینی سوال پوری سنجیدگی اور علمی اہتمام کے ساتھ دیکھا جائے۔ اگر آپ کے ذہن میں کوئی دینی مسئلہ، شرعی استفسار یا اصلاحی سوال ہو تو بلا تردد تحریر فرمائیں۔
       </p>
 
       <div class="contact-point-list">
         <div class="contact-point-item">
-          <div class="contact-point-icon"><i class="fas fa-lightbulb"></i></div>
+          <div class="contact-point-icon"><i class="fas fa-scale-balanced"></i></div>
           <div>
-            <div class="contact-point-title">علمی و اصلاحی تجاویز</div>
-            <p class="contact-point-desc">مضامین، بیانات کی فہرست یا ویب سائٹ کی ترتیب میں بہتری کے لیے اپنی رائے ضرور ارسال کریں۔</p>
+            <div class="contact-point-title">دینی مسائل و شرعی استفسارات</div>
+            <p class="contact-point-desc">
+              آپ کا دینی مسئلہ تحقیق و تدقیق کے لیے علماء کرام کی بارگاہ میں پیش کیا جائے گا، اور ان شاء اللہ تعالیٰ عزوجل جلد ہی اس کا جواب ویب سائٹ پر شائع کر دیا جائے گا یا براہِ راست آپ کے درست ای میل پر ارسال کیا جائے گا۔
+            </p>
           </div>
         </div>
 
         <div class="contact-point-item">
-          <div class="contact-point-icon"><i class="fas fa-circle-exclamation"></i></div>
+          <div class="contact-point-icon"><i class="fas fa-user-shield"></i></div>
           <div>
-            <div class="contact-point-title">لنک یا فائل کی اطلاع</div>
-            <p class="contact-point-desc">اگر کسی بیان کے آڈیو لنک یا صفحہ کی نمایش میں کوئی دشواری پیش آئے تو تفصیل سے مطلع فرمائیں۔</p>
+            <div class="contact-point-title">ای میل کی رازداری و امانت</div>
+            <p class="contact-point-desc">
+              براہِ کرم اپنا درست اور فعال ای میل ایڈریس درج کریں تاکہ جواب باآسانی آپ تک پہنچ سکے۔ آپ کا ای میل مکمل طور پر محفوظ رہے گا؛ منتظمین کے علاوہ کوئی دوسرا اسے نہیں دیکھے گا۔
+            </p>
+          </div>
+        </div>
+
+        <div class="contact-point-item">
+          <div class="contact-point-icon"><i class="fas fa-lightbulb"></i></div>
+          <div>
+            <div class="contact-point-title">علمی و اصلاحی تجاویز</div>
+            <p class="contact-point-desc">
+              مضامین، بیانات کی فہرست، آڈیو یا تحریری مواد کی درستگی و ترتیب کے حوالے سے اپنی قیمتی آراء اور اصلاحی مشوروں سے ضرور نوازیں۔
+            </p>
           </div>
         </div>
 
@@ -145,24 +159,38 @@
     </aside>
 
     <!-- رابطہ فارم اور شکریہ پیغام -->
-    <section class="contact-form-card" id="contact-form-box" aria-label="پیغام بھیجنے کا فارم">
+    <section class="contact-form-card" id="contact-form-box" aria-label="پیغام اور دینی مسئلہ ارسال کرنے کا فارم">
       <div class="contact-form-header">
-        <h2>پیغام ارسال کیجیے</h2>
-        <p>مطلوبہ خانے پُر کر کے اپنا پیغام باآسانی بھیجیے</p>
+        <h2>پیغام یا دینی مسئلہ ارسال کیجیے</h2>
+        <p>پہلے پیغام کی نوعیت منتخب کریں، پھر تمام مطلوبہ خانے درست اور واضح طور پر پُر کر کے ارسال فرمائیں</p>
       </div>
 
       <form action="https://api.web3forms.com/submit" method="POST" class="fh-contact-form" id="fhContactForm">
         <!-- یہاں اپنی Web3Forms Access Key درج کریں -->
-        <input type="hidden" name="access_key" value="9e958e9f-53b8-49fc-ba41-e140a75dc9ce>
+        <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY">
 
-        <!-- ای میل کا موضوع -->
-        <input type="hidden" name="subject" value="فکر حق ویب سائٹ سے نیا پیغام">
+        <!-- ای میل کا موضوع (اسکرپٹ منتخب کیٹیگری کے مطابق خودکار اپ ڈیٹ کرے گا) -->
+        <input type="hidden" name="subject" id="hiddenEmailSubject" value="فکر حق ویب سائٹ سے نیا پیغام / استفسار">
 
         <!-- بھیجنے والے کا نام ای میل میں واضح طور پر ظاہر کرنے کے لیے -->
-        <input type="hidden" name="from_name" value="فکر حق رابطہ فارم">
+        <input type="hidden" name="from_name" value="فکر حق رابطہ و استفسار نظام">
 
         <!-- اسپیم سے بچاؤ کے لیے پوشیدہ خانہ -->
         <input type="checkbox" name="botcheck" style="display:none;">
+
+        <!-- پیغام کی نوعیت (لازمی ڈراپ ڈاؤن مینیو) -->
+        <div class="form-group">
+          <label for="messageCategory">پیغام کی نوعیت منتخب کریں</label>
+          <select id="messageCategory" name="category" required>
+            <option value="" disabled selected>-- پیغام کی نوعیت منتخب کیجیے --</option>
+            <option value="دینی مسئلہ">دینی مسئلہ</option>
+            <option value="ویب سائٹ کی شکایت">ویب سائٹ کی شکایت</option>
+            <option value="ویب سائٹ میں ترمیم">ویب سائٹ میں ترمیم</option>
+            <option value="ویب سائٹ میں اضافہ">ویب سائٹ میں اضافہ</option>
+            <option value="نئے بیان کی اطلاع">نئے بیان کی اطلاع</option>
+            <option value="نیا بیان شریف شامل کروانے کی درخواست">نیا بیان شریف شامل کروانے کی درخواست</option>
+          </select>
+        </div>
 
         <div class="form-group">
           <label for="senderName">آپ کا نام</label>
@@ -170,18 +198,21 @@
         </div>
 
         <div class="form-group">
-          <label for="senderEmail">آپ کا ای میل</label>
+          <label for="senderEmail">آپ کا درست ای میل</label>
           <input type="email" id="senderEmail" name="email" placeholder="example@gmail.com" required>
+          <small class="form-help-text">
+            درست ای میل لکھنا نہایت ضروری ہے تاکہ جواب آپ تک پہنچ سکے؛ منتظمین کے علاوہ کوئی اسے نہیں دیکھے گا۔
+          </small>
         </div>
 
         <div class="form-group">
           <label for="messageSubject">موضوع</label>
-          <input type="text" id="messageSubject" name="topic" placeholder="پیغام کا عنوان لکھیں" required>
+          <input type="text" id="messageSubject" name="topic" placeholder="اپنے پیغام یا مسئلے کا مختصر عنوان لکھیں" required>
         </div>
 
         <div class="form-group">
-          <label for="senderMessage">پیغام</label>
-          <textarea id="senderMessage" name="message" rows="5" placeholder="اپنا پیغام تفصیل سے تحریر کریں..." required></textarea>
+          <label for="senderMessage">پیغام یا دینی مسئلہ</label>
+          <textarea id="senderMessage" name="message" rows="6" placeholder="اپنا دینی مسئلہ یا پیغام تفصیل اور وضاحت کے ساتھ تحریر کریں..." required></textarea>
         </div>
 
         <button type="submit" class="fh-submit-btn" id="fhSubmitBtn">
@@ -193,7 +224,7 @@
 
         <div class="fh-form-note">
           <i class="fas fa-shield-halved"></i>
-          آپ کا پیغام براہِ راست رابطہ نظام کے ذریعے موصول ہوتا ہے؛ ذاتی فون نمبر یا ای میل عوامی طور پر ظاہر نہیں کیا گیا۔
+          آپ کا دینی مسئلہ علماء کرام کی بارگاہ میں پیش کیا جائے گا اور جلد ہی اس کا جواب ویب سائٹ پر یا براہِ راست آپ کے درست ای میل پر ارسال کیا جائے گا ان شاء اللہ تعالیٰ عزوجل۔ آپ کا ای میل منتظمین کے علاوہ کوئی نہیں دیکھے گا۔
         </div>
       </form>
 
@@ -202,7 +233,7 @@
         <div class="fh-thank-you-icon">
           <i class="fas fa-check"></i>
         </div>
-        <h3>جزاک اللہ خیر! آپ کا پیغام موصول ہو گیا ہے</h3>
+        <h3 id="fhThankYouHeading">جزاک اللہ خیر! آپ کا پیغام موصول ہو گیا ہے</h3>
         <p id="fhThankYouText">
           آپ کا پیغام کامیابی کے ساتھ بھیج دیا گیا ہے۔ ہم جلد از جلد اس کا جائزہ لیں گے۔
         </p>
