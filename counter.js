@@ -50,13 +50,26 @@ const db = getDatabase(app);
 
 function getPageKey() {
     let path = (window.location.pathname || "").replace(/^\/+|\/+$/g, "");
-    if (!path || path.toLowerCase() === "index.html") return "index";
 
-    return path
+    if (!path) {
+        return "index";
+    }
+
+    // آخر سے index.html یا index ہٹائیں
+    path = path.replace(/(?:^|\/)index(?:\.html)?$/i, "");
+
+    // اگر پورا پاتھ ہی index یا index.html تھا تو خالی ہو جائے گا -> "index"
+    if (!path) {
+        return "index";
+    }
+
+    const cleanBase = path
         .replace(/\.html$/i, "")
         .replace(/[\/\-.#$\[\]]+/g, "_")
         .replace(/_+/g, "_")
-        .replace(/^_|_$/g, "") || "index";
+        .replace(/^_|_$/g, "");
+
+    return cleanBase ? `${cleanBase}_index` : "index";
 }
 
 function formatCount(val) {
