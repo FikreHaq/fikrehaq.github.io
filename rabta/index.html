@@ -151,18 +151,18 @@
         <p>مطلوبہ خانے پُر کر کے اپنا پیغام باآسانی بھیجیے</p>
       </div>
 
-      <!-- مخفی فریم تاکہ صفحہ ری لوڈ نہ ہو اور اصل POST بھی مکمل جائے -->
-      <iframe name="fhSubmitFrame" id="fhSubmitFrame" style="display:none;"></iframe>
-
-      <form action="https://formsubmit.co/fikrehaqas@gmail.com" method="POST" target="fhSubmitFrame" class="fh-contact-form" id="fhContactForm">
-        <!-- اسپیم سے بچاؤ کے لیے پوشیدہ خانہ -->
-        <input type="text" name="_honey" style="display:none">
-
-        <!-- کیپچا بند کرنے کے لیے -->
-        <input type="hidden" name="_captcha" value="false">
+      <form action="https://api.web3forms.com/submit" method="POST" class="fh-contact-form" id="fhContactForm">
+        <!-- یہاں اپنی Web3Forms Access Key درج کریں -->
+        <input type="hidden" name="access_key" value="9e958e9f-53b8-49fc-ba41-e140a75dc9ce>
 
         <!-- ای میل کا موضوع -->
-        <input type="hidden" name="_subject" value="فکر حق ویب سائٹ سے نیا پیغام">
+        <input type="hidden" name="subject" value="فکر حق ویب سائٹ سے نیا پیغام">
+
+        <!-- بھیجنے والے کا نام ای میل میں واضح طور پر ظاہر کرنے کے لیے -->
+        <input type="hidden" name="from_name" value="فکر حق رابطہ فارم">
+
+        <!-- اسپیم سے بچاؤ کے لیے پوشیدہ خانہ -->
+        <input type="checkbox" name="botcheck" style="display:none;">
 
         <div class="form-group">
           <label for="senderName">آپ کا نام</label>
@@ -176,7 +176,7 @@
 
         <div class="form-group">
           <label for="messageSubject">موضوع</label>
-          <input type="text" id="messageSubject" name="subject" placeholder="پیغام کا عنوان لکھیں" required>
+          <input type="text" id="messageSubject" name="topic" placeholder="پیغام کا عنوان لکھیں" required>
         </div>
 
         <div class="form-group">
