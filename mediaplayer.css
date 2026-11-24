@@ -22,13 +22,13 @@
     box-shadow: 0 10px 25px var(--shadow-pink);
 }
 
-.fh-media-wrapper { 
+.fh-media-wrapper {
     padding: 18px !important;
     width: 100% !important;
-    box-sizing: border-box !important; 
-    display: flex; 
-    flex-direction: column; 
-    align-items: center; 
+    box-sizing: border-box !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .fh-inline-audio {
@@ -38,36 +38,45 @@
     margin-top: 8px;
 }
 
-.fh-controls { 
-    display: flex; 
-    flex-direction: row; 
+.fh-controls {
+    display: flex;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
     gap: 16px !important;
     width: 100%;
-    margin-bottom: 12px; 
+    margin-bottom: 12px;
 }
 
-.fh-skip-btn { 
+.fh-skip-btn {
     background: var(--gradient-soft);
-    border: 1px solid rgba(212, 165, 116, 0.4); 
+    border: 1px solid rgba(212, 165, 116, 0.4);
     border-radius: 50px;
     padding: 8px 16px;
-    font-size: 13px; 
-    font-weight: 700; 
-    color: var(--brown-3); 
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--brown-3);
     cursor: pointer;
-    user-select: none; 
-    display: flex; 
+    user-select: none;
+    display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 6px;
-    transition: transform 0.2s ease, background 0.2s ease; 
+    transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.05);
 }
-.fh-skip-btn:active { 
-    transform: scale(0.95); 
+.fh-skip-btn i {
+    font-size: 13px;
+    color: var(--brown-2);
 }
-.fh-skip-btn.long-press-active { 
+.fh-skip-btn:hover {
+    background: var(--pink-2);
+    transform: translateY(-1px);
+}
+.fh-skip-btn:active {
+    transform: scale(0.95);
+}
+.fh-skip-btn.long-press-active {
     transform: scale(0.93);
     background: var(--pink-2);
     animation: fh-pulse-animation 0.8s infinite alternate;
@@ -112,66 +121,82 @@
     animation: fh-bar-loading 0.5s infinite ease-in-out alternate;
 }
 
-/* --- Document & PDF Actions --- */
-.fh-pdf-actions { 
+/* --- Audio & Document Actions --- */
+.fh-audio-actions {
     display: flex !important;
     width: 100% !important;
-    gap: 12px !important; 
+    margin-top: 12px !important;
+}
+
+.fh-pdf-actions {
+    display: flex !important;
+    width: 100% !important;
+    gap: 12px !important;
     margin-bottom: 12px !important;
 }
+
 .fh-action-btn {
     flex: 1 !important;
-    height: 40px !important;
+    height: 42px !important;
+    padding: 0 18px !important;
     font-size: 14px !important;
+    gap: 8px !important;
     border-radius: 50px !important;
     text-decoration: none !important;
     cursor: pointer !important;
-    font-weight: 700 !important; 
+    font-weight: 700 !important;
     font-family: 'Noto Nastaliq Urdu', 'Amiri', serif;
     display: inline-flex !important;
     align-items: center !important;
     justify-content: center !important;
-    transition: transform 0.2s ease, background 0.2s ease !important; 
+    transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease !important;
     box-shadow: 0 3px 6px rgba(0,0,0,0.06) !important;
     border: 1px solid transparent !important;
 }
-.fh-btn-read { 
-    background: var(--gradient-soft) !important; 
-    color: var(--brown-3) !important; 
+.fh-action-btn i {
+    font-size: 14px;
+    line-height: 1;
+}
+
+.fh-btn-read {
+    background: var(--gradient-soft) !important;
+    color: var(--brown-3) !important;
     border-color: var(--pink-3) !important;
 }
-.fh-btn-read:hover { 
-    background: var(--pink-2) !important; 
+.fh-btn-read:hover {
+    background: var(--pink-2) !important;
     transform: translateY(-1px) !important;
 }
-.fh-btn-download { 
+
+.fh-btn-download {
     background: var(--gradient-main) !important;
-    color: #fff !important; 
+    color: #fff !important;
     border-color: var(--brown-2) !important;
 }
-.fh-btn-download:hover { 
-    opacity: 0.95;
-    transform: translateY(-1px) !important; 
+.fh-btn-download:hover {
+    opacity: 0.96;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.1) !important;
 }
 
 /* --- Dynamic Iframe Dropdowns --- */
-.fh-dynamic-iframe-box { 
-    overflow: hidden; 
+.fh-dynamic-iframe-box {
+    overflow: hidden;
     min-height: 0;
     width: 100%;
 }
-.fh-iframe-inner { 
+.fh-iframe-inner {
     width: 100% !important;
-    border: 1px solid var(--pink-3) !important; 
-    border-radius: 12px !important; 
-    overflow: hidden !important; 
+    border: 1px solid var(--pink-3) !important;
+    border-radius: 12px !important;
+    overflow: hidden !important;
     background: #fff;
 }
-.fh-iframe-inner iframe { 
-    width: 100% !important; 
-    height: 100% !important; 
+.fh-iframe-inner iframe {
+    width: 100% !important;
+    height: 100% !important;
     border: none !important;
-    display: block !important; 
+    display: block !important;
 }
 .fh-iframe-inner.fh-type-pdf, .fh-iframe-inner.fh-type-document {
     height: 480px !important;
@@ -181,7 +206,7 @@
 }
 .fh-iframe-inner.fh-type-video, .fh-iframe-container-video {
     width: 100% !important;
-    aspect-ratio: 16 / 9 !important; 
+    aspect-ratio: 16 / 9 !important;
     border-radius: 12px !important;
     overflow: hidden !important;
 }
