@@ -1,21 +1,28 @@
 {
-  "name": "فکر حق",
-  "short_name": "فکر حق",
-  "start_url": "/?utm_source=pwa",
-  "scope": "/",
+  "name": "فکرِ حق",
+  "short_name": "فکرِ حق",
+  "version": "1.0.1",
+  "description": "مخزنِ فکرِ حق — کتب، اصلاحی بیانات، مضامین اور صوتی ذخائر",
+  "lang": "ur",
+  "dir": "rtl",
+  "start_url": "./",
+  "scope": "./",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#1f2937",
+  "orientation": "portrait-primary",
+  "background_color": "#fdf8f2",
+  "theme_color": "#3e2723",
   "icons": [
     {
-      "src": "/icon-192.png",
+      "src": "./icon-192.png",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     },
     {
-      "src": "/icon-512.png",
+      "src": "./icon-512.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     }
   ]
 }
