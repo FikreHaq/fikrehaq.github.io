@@ -48,40 +48,41 @@ const firebaseConfig = {
 const app = getApps().length ? getApp() : initializeApp(firebaseConfig);
 const db = getDatabase(app);
 
-function getPageKey() {
-    const rawPath = window.location.pathname || "";
-    const trimmed = rawPath.replace(/^\/+|\/+$/g, "");
-
-    if (!trimmed || trimmed.toLowerCase() === "index.html" || trimmed.toLowerCase() === "index") {
-        return "index";
-    }
-
-    // اگر پاتھ کے آخر میں index.html یا index ہے تو فولڈر کے ساتھ _index بنائیں
-    if (/(?:^|\/)index(?:\.html)?$/i.test(trimmed)) {
-        const folderPart = trimmed.replace(/(?:^|\/)index(?:\.html)?$/i, "");
-        const cleanFolder = folderPart
-            .replace(/[\/\-.#$\[\]]+/g, "_")
-            .replace(/_+/g, "_")
-            .replace(/^_|_$/g, "");
-        return cleanFolder ? `${cleanFolder}_index` : "index";
-    }
-
-    // اگر پاتھ کے آخر میں .html ہے تو صرف .html ہٹا کر سادہ نام رکھیں
-    if (/\.html$/i.test(trimmed)) {
-        return trimmed
-            .replace(/\.html$/i, "")
-            .replace(/[\/\-.#$\[\]]+/g, "_")
-            .replace(/_+/g, "_")
-            .replace(/^_|_$/g, "") || "index";
-    }
-
-    // جن لنکس کے آخر میں نہ index ہے نہ .html (مثلاً /bs یا /rabta) انہیں بھی _index والی ٹری میں شامل کریں
-    const cleanDir = trimmed
+function sanitizeKey(str) {
+    return str
         .replace(/[\/\-.#$\[\]]+/g, "_")
         .replace(/_+/g, "_")
         .replace(/^_|_$/g, "");
+}
 
-    return cleanDir ? `${cleanDir}_index` : "index";
+function getPageKey() {
+    const rawPath = window.location.pathname || "";
+    const hasTrailingSlash = /\/+$/.test(rawPath);
+    const trimmed = rawPath.replace(/^\/+|\/+$/g, "");
+
+    if (!trimmed) {
+        return "index";
+    }
+
+    // اگر پاتھ کا آخری حصہ بذاتِ خود index یا index.html ہے
+    if (/(?:^|\/)index(?:\.html)?$/i.test(trimmed)) {
+        const folderPart = trimmed.replace(/(?:^|\/)index(?:\.html)?$/i, "");
+        const cleanFolder = sanitizeKey(folderPart);
+        return cleanFolder ? `${cleanFolder}_index` : "index";
+    }
+
+    // اگر پاتھ کے آخر میں .html ہے (مثلاً /hk/g.html) تو صرف .html ہٹا کر سادہ key بنائیں
+    if (/\.html$/i.test(trimmed)) {
+        const withoutHtml = trimmed.replace(/\.html$/i, "");
+        return sanitizeKey(withoutHtml) || "index";
+    }
+
+    // اگر آخر میں slash ہے (مثلاً /bs/) یا نہ index ہے نہ .html (مثلاً /bs) تو انڈیکس والی key بنائیں
+    const cleanDir = sanitizeKey(trimmed);
+    if (!cleanDir) {
+        return "index";
+    }
+    return hasTrailingSlash || !cleanDir.endsWith("_index") ? `${cleanDir}_index` : cleanDir;
 }
 
 function formatCount(val) {
