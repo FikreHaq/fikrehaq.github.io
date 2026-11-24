@@ -15,9 +15,9 @@
     function closePlayerSmoothly(wrapper) {
         if (!wrapper) return;
         wrapper.classList.remove('fh-open');
-        
+
         let mediaElements = wrapper.querySelectorAll('audio, video, iframe');
-        for(let i=0; i<mediaElements.length; i++) {
+        for (let i = 0; i < mediaElements.length; i++) {
             if (mediaElements[i].pause) mediaElements[i].pause();
             if (mediaElements[i].tagName.toLowerCase() === 'iframe') mediaElements[i].src = '';
         }
@@ -30,13 +30,13 @@
         }, 350);
     }
 
-    // ہائی پرفارمنس ڈیجیٹ یشن (Event Delegation) تاکہ 1500 کارڈز پر بھی لیک نیمیٹ نہ ہو
+    // ہائی پرفارمنس ڈیلیگیشن (Event Delegation) تاکہ 1500 کارڈز پر بھی لیک نہ ہو
     document.addEventListener('click', function(event) {
         let targetLink = event.target.closest('.link-segment-container a');
         if (!targetLink) return;
 
         let originalHref = targetLink.href;
-        if (!originalHref) return; 
+        if (!originalHref) return;
 
         let href = originalHref.toLowerCase();
         let isArchiveDomain = href.includes('archive.org/download/') || href.includes('archive.org/compress/');
@@ -56,7 +56,7 @@
 
             let targetCard = targetLink.closest('.link-segment-container');
             let existingPlayer = targetCard.querySelector('.fh-card-player-dropdown');
-            
+
             if (existingPlayer) {
                 closePlayerSmoothly(existingPlayer);
                 return;
@@ -68,48 +68,65 @@
 
             let wrapper = document.createElement('div');
             wrapper.className = 'fh-card-player-dropdown';
-            
+
             let innerContent = document.createElement('div');
             innerContent.className = 'fh-dropdown-inner';
 
             if (googleIdMatch) {
                 let viewUrl = `https://drive.google.com/file/d/${googleIdMatch[1]}/preview`;
                 let downUrl = `https://drive.usercontent.google.com/download?id=${googleIdMatch[1]}&export=download&authuser=0`;
-                let btnText = "📖 مطالعہ";
+                let btnHtml = `<i class="fa-solid fa-book-open"></i><span>مطالعہ</span>`;
+                let openHtml = `<i class="fa-solid fa-xmark"></i><span>بند کریں</span>`;
+                let loadingHtml = `<i class="fa-solid fa-spinner fa-spin"></i><span>لوڈ ہو رہا ہے</span>`;
                 let mediaClass = "fh-type-document";
-                
-                if (isAudioFile) { btnText = "▶️ چلائیں"; mediaClass = "fh-type-audio"; } 
-                else if (isVideoFile) { btnText = "▶️ چلائیں"; mediaClass = "fh-type-video"; } 
-                else if (isImageFile) { btnText = "👁️ دیکھیں"; mediaClass = "fh-type-image"; }
+
+                if (isAudioFile) {
+                    btnHtml = `<i class="fa-solid fa-play"></i><span>چلائیں</span>`;
+                    mediaClass = "fh-type-audio";
+                } else if (isVideoFile) {
+                    btnHtml = `<i class="fa-solid fa-play"></i><span>چلائیں</span>`;
+                    mediaClass = "fh-type-video";
+                } else if (isImageFile) {
+                    btnHtml = `<i class="fa-solid fa-eye"></i><span>دیکھیں</span>`;
+                    mediaClass = "fh-type-image";
+                }
 
                 innerContent.innerHTML = `
                     <div class="fh-media-wrapper">
                         <div class="fh-pdf-actions">
-                            <button class="fh-action-btn fh-btn-read">${btnText}</button>
-                            <a href="${downUrl}" class="fh-action-btn fh-btn-download" target="_blank" rel="noopener noreferrer">⬇️ ڈاؤن لوڈ</a>
+                            <button type="button" class="fh-action-btn fh-btn-read">${btnHtml}</button>
+                            <a href="${downUrl}" class="fh-action-btn fh-btn-download" target="_blank" rel="noopener noreferrer">
+                                <i class="fa-solid fa-download"></i><span>ڈاؤن لوڈ</span>
+                            </a>
                         </div>
                         <div class="fh-dynamic-iframe-box">
                             <div class="fh-iframe-inner ${mediaClass}"></div>
                         </div>
                     </div>`;
-                
+
                 wrapper.appendChild(innerContent);
                 targetCard.appendChild(wrapper);
 
                 let readBtn = innerContent.querySelector('.fh-btn-read');
+                let downBtn = innerContent.querySelector('.fh-btn-download');
                 let iframeInner = innerContent.querySelector('.fh-iframe-inner');
 
+                if (downBtn) {
+                    downBtn.addEventListener('click', (e) => e.stopPropagation());
+                }
+
                 readBtn.addEventListener('click', function(e) {
-                    e.preventDefault(); e.stopPropagation(); 
+                    e.preventDefault();
+                    e.stopPropagation();
                     if (wrapper.classList.contains('fh-open')) {
                         closePlayerSmoothly(wrapper);
-                        this.innerHTML = btnText;
+                        this.innerHTML = btnHtml;
                         return;
                     }
-                    this.innerHTML = "لوڈ ہو رہا...";
+                    this.innerHTML = loadingHtml;
                     iframeInner.innerHTML = `<iframe src="${viewUrl}" allowfullscreen></iframe>`;
                     requestAnimationFrame(() => wrapper.classList.add('fh-open'));
-                    this.innerHTML = "✖ بند کریں";
+                    this.innerHTML = openHtml;
                     window.currentActivePlayer = wrapper;
                 });
             }
@@ -118,11 +135,22 @@
                 if (isAudioFile) {
                     mediaElement = `
                         <div class="fh-controls">
-                            <button class="fh-skip-btn fh-skip-backward">⏪ 10s</button>
-                            <div class="fh-capsule-loader fh-loading"><span class="fh-bar"></span><span class="fh-bar"></span><span class="fh-bar"></span></div>
-                            <button class="fh-skip-btn fh-skip-forward">10s ⏩</button>
+                            <button type="button" class="fh-skip-btn fh-skip-backward" aria-label="10 سیکنڈ پیچھے">
+                                <i class="fa-solid fa-rotate-left"></i><span>10s</span>
+                            </button>
+                            <div class="fh-capsule-loader fh-loading">
+                                <span class="fh-bar"></span><span class="fh-bar"></span><span class="fh-bar"></span>
+                            </div>
+                            <button type="button" class="fh-skip-btn fh-skip-forward" aria-label="10 سیکنڈ آگے">
+                                <span>10s</span><i class="fa-solid fa-rotate-right"></i>
+                            </button>
                         </div>
-                        <audio class="fh-inline-audio" controls preload="metadata" src="${originalHref}"></audio>`;
+                        <audio class="fh-inline-audio" controls preload="metadata" src="${originalHref}"></audio>
+                        <div class="fh-audio-actions">
+                            <a href="${originalHref}" class="fh-action-btn fh-btn-download fh-audio-download-btn" target="_blank" rel="noopener noreferrer">
+                                <i class="fa-solid fa-download"></i><span>ڈاؤن لوڈ لنک</span>
+                            </a>
+                        </div>`;
                 } else if (isVideoFile) {
                     mediaElement = `<video controls preload="metadata" playsinline style="width:100%; border-radius:12px;"><source src="${originalHref}"></video>`;
                 } else if (ytVideoMatch) {
@@ -143,6 +171,11 @@
                     let skipBack = wrapper.querySelector('.fh-skip-backward');
                     let skipForward = wrapper.querySelector('.fh-skip-forward');
                     let loader = wrapper.querySelector('.fh-capsule-loader');
+                    let downloadBtn = wrapper.querySelector('.fh-audio-download-btn');
+
+                    if (downloadBtn) {
+                        downloadBtn.addEventListener('click', (e) => e.stopPropagation());
+                    }
 
                     if (audioEl && loader) {
                         audioEl.addEventListener('loadstart', () => loader.className = 'fh-capsule-loader fh-loading');
@@ -152,23 +185,27 @@
                     }
 
                     function setupSkip(button, isForward) {
-                        let holdTimer, skipInterval; let isLongPress = false;
+                        let holdTimer, skipInterval;
+                        let isLongPress = false;
                         const step = isForward ? 10 : -10;
                         const start = (e) => {
-                            if (e.type === 'touchstart') e.preventDefault(); 
+                            e.stopPropagation();
+                            if (e.type === 'touchstart') e.preventDefault();
                             isLongPress = false;
                             holdTimer = setTimeout(() => {
                                 isLongPress = true;
                                 button.classList.add('long-press-active');
                                 audioEl.pause();
                                 skipInterval = setInterval(() => { audioEl.currentTime += step; }, 100);
-                            }, 400); 
+                            }, 400);
                         };
                         const end = (e) => {
+                            e.stopPropagation();
                             if (e.type === 'touchend' || e.type === 'touchcancel') e.preventDefault();
-                            clearTimeout(holdTimer); clearInterval(skipInterval);
+                            clearTimeout(holdTimer);
+                            clearInterval(skipInterval);
                             button.classList.remove('long-press-active');
-                            if (!isLongPress) audioEl.currentTime += step; 
+                            if (!isLongPress) audioEl.currentTime += step;
                             else audioEl.play().catch(() => {});
                         };
                         button.addEventListener('mousedown', start);
@@ -190,34 +227,46 @@
             }
             else if (isArchiveDomain && isPdfFile) {
                 let viewUrl = `https://docs.google.com/gview?url=${encodeURIComponent(originalHref)}&embedded=true`;
+                let readHtml = `<i class="fa-solid fa-book-open"></i><span>مطالعہ</span>`;
+                let closeHtml = `<i class="fa-solid fa-xmark"></i><span>بند کریں</span>`;
+                let loadHtml = `<i class="fa-solid fa-spinner fa-spin"></i><span>لوڈ ہو رہا ہے</span>`;
+
                 innerContent.innerHTML = `
                     <div class="fh-media-wrapper">
                         <div class="fh-pdf-actions">
-                            <button class="fh-action-btn fh-btn-read">📖 مطالعہ</button>
-                            <a href="${originalHref}" class="fh-action-btn fh-btn-download" target="_blank" rel="noopener noreferrer">⬇️ ڈاؤن لوڈ</a>
+                            <button type="button" class="fh-action-btn fh-btn-read">${readHtml}</button>
+                            <a href="${originalHref}" class="fh-action-btn fh-btn-download" target="_blank" rel="noopener noreferrer">
+                                <i class="fa-solid fa-download"></i><span>ڈاؤن لوڈ لنک</span>
+                            </a>
                         </div>
                         <div class="fh-dynamic-iframe-box">
                             <div class="fh-iframe-inner fh-type-pdf"></div>
                         </div>
                     </div>`;
-                
+
                 wrapper.appendChild(innerContent);
                 targetCard.appendChild(wrapper);
 
                 let readBtn = innerContent.querySelector('.fh-btn-read');
+                let downBtn = innerContent.querySelector('.fh-btn-download');
                 let iframeInner = innerContent.querySelector('.fh-iframe-inner');
 
+                if (downBtn) {
+                    downBtn.addEventListener('click', (e) => e.stopPropagation());
+                }
+
                 readBtn.addEventListener('click', function(e) {
-                    e.preventDefault(); e.stopPropagation(); 
+                    e.preventDefault();
+                    e.stopPropagation();
                     if (wrapper.classList.contains('fh-open')) {
                         closePlayerSmoothly(wrapper);
-                        this.innerHTML = "📖 مطالعہ";
+                        this.innerHTML = readHtml;
                         return;
                     }
-                    this.innerHTML = "لوڈ ہو رہا...";
+                    this.innerHTML = loadHtml;
                     iframeInner.innerHTML = `<iframe src="${viewUrl}" allowfullscreen></iframe>`;
                     requestAnimationFrame(() => wrapper.classList.add('fh-open'));
-                    this.innerHTML = "✖ بند کریں";
+                    this.innerHTML = closeHtml;
                     window.currentActivePlayer = wrapper;
                 });
             }
