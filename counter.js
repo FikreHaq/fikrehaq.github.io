@@ -49,27 +49,39 @@ const app = getApps().length ? getApp() : initializeApp(firebaseConfig);
 const db = getDatabase(app);
 
 function getPageKey() {
-    let path = (window.location.pathname || "").replace(/^\/+|\/+$/g, "");
+    const rawPath = window.location.pathname || "";
+    const trimmed = rawPath.replace(/^\/+|\/+$/g, "");
 
-    if (!path) {
+    if (!trimmed || trimmed.toLowerCase() === "index.html" || trimmed.toLowerCase() === "index") {
         return "index";
     }
 
-    // آخر سے index.html یا index ہٹائیں
-    path = path.replace(/(?:^|\/)index(?:\.html)?$/i, "");
-
-    // اگر پورا پاتھ ہی index یا index.html تھا تو خالی ہو جائے گا -> "index"
-    if (!path) {
-        return "index";
+    // اگر پاتھ کے آخر میں index.html یا index ہے تو فولڈر کے ساتھ _index بنائیں
+    if (/(?:^|\/)index(?:\.html)?$/i.test(trimmed)) {
+        const folderPart = trimmed.replace(/(?:^|\/)index(?:\.html)?$/i, "");
+        const cleanFolder = folderPart
+            .replace(/[\/\-.#$\[\]]+/g, "_")
+            .replace(/_+/g, "_")
+            .replace(/^_|_$/g, "");
+        return cleanFolder ? `${cleanFolder}_index` : "index";
     }
 
-    const cleanBase = path
-        .replace(/\.html$/i, "")
+    // اگر پاتھ کے آخر میں .html ہے تو صرف .html ہٹا کر سادہ نام رکھیں
+    if (/\.html$/i.test(trimmed)) {
+        return trimmed
+            .replace(/\.html$/i, "")
+            .replace(/[\/\-.#$\[\]]+/g, "_")
+            .replace(/_+/g, "_")
+            .replace(/^_|_$/g, "") || "index";
+    }
+
+    // جن لنکس کے آخر میں نہ index ہے نہ .html (مثلاً /bs یا /rabta) انہیں بھی _index والی ٹری میں شامل کریں
+    const cleanDir = trimmed
         .replace(/[\/\-.#$\[\]]+/g, "_")
         .replace(/_+/g, "_")
         .replace(/^_|_$/g, "");
 
-    return cleanBase ? `${cleanBase}_index` : "index";
+    return cleanDir ? `${cleanDir}_index` : "index";
 }
 
 function formatCount(val) {
