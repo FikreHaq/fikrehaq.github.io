@@ -214,7 +214,11 @@ div[id] {
   right: 0;
   width: 280px;
   max-width: 82vw;
-  height: 100vh;
+  height: 100dvh;           /* ✅ نیا: Dynamic Viewport Height */
+  height: 100vh;            /* fallback پرانے browsers کے لیے */
+  min-height: 100vh;
+  max-height: 100dvh;
+  max-height: 100vh;        /* fallback */
   background: linear-gradient(180deg, #FDF9F4 0%, #F5E6D3 100%);
   box-shadow: -8px 0 30px rgba(61, 40, 23, 0.2);
   z-index: 1001;
@@ -222,10 +226,14 @@ div[id] {
   visibility: hidden;
   transition: transform 0.35s cubic-bezier(.4, 0, .2, 1), visibility 0.35s ease-out;
   padding: 22px;
+  padding-top: calc(22px + env(safe-area-inset-top, 0px));
+  padding-bottom: calc(22px + env(safe-area-inset-bottom, 0px));
   display: flex;
   flex-direction: column;
   overflow-y: auto;
+  overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
   will-change: transform;
   border-left: 1px solid rgba(212, 165, 116, 0.3);
 }
