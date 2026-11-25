@@ -1,0 +1,87 @@
+    /* ===== لوگو کے گرد Cream-Brown Pattern ===== */
+    .logo-wrapper {
+      position: relative;
+      width: 180px;
+      height: 180px;
+      margin: 30px auto;
+      border-radius: 50%;
+      padding: 15px;
+      background: linear-gradient(135deg, #fdf8f2 0%, #f5e6d3 50%, #d7ccc8 100%);
+      box-shadow: 
+        0 0 0 6px #3e2723,
+        0 0 0 10px #d7ccc8,
+        0 0 0 14px #8d6e63,
+        0 8px 25px rgba(62, 39, 35, 0.3);
+    }
+
+    /* Rotating pattern */
+    .logo-wrapper::before {
+      content: '';
+      position: absolute;
+      top: -18px;
+      left: -18px;
+      right: -18px;
+      bottom: -18px;
+      border-radius: 50%;
+      background: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 8px,
+        rgba(141, 110, 99, 0.15) 8px,
+        rgba(141, 110, 99, 0.15) 16px
+      );
+      z-index: -1;
+      animation: spin 25s linear infinite;
+    }
+
+    /* Dashed border */
+    .logo-wrapper::after {
+      content: '';
+      position: absolute;
+      top: -22px;
+      left: -22px;
+      right: -22px;
+      bottom: -22px;
+      border-radius: 50%;
+      border: 2px dashed #8d6e63;
+      opacity: 0.4;
+      animation: spin 35s linear infinite reverse;
+    }
+
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    /* لوگو تصویر - Zoom مسئلہ حل */
+    .logo-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: 50%;
+      background: #fff;
+      padding: 10px;
+      display: block;
+      
+      /* Zoom روکنے کے لیے */
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+      pointer-events: none;
+    }
+
+    /* باقی styling */
+    body {
+      font-family: 'Noto Nastaliq Urdu', 'Jameel Noori Nastaleeq', serif;
+      background-color: #fdf8f2;
+      color: #3e2723;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+    }
+
+    h1 {
+      color: #3e2723;
+      font-size: 2em;
+      margin: 20px 0;
+    }
