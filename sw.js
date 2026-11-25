@@ -1,4 +1,5 @@
-const CACHE_NAME = 'fikrehaq-cache-v1';
+const APP_VERSION = '1.0.1';
+const CACHE_NAME = `fikrehaq-cache-v${APP_VERSION}`;
 
 const CORE_ASSETS = [
   './',
@@ -6,7 +7,7 @@ const CORE_ASSETS = [
   './manifest.json'
 ];
 
-// Install
+// 1. Install: نئے ورژن کی بنیادی فائلیں کیش کریں
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
@@ -16,13 +17,13 @@ self.addEventListener('install', (event) => {
   self.skipWaiting();
 });
 
-// Activate
+// 2. Activate: پرانے تمام ورژنز کی کیش حذف کریں
 self.addEventListener('activate', (event) => {
   event.waitUntil(
     caches.keys().then((cacheNames) => {
       return Promise.all(
         cacheNames.map((name) => {
-          if (name !== CACHE_NAME) {
+          if (name.startsWith('fikrehaq-cache-') && name !== CACHE_NAME) {
             return caches.delete(name);
           }
         })
@@ -31,71 +32,78 @@ self.addEventListener('activate', (event) => {
   );
 });
 
-// Fetch
+// 3. Fetch: نیٹ ورک سے تازہ مواد لیں، ناکامی پر کیش سے دکھائیں
 self.addEventListener('fetch', (event) => {
   if (event.request.method !== 'GET') return;
-  
+
   const url = new URL(event.request.url);
   if (url.origin !== self.location.origin) return;
 
   event.respondWith(
     fetch(event.request)
-      .then((response) => {
-        if (response && response.status === 200) {
-          const clone = response.clone();
+      .then((networkResponse) => {
+        if (networkResponse && networkResponse.status === 200) {
+          const responseClone = networkResponse.clone();
           caches.open(CACHE_NAME).then((cache) => {
-            cache.put(event.request, clone);
+            cache.put(event.request, responseClone);
           });
         }
-        return response;
+        return networkResponse;
       })
       .catch(() => {
-        return caches.match(event.request).then((cached) => {
-          return cached || caches.match('./index.html');
+        return caches.match(event.request).then((cachedResponse) => {
+          return cachedResponse || caches.match('./index.html');
         });
       })
   );
 });
 
-// Push Notification
+// 4. Push Notifications: پش نوٹیفیکیشن وصول اور ظاہر کرنا
 self.addEventListener('push', (event) => {
-  let data = {
+  let payload = {
     title: 'فکرِ حق',
-    body: 'نئی اپڈیٹ دستیاب ہے',
+    body: 'نئی اپڈیٹ شائع کر دی گئی ہے۔',
+    url: './',
     icon: './icon-192.png'
   };
 
   if (event.data) {
     try {
-      data = { ...data, ...event.data.json() };
+      const parsed = event.data.json();
+      payload = { ...payload, ...parsed };
     } catch (e) {
-      data.body = event.data.text();
+      payload.body = event.data.text() || payload.body;
     }
   }
 
   event.waitUntil(
-    self.registration.showNotification(data.title, {
-      body: data.body,
-      icon: data.icon,
+    self.registration.showNotification(payload.title, {
+      body: payload.body,
+      icon: payload.icon,
+      badge: payload.icon,
       dir: 'rtl',
-      lang: 'ur'
+      lang: 'ur',
+      data: { url: payload.url }
     })
   );
 });
 
-// Notification Click
+// 5. Notification Click: نوٹیفیکیشن پر کلک سے متعلقہ صفحہ کھولنا
 self.addEventListener('notificationclick', (event) => {
   event.notification.close();
-  const url = event.notification.data?.url || './';
-  
+  const targetUrl = (event.notification.data && event.notification.data.url) || './';
+
   event.waitUntil(
-    clients.matchAll({ type: 'window' }).then((clients) => {
-      for (let client of clients) {
-        if (client.url === url && 'focus' in client) {
-          return client.focus();
+    clients.matchAll({ type: 'window', includeUncontrolled: true }).then((clientList) => {
+      for (const client of clientList) {
+        if ('focus' in client) {
+          client.focus();
+          return client.navigate(targetUrl);
         }
       }
-      return clients.openWindow(url);
+      if (clients.openWindow) {
+        return clients.openWindow(targetUrl);
+      }
     })
   );
 });
