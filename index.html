@@ -61,7 +61,29 @@
 
   <!-- مرکزی اسٹائل شیٹس -->
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="awesomefix.css">
+<style>
+  /* صرف انڈیکس صفحے کے لیے */
+body.fh-index-page:not(.fh-fa-ready) .fa,
+body.fh-index-page:not(.fh-fa-ready) .fas,
+body.fh-index-page:not(.fh-fa-ready) .far,
+body.fh-index-page:not(.fh-fa-ready) .fab,
+body.fh-index-page:not(.fh-fa-ready) .fa-solid,
+body.fh-index-page:not(.fh-fa-ready) .fa-regular,
+body.fh-index-page:not(.fh-fa-ready) .fa-brands {
+  opacity: 0;
+}
+
+body.fh-index-page .fa,
+body.fh-index-page .fas,
+body.fh-index-page .far,
+body.fh-index-page .fab,
+body.fh-index-page .fa-solid,
+body.fh-index-page .fa-regular,
+body.fh-index-page .fa-brands {
+  transition: opacity 0.18s ease;
+}
+
+</style>
 </head>
 <body>
 
