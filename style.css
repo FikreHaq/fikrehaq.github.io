@@ -73,8 +73,8 @@ div[id] {
 
 /* ہیڈر اور سائیڈ بار کا متوازن لوگو (بالکل گول نہیں) */
 .fh-brand-logo-img {
-  width: 46px;
-  height: 46px;
+  width: 50px;
+  height: 50px;
   border-radius: 26%;
   object-fit: cover;
   flex-shrink: 0;
@@ -84,9 +84,9 @@ div[id] {
 }
 
 .fh-sidebar-logo-img {
-  width: 40px;
-  height: 40px;
-  border-radius: 26%;
+  width: 45px;
+  height: 45px;
+  border-radius: 28%;
 }
 
 /* باڈی / ہیرو سیکشن میں بڑا اور نمایاں لوگو */
@@ -98,9 +98,9 @@ div[id] {
 }
 
 .fh-hero-logo-img {
-  width: 170px;
-  height: 170px;
-  border-radius: 28%;
+  width: 250px;
+  height: 250px;
+  border-radius: 30%;
   object-fit: cover;
   border: 3px solid rgba(212, 165, 116, 0.85);
   box-shadow:
@@ -119,15 +119,15 @@ div[id] {
 
 @media (max-width: 600px) {
   .fh-brand-logo-img {
-    width: 40px;
-    height: 40px;
-    border-radius: 26%;
+    width: 45px;
+    height: 45px;
+    border-radius: 28%;
   }
 
   .fh-hero-logo-img {
-    width: 142px;
-    height: 142px;
-    border-radius: 28%;
+    width: 200px;
+    height: 200px;
+    border-radius: 30%;
   }
 }
 
