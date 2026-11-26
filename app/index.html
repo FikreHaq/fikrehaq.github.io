@@ -1,0 +1,460 @@
+<!-- صفحے کے لیے اضافی ضروری کلاسز (موجودہ style.css کے ساتھ ہم آہنگ) -->
+<style>
+  .guide-hero {
+    padding: 72px 24px 56px;
+    text-align: center;
+    background:
+      radial-gradient(circle at 50% 15%, rgba(212, 165, 116, 0.24) 0%, transparent 62%),
+      linear-gradient(180deg, rgba(253, 249, 244, 0.85) 0%, rgba(245, 230, 211, 0.45) 100%);
+    border-bottom: 1px solid rgba(212, 165, 116, 0.32);
+  }
+
+  .guide-hero-inner {
+    max-width: 860px;
+    margin: 0 auto;
+  }
+
+  .guide-hero h1 {
+    font-family: 'Amiri', serif !important;
+    font-size: clamp(2.2rem, 6vw, 3.6rem);
+    font-weight: 700;
+    background: var(--gradient-main);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 16px;
+    line-height: 1.45;
+    filter: drop-shadow(0 10px 18px rgba(107, 68, 35, 0.18));
+  }
+
+  .guide-hero p {
+    font-size: 1.12rem;
+    color: var(--brown-3);
+    max-width: 720px;
+    margin: 0 auto 28px;
+    line-height: 2.05;
+  }
+
+  .guide-quick-nav {
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .guide-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 28px;
+  }
+
+  .guide-card {
+    background: linear-gradient(160deg, #FFFFFF 0%, #FDF8F2 58%, #F6E8D8 100%);
+    border: 1px solid rgba(212, 165, 116, 0.55);
+    border-radius: 24px;
+    padding: 32px 26px;
+    box-shadow: var(--top-highlight), var(--elevated-shadow);
+    transition: transform 0.3s var(--ease-smooth), box-shadow 0.3s var(--ease-smooth), border-color 0.25s ease;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .guide-card:hover {
+    transform: translate3d(0, -6px, 0);
+    box-shadow: var(--top-highlight), var(--elevated-hover);
+    border-color: var(--pink-3);
+  }
+
+  .guide-card-head {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 18px;
+  }
+
+  .guide-card-icon {
+    width: 56px;
+    height: 56px;
+    flex-shrink: 0;
+    background: var(--gradient-main);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 1.35rem;
+    border: 1px solid rgba(255, 255, 255, 0.42);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.48),
+      0 12px 22px -4px rgba(107, 68, 35, 0.28);
+  }
+
+  .guide-card h3 {
+    font-size: 1.35rem;
+    color: var(--brown-3);
+    line-height: 1.5;
+  }
+
+  .guide-steps {
+    list-style: none;
+    counter-reset: guide-step;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 18px;
+  }
+
+  .guide-steps li {
+    counter-increment: guide-step;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    color: var(--brown-3);
+    font-size: 1rem;
+    line-height: 1.9;
+    background: rgba(255, 255, 255, 0.68);
+    padding: 10px 14px;
+    border-radius: 14px;
+    border: 1px solid rgba(212, 165, 116, 0.35);
+  }
+
+  .guide-steps li::before {
+    content: counter(guide-step);
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    margin-top: 3px;
+    border-radius: 50%;
+    background: var(--gradient-main);
+    color: #fff;
+    font-size: 0.9rem;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 6px 12px -3px rgba(107, 68, 35, 0.28);
+  }
+
+  .guide-note {
+    margin-top: auto;
+    padding: 14px 16px;
+    border-radius: 16px;
+    background: linear-gradient(135deg, #F5E6D3 0%, #FDF8F2 100%);
+    border: 1px solid rgba(212, 165, 116, 0.6);
+    color: var(--brown-3);
+    font-size: 0.96rem;
+    line-height: 1.9;
+  }
+
+  .guide-warning {
+    background: linear-gradient(135deg, #FCEAE1 0%, #FFF7F2 100%);
+    border-color: rgba(184, 100, 68, 0.55);
+  }
+
+  .guide-benefit-box {
+    max-width: 920px;
+    margin: 34px auto 0;
+    background: linear-gradient(145deg, #FFFFFF 0%, #FDF8F2 60%, #F5E6D3 100%);
+    border: 1px solid rgba(212, 165, 116, 0.58);
+    border-radius: 26px;
+    padding: 32px 28px;
+    box-shadow: var(--top-highlight), var(--elevated-shadow);
+  }
+
+  .guide-benefit-box h3 {
+    font-size: 1.45rem;
+    color: var(--brown-3);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .guide-benefit-box p {
+    color: var(--brown-2);
+    font-size: 1.04rem;
+    line-height: 2.05;
+    margin-bottom: 14px;
+  }
+
+  .guide-link-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-top: 20px;
+    padding-top: 18px;
+    border-top: 1px dashed rgba(139, 94, 60, 0.35);
+  }
+
+  .guide-url-text {
+    font-weight: 700;
+    color: var(--brown-3);
+    word-break: break-word;
+  }
+
+  .guide-dua-card {
+    max-width: 860px;
+    margin: 0 auto;
+    text-align: center;
+    background: linear-gradient(155deg, #FFFFFF 0%, #FDF8F2 55%, #F5E6D3 100%);
+    border: 1px solid rgba(212, 165, 116, 0.58);
+    border-radius: 28px;
+    padding: 42px 28px;
+    box-shadow: var(--top-highlight), var(--elevated-shadow);
+  }
+
+  .guide-dua-card p {
+    font-family: 'Amiri', serif;
+    font-size: 1.38rem;
+    color: var(--brown-3);
+    line-height: 2.15;
+    margin-bottom: 24px;
+  }
+
+  @media (max-width: 600px) {
+    .guide-card,
+    .guide-benefit-box,
+    .guide-dua-card {
+      padding: 24px 18px;
+      border-radius: 20px;
+    }
+  }
+</style>
+
+<!-- ===== صفحہ باڈی شروع ===== -->
+<main id="main-content" dir="rtl">
+
+  <!-- تعارفی ہیرو حصہ -->
+  <section class="guide-hero fade-up" aria-labelledby="page-main-heading">
+    <div class="guide-hero-inner">
+      <div class="bismillah">بِسْمِ اللّٰہِ الرَّحْمٰنِ الرَّحِیْمِ</div>
+      <div class="badge">
+        <i class="fas fa-sync-alt" aria-hidden="true"></i>
+        فکرِ حق ویب سائٹ و ایپ رہنمائی
+      </div>
+      <h1 id="page-main-heading">ایپ انسٹال کرنے اور ویب سائٹ اپڈیٹ رکھنے کا مکمل طریقہ</h1>
+      <p>
+        الحمد للہ تعالیٰ عزوجل، فکرِ حق ویب سائٹ میں علماءِ کرام کے بیانات والا حصہ مکمل کر کے اسے مزید منظم، باسہولت اور مؤثر بنا دیا گیا ہے۔ جب ویب سائٹ میں نیا مواد یا نئی تبدیلی شامل کی جاتی ہے، تو بعض اوقات براؤزر کی پرانی محفوظ فائلوں (Cache) کے باعث تازہ صورت فوراً نظر نہیں آتی۔ نیچے ایپ انسٹال کرنے اور ویب سائٹ و ایپ کو تازہ ترین حالت میں لانے کا مکمل طریقہ پیش کیا جا رہا ہے۔
+      </p>
+      <div class="guide-quick-nav">
+        <a href="#install-app" class="btn btn-primary">
+          ایپ انسٹال کرنے کا طریقہ <i class="fas fa-mobile-alt" aria-hidden="true"></i>
+        </a>
+        <a href="#update-website-app" class="btn btn-secondary">
+          ویب سائٹ و ایپ اپڈیٹ کرنے کا طریقہ <i class="fas fa-redo-alt" aria-hidden="true"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- حصہ اول: ایپ انسٹال کرنے کا مکمل طریقہ -->
+  <section id="install-app" class="fade-up" aria-labelledby="install-heading">
+    <div class="container">
+      <div class="section-title">
+        <h2 id="install-heading">براؤزر کے تین نقطوں سے ایپ انسٹال کرنے کا طریقہ</h2>
+        <p>بغیر کسی الگ APK فائل کے اپنے فون کی ہوم اسکرین پر فکرِ حق ایپ شامل کیجیے</p>
+      </div>
+
+      <div class="guide-cards-grid">
+        <article class="guide-card">
+          <div class="guide-card-head">
+            <div class="guide-card-icon">
+              <i class="fas fa-download" aria-hidden="true"></i>
+            </div>
+            <h3>آسان مراحل</h3>
+          </div>
+
+          <ol class="guide-steps">
+            <li>
+              <span>سب سے پہلے اپنے براؤزر (مثلاً گوگل کروم) میں فکرِ حق کی ویب سائٹ کھولیں: <strong>https://FikreHaq.github.io</strong></span>
+            </li>
+            <li>
+              <span>براؤزر کے اوپر یا نیچے دائیں کونے میں موجود <strong>تین نقطوں (&#8942;)</strong> کے مینو پر کلک کریں۔</span>
+            </li>
+            <li>
+              <span>کھلنے والی فہرست میں <strong>Install app</strong> یا <strong>Add to Home screen</strong> کے آپشن پر کلک کریں۔</span>
+            </li>
+            <li>
+              <span>تصدیقی ڈائیلاگ میں <strong>Install</strong> یا <strong>Add</strong> دبا دیں۔</span>
+            </li>
+          </ol>
+
+          <div class="guide-note">
+            <strong>فائدہ:</strong> انسٹال ہونے کے بعد فکرِ حق کا آئیکن موبائل کی ہوم اسکرین پر آ جائے گا، جہاں سے آپ ایڈریس بار اور اضافی الجھن کے بغیر براہِ راست اور تیزی سے ویب سائٹ کے مواد اور بیانات تک رسائی حاصل کر سکیں گے۔
+          </div>
+        </article>
+
+        <article class="guide-card">
+          <div class="guide-card-head">
+            <div class="guide-card-icon">
+              <i class="fas fa-check-circle" aria-hidden="true"></i>
+            </div>
+            <h3>انسٹالیشن کے بعد کیا کریں؟</h3>
+          </div>
+
+          <ol class="guide-steps">
+            <li>
+              <span>اگر ویب سائٹ پہلے سے براؤزر میں کھلی تھی تو براؤزر کو مکمل بند کر کے دوبارہ کھولیں۔</span>
+            </li>
+            <li>
+              <span>ہوم اسکرین پر بنے ہوئے <strong>فکرِ حق</strong> آئیکن سے ایپ کھول کر تازہ بیانات اور سیکشنز چیک کریں۔</span>
+            </li>
+            <li>
+              <span>آئندہ جب بھی کوئی نئی اپڈیٹ آئے تو نیچے دیے گئے طریقے کے مطابق کیشے صاف یا پیج ریفریش کر لیں۔</span>
+            </li>
+          </ol>
+
+          <div class="guide-link-row">
+            <span class="guide-url-text">ویب سائٹ لنک: https://FikreHaq.github.io</span>
+            <a href="https://FikreHaq.github.io" target="_blank" rel="noopener noreferrer" class="btn-3d small">
+              ویب سائٹ کھولیں <i class="fas fa-external-link-alt" aria-hidden="true"></i>
+            </a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- حصہ دوم: ویب سائٹ اور ایپ کو اپڈیٹ / تازہ کرنے کا تفصیلی طریقہ -->
+  <section id="update-website-app" class="fade-up" aria-labelledby="update-heading">
+    <div class="container">
+      <div class="section-title">
+        <h2 id="update-heading">ویب سائٹ اور ایپ کو اپڈیٹ کرنے کا تفصیلی طریقہ</h2>
+        <p>موبائل، کمپیوٹر اور انسٹال شدہ ایپ میں نیا مواد فوراً دیکھنے کے لیے محفوظ طریقے</p>
+      </div>
+
+      <div class="guide-cards-grid">
+        <!-- موبائل طریقہ -->
+        <article class="guide-card">
+          <div class="guide-card-head">
+            <div class="guide-card-icon">
+              <i class="fas fa-mobile-alt" aria-hidden="true"></i>
+            </div>
+            <h3>موبائل پر کیشے صاف کرنے کا محفوظ طریقہ</h3>
+          </div>
+
+          <p class="scholar-desc" style="margin-bottom: 16px;">
+            اس طریقے سے آپ کی براؤزنگ ہسٹری اور پاسورڈ محفوظ رہتے ہیں۔
+          </p>
+
+          <ol class="guide-steps">
+            <li>
+              <span>اپنے موبائل کی <strong>Settings (سیٹنگز)</strong> میں جائیں۔</span>
+            </li>
+            <li>
+              <span>وہاں سے <strong>Apps (ایپس / ایپلیکیشنز)</strong> کے آپشن پر کلک کریں۔</span>
+            </li>
+            <li>
+              <span>ایپ لسٹ میں اپنا براؤزر (مثلاً <strong>Google Chrome</strong>) تلاش کر کے کھولیں۔</span>
+            </li>
+            <li>
+              <span>اس کے بعد <strong>Storage (اسٹوریج)</strong> کے سیکشن میں جائیں۔</span>
+            </li>
+            <li>
+              <span>وہاں <strong>Clear Cache (کلیئر کیشے)</strong> کے بٹن پر کلک کر دیں۔</span>
+            </li>
+          </ol>
+
+          <div class="guide-note guide-warning">
+            <strong>اہم تنبیہ:</strong> صرف <strong>Clear Cache</strong> کرنا ہے؛ <strong>Clear Data</strong> یا <strong>Clear Storage</strong> ہرگز نہ کریں تاکہ آپ کا محفوظ شدہ ڈیٹا اور لاگ انز متاثر نہ ہوں۔
+          </div>
+        </article>
+
+        <!-- کمپیوٹر طریقہ -->
+        <article class="guide-card">
+          <div class="guide-card-head">
+            <div class="guide-card-icon">
+              <i class="fas fa-desktop" aria-hidden="true"></i>
+            </div>
+            <h3>کمپیوٹر یا لیپ ٹاپ پر ویب سائٹ تازہ کرنے کا طریقہ</h3>
+          </div>
+
+          <p class="scholar-desc" style="margin-bottom: 16px;">
+            بغیر کسی سیٹنگ کو چھیڑے صرف کی بورڈ شارٹ کٹ سے صفحے کو تازہ ترین حالت میں لائیں۔
+          </p>
+
+          <ol class="guide-steps">
+            <li>
+              <span>کمپیوٹر یا لیپ ٹاپ کے براؤزر میں فکرِ حق کا صفحہ کھولیں۔</span>
+            </li>
+            <li>
+              <span>کی بورڈ سے <strong>Ctrl + F5</strong> دبائیں (بعض براؤزرز میں <strong>Ctrl + Shift + R</strong> بھی کام کرتا ہے)۔</span>
+            </li>
+            <li>
+              <span>صفحے کے مکمل لوڈ ہونے کا انتظار کریں تاکہ سرور سے تازہ ترین فائلیں آ جائیں۔</span>
+            </li>
+          </ol>
+
+          <div class="guide-note">
+            <strong>ہارڈ ریفریش کا فائدہ:</strong> اس عمل سے براؤزر پرانی محفوظ فائلوں کے بجائے براہِ راست سرور سے نئی اپڈیٹس اور نیا مواد لوڈ کرتا ہے، جبکہ آپ کی ہسٹری اور ذاتی ڈیٹا محفوظ رہتا ہے۔
+          </div>
+        </article>
+
+        <!-- انسٹال شدہ ایپ کو اپڈیٹ رکھنے کا طریقہ -->
+        <article class="guide-card">
+          <div class="guide-card-head">
+            <div class="guide-card-icon">
+              <i class="fas fa-sync" aria-hidden="true"></i>
+            </div>
+            <h3>ہوم اسکرین ایپ کو تازہ رکھنے کا طریقہ</h3>
+          </div>
+
+          <p class="scholar-desc" style="margin-bottom: 16px;">
+            چونکہ فکرِ حق ویب ایپ براؤزر کے انجن سے چلتی ہے، اس لیے اپڈیٹ کے بعد اسے تازہ کرنا نہایت آسان ہے۔
+          </p>
+
+          <ol class="guide-steps">
+            <li>
+              <span>نئی اپڈیٹ کے بعد پہلے کھلی ہوئی ایپ کو مکمل بند (Close) کر دیں۔</span>
+            </li>
+            <li>
+              <span>موبائل کی سیٹنگز میں جا کر متعلقہ براؤزر کا <strong>Clear Cache</strong> کریں۔</span>
+            </li>
+            <li>
+              <span>براؤزر ری سٹارٹ کر کے ہوم اسکرین سے ایپ کھولیں تاکہ نئے بیانات اور تبدیلیاں نظر آ سکیں۔</span>
+            </li>
+          </ol>
+
+          <div class="guide-note">
+            <strong>نتیجہ:</strong> ان مراحل کے بعد ویب سائٹ اور ایپ تازہ ترین اور اپڈیٹڈ صورت میں میسر ہوں گی، جن میں نئے بیانات اور سہولیات شامل ہیں۔
+          </div>
+        </article>
+      </div>
+
+      <!-- وزٹ اور دعا باکس -->
+      <div class="guide-benefit-box">
+        <h3>
+          <i class="fas fa-globe" aria-hidden="true"></i>
+          اب براؤزر ری سٹارٹ کر کے وزٹ کریں
+        </h3>
+        <p>
+          الحمد للہ، اب آپ کو ویب سائٹ تازہ ترین اور اپڈیٹڈ صورت میں میسر ہوگی، جس میں نئے بیانات اور سہولیات شامل ہیں۔
+        </p>
+        <div class="guide-link-row">
+          <span class="guide-url-text">براہِ راست لنک: https://FikreHaq.github.io</span>
+          <a href="https://FikreHaq.github.io" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+            فکرِ حق وزٹ کریں <i class="fas fa-arrow-left" aria-hidden="true"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- اختتامی دعا -->
+  <section class="fade-up" aria-label="دعا">
+    <div class="container">
+      <div class="guide-dua-card">
+        <p>
+          دعا ہے کہ اللہ رب العزت ہمیں دینِ حق کی فہم، اس پر عمل اور استقامت عطا فرمائے۔ آمین ثم آمین۔
+        </p>
+        <a href="#main-content" class="btn btn-secondary">
+          صفحے کے آغاز پر جائیں <i class="fas fa-arrow-up" aria-hidden="true"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+<!-- ===== صفحہ باڈی اختتام ===== -->
