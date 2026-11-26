@@ -41,18 +41,27 @@
   <!-- Font Awesome آئیکنز -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <script>
-  if (document.fonts) {
-    document.fonts.ready.then(function () {
-      document.documentElement.classList.add('fa-loaded');
-    });
-  } else {
-    document.documentElement.classList.add('fa-loaded');
-  }
+  (function () {
+    document.body.classList.add('fh-index-page');
+
+    function showIcons() {
+      document.body.classList.add('fh-fa-ready');
+    }
+
+    if (document.fonts && document.fonts.ready) {
+      Promise.race([
+        document.fonts.ready,
+        new Promise(function (resolve) { setTimeout(resolve, 400); })
+      ]).then(showIcons);
+    } else {
+      setTimeout(showIcons, 200);
+    }
+  })();
 </script>
 
   <!-- مرکزی اسٹائل شیٹس -->
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="app.css">
+  <link rel="stylesheet" href="awesomefix.css">
 </head>
 <body>
 
