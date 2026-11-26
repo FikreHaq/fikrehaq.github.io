@@ -581,11 +581,18 @@ section:nth-of-type(even) {
   margin-top: 26px;
 }
 
-/* ===== زمرہ جات کارڈز (Elevated Shadow Category Cards) ===== */
+/* ===== زمرہ جات کارڈز (Elevated Shadow Category Cards - آخری قطار مرکز میں) ===== */
 .categories-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 30px;
+}
+
+.categories-grid .cat-card {
+  flex: 1 1 260px;
+  max-width: 310px;
+  width: 100%;
 }
 
 .cat-card {
@@ -661,11 +668,19 @@ section:nth-of-type(even) {
   font-size: 1rem;
 }
 
-/* ===== علماء و مشائخ کارڈز (Elevated Shadow Scholars Section) ===== */
+/* ===== علماء و مشائخ کارڈز (Elevated Shadow Scholars Section - آخری قطار مرکز میں) ===== */
 .scholars-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 30px;
+}
+
+.scholars-grid .scholar-card {
+  flex: 1 1 290px;
+  max-width: 400px;
+  width: 100%;
+  margin: 0;
 }
 
 .scholar-card {
@@ -1004,6 +1019,19 @@ section:nth-of-type(even) {
 
   .avatar-title {
     font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .categories-grid,
+  .scholars-grid {
+    gap: 20px;
+  }
+
+  .categories-grid .cat-card,
+  .scholars-grid .scholar-card {
+    flex: 1 1 100%;
+    max-width: 400px;
   }
 }
 
