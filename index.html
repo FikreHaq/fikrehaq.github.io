@@ -47,63 +47,76 @@
 </head>
 <body>
 
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="logo">
+        <div class="logo-icon"><i class="fas fa-mosque" aria-hidden="true"></i></div>
+        <span>فکرِ حق</span>
+      </div>
 
-<!-- NAVBAR -->
-<nav class="navbar">
-  <div class="nav-container">
-    <div class="logo">
-      <div class="logo-icon"><i class="fas fa-mosque"></i></div>
-      <span>فکر حق</span>
-    </div>
-    
-    <!-- Desktop Links -->
-    <ul class="nav-links">
-      <li><a href="#home">صفحہ اول</a></li>
-      <li><a href="#categories">زمرہ جات</a></li>
-      <li><a href="#scholars">علماء کرام</a></li>
-      <li><a href="#latest">تازہ ترین</a></li>
-      <li><a href="#about">تعارف</a></li>
-      <li><a href="#contact">رابطہ</a></li>
-    </ul>
-    <a href="#scholars" class="btn-3d small">بیانات سنیں <i class="fas fa-headphones"></i></a>
-    
-    <!-- Mobile Menu Button -->
-    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open Menu">
-      <i class="fas fa-bars"></i>
-    </button>
-  </div>
-</nav>
+      <!-- Desktop Links -->
+      <ul class="nav-links">
+        <li><a href="#home">صفحہ اول</a></li>
+        <li><a href="#categories">زمرہ جات</a></li>
+        <li><a href="#scholars">علماءِ کرام</a></li>
+        <li><a href="#latest">تازہ ترین</a></li>
+        <li><a href="#about">تعارف</a></li>
+        <li><a href="rabta/index.html">رابطہ</a></li>
+      </ul>
 
-<!-- MOBILE SIDEBAR -->
-<div class="sidebar-overlay" id="sidebarOverlay"></div>
-<div class="mobile-sidebar" id="mobileSidebar">
-  <div class="sidebar-header">
-    <div class="logo" style="font-size: 1.3rem;">
-      <div class="logo-icon" style="width: 40px; height: 40px; font-size: 1.1rem;"><i class="fas fa-mosque"></i></div>
-      <span>فکر حق</span>
-    </div>
-    <button class="close-sidebar" id="closeSidebar" aria-label="Close Menu">
-      <i class="fas fa-times"></i>
-    </button>
-  </div>
-  <ul class="mobile-nav-links">
-    <li><a href="#home" class="mobile-link"><i class="fas fa-home"></i> صفحہ اول</a></li>
-    <li><a href="#categories" class="mobile-link"><i class="fas fa-layer-group"></i> زمرہ جات</a></li>
-    <li><a href="#scholars" class="mobile-link"><i class="fas fa-users"></i> علماء کرام</a></li>
-    <li><a href="#latest" class="mobile-link"><i class="fas fa-headphones"></i> تازہ بیانات</a></li>
-    <li><a href="#about" class="mobile-link"><i class="fas fa-info-circle"></i> ہمارے بارے میں</a></li>
-    <li><a href="#contact" class="mobile-link"><i class="fas fa-envelope"></i> رابطہ</a></li>
-  </ul>
-      <div class="sidebar-footer" id="fh-sidebar-install-wrap" style="margin-top: auto; padding-top: 20px; border-top: 1px solid var(--pink-3); text-align: center;">
-      <button type="button" id="fhSidebarInstallBtn" class="btn-3d small" style="width: 100%; justify-content: center; cursor: pointer;">
-        <i class="fas fa-download" aria-hidden="true"></i> ایپ انسٹال کریں
+      <a href="#scholars" class="btn-3d small">
+        بیانات سنیں <i class="fas fa-headphones" aria-hidden="true"></i>
+      </a>
+
+      <!-- Mobile Menu Button -->
+      <button type="button" class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open Menu">
+        <i class="fas fa-bars" aria-hidden="true"></i>
       </button>
+    </div>
+  </nav>
 
-      <div id="fhSidebarInstallGuide" style="display: none; margin-top: 10px; padding: 10px 12px; border-radius: 8px; background: #fff8f2; border: 1px solid #d7ccc8; color: #3e2723; font-size: 0.85rem; line-height: 1.7; text-align: right;">
-        اگر براہِ راست پرامپٹ نہ آئے تو براؤزر کے اوپر یا نیچے دائیں کونے میں <strong>تین نقطوں (⋮)</strong> پر کلک کریں اور <strong>Install app</strong> یا <strong>Add to Home screen</strong> منتخب کریں۔
+  <!-- MOBILE SIDEBAR -->
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+  <aside class="mobile-sidebar" id="mobileSidebar" aria-label="موبائل مینو">
+    <div class="sidebar-header">
+      <div class="logo" style="font-size: 1.3rem;">
+        <div class="logo-icon" style="width: 40px; height: 40px; font-size: 1.1rem;"><i class="fas fa-mosque" aria-hidden="true"></i></div>
+        <span>فکرِ حق</span>
       </div>
+      <button type="button" class="close-sidebar" id="closeSidebar" aria-label="Close Menu">
+        <i class="fas fa-times" aria-hidden="true"></i>
+      </button>
+    </div>
+
+    <ul class="mobile-nav-links">
+      <li><a href="#home" class="mobile-link"><i class="fas fa-home" aria-hidden="true"></i> صفحہ اول</a></li>
+      <li><a href="#categories" class="mobile-link"><i class="fas fa-layer-group" aria-hidden="true"></i> زمرہ جات</a></li>
+      <li><a href="#scholars" class="mobile-link"><i class="fas fa-users" aria-hidden="true"></i> علماءِ کرام</a></li>
+      <li><a href="#latest" class="mobile-link"><i class="fas fa-headphones" aria-hidden="true"></i> تازہ بیانات</a></li>
+      <li><a href="#about" class="mobile-link"><i class="fas fa-info-circle" aria-hidden="true"></i> ہمارے بارے میں</a></li>
+      <li><a href="rabta/index.html" class="mobile-link"><i class="fas fa-envelope" aria-hidden="true"></i> رابطہ</a></li>
+    </ul>
+
+    <div class="sidebar-footer" style="margin-top: auto; padding-top: 20px; border-top: 1px solid var(--pink-3); text-align: center; display: flex; flex-direction: column; gap: 10px;">
+      <div id="fh-sidebar-install-wrap">
+        <button type="button" id="fhSidebarInstallBtn" class="btn-3d small" style="width: 100%; justify-content: center; cursor: pointer;">
+          <i class="fas fa-download" aria-hidden="true"></i> ایپ انسٹال کریں
+        </button>
+
+        <div id="fhSidebarInstallGuide" style="display: none; margin-top: 10px; padding: 10px 12px; border-radius: 8px; background: #fff8f2; border: 1px solid #d7ccc8; color: #3e2723; font-size: 0.85rem; line-height: 1.7; text-align: right;">
+          اگر براہِ راست پرامپٹ نہ آئے تو براؤزر کے اوپر یا نیچے دائیں کونے میں <strong>تین نقطوں (⋮)</strong> پر کلک کریں اور <strong>Install app</strong> یا <strong>Add to Home screen</strong> منتخب کریں۔
+        </div>
       </div>
-</div>
+
+      <a href="#scholars" class="btn-3d small" style="width: 100%; justify-content: center;">
+        بیانات سنیں <i class="fas fa-headphones" aria-hidden="true"></i>
+      </a>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main id="main-content">
 
     <!-- HERO -->
     <section class="hero" id="home">
@@ -119,6 +132,7 @@
         <p class="hero-desc">
           ہماری کاوش ہے کہ اہلسنت و جماعت کے علماءِ کرام کے علمی و دینی بیانات کو ایک منظم پلیٹ فارم پر جمع کیا جائے تاکہ عوام الناس کو دینِ حق کی سمجھ آسان ہو۔
         </p>
+
         <div class="hero-buttons">
           <a href="#scholars" class="btn-3d">
             <i class="fas fa-play-circle" aria-hidden="true"></i> بیانات ملاحظہ کریں
@@ -126,6 +140,16 @@
           <a href="#about" class="btn-3d outline">
             <i class="fas fa-info-circle" aria-hidden="true"></i> مزید جانیں
           </a>
+        </div>
+
+        <div id="fh-install-wrap" style="margin-top: 16px; text-align: center;">
+          <button type="button" id="fhInstallBtn" class="btn-3d small" style="cursor: pointer;">
+            <i class="fas fa-download" aria-hidden="true"></i> ایپ انسٹال کریں
+          </button>
+
+          <div id="fhInstallGuide" style="display: none; margin: 12px auto 0; max-width: 440px; padding: 12px 16px; border-radius: 10px; background: #fff8f2; border: 1px solid #d7ccc8; color: #3e2723; font-size: 0.92rem; line-height: 1.8; text-align: right;">
+            اگر براہِ راست پرامپٹ نہ آئے تو براؤزر کے اوپر یا نیچے دائیں کونے میں <strong>تین نقطوں (⋮)</strong> پر کلک کریں اور <strong>Install app</strong> یا <strong>Add to Home screen</strong> منتخب کریں۔
+          </div>
         </div>
       </div>
     </section>
@@ -177,7 +201,6 @@
         </div>
 
         <div class="scholars-grid">
-          <!-- Scholar 1 -->
           <article class="scholar-card">
             <div class="scholar-avatar">
               <span class="avatar-title">مجددِ دوراں</span>
@@ -190,12 +213,11 @@
             </a>
           </article>
 
-          <!-- Scholar 2 -->
           <article class="scholar-card">
             <div class="scholar-avatar">
               <span class="avatar-title">حکیم الاسلام</span>
             </div>
-            <span class="scholar-role">تذکیر و اصلاح</span>
+            <span class="scholar-role">تذکیہ و اصلاح</span>
             <h3 class="scholar-name">پیرِ طریقت رہبرِ شریعت حضور خواجہ محبوب فرید چشتی صاحب مدظلہ العالی</h3>
             <p class="scholar-desc">روحانی تربیت اور اصلاحِ اعمال</p>
             <a href="hs/index.html" class="btn-3d small">
@@ -203,7 +225,6 @@
             </a>
           </article>
 
-          <!-- Scholar 3 -->
           <article class="scholar-card">
             <div class="scholar-avatar">
               <span class="avatar-title">امام الغیرت</span>
@@ -216,7 +237,6 @@
             </a>
           </article>
 
-          <!-- Scholar 4 -->
           <article class="scholar-card">
             <div class="scholar-avatar">
               <span class="avatar-title">محقق العصر</span>
@@ -229,7 +249,6 @@
             </a>
           </article>
 
-          <!-- Scholar 5 -->
           <article class="scholar-card">
             <div class="scholar-avatar">
               <span class="avatar-title">محب الرضا</span>
@@ -242,7 +261,6 @@
             </a>
           </article>
 
-          <!-- Scholar 6 -->
           <article class="scholar-card">
             <div class="scholar-avatar">
               <span class="avatar-title">علمائے اہلسنت</span>
@@ -357,37 +375,31 @@
       </div>
 
       <div class="fh-footer-stats" id="fhpage-footer-stats-box" aria-label="وزٹ شماریات">
-        <!-- 1. سیشن کے مطابق کُل زائرین -->
         <div class="fh-stat-pill" id="fhpage-total-visits-pill">
           <span class="fh-stat-label" id="fhpage-total-visits-label">کُل زائرین</span>
           <strong class="fh-stat-value" id="fhpage-total-visits-count">0</strong>
         </div>
 
-        <!-- 2. سیشن کے مطابق اس صفحے کے زائرین -->
         <div class="fh-stat-pill" id="fhpage-page-visits-pill">
           <span class="fh-stat-label" id="fhpage-page-visits-label">اس صفحے کے زائرین</span>
           <strong class="fh-stat-value" id="fhpage-page-visits-count">0</strong>
         </div>
 
-        <!-- 3. ہر اوپن/ریفریش پر بڑھنے والے کُل ملاحظات -->
         <div class="fh-stat-pill" id="fhpage-total-views-pill">
           <span class="fh-stat-label" id="fhpage-total-views-label">کُل ملاحظات</span>
           <strong class="fh-stat-value" id="fhpage-total-views-count">0</strong>
         </div>
 
-        <!-- 4. ہر اوپن/ریفریش پر بڑھنے والے اس صفحے کے ملاحظات -->
         <div class="fh-stat-pill" id="fhpage-page-views-pill">
           <span class="fh-stat-label" id="fhpage-page-views-label">اس صفحے کے ملاحظات</span>
           <strong class="fh-stat-value" id="fhpage-page-views-count">0</strong>
         </div>
 
-        <!-- 5. پوری ویب سائٹ پر براہِ راست موجود افراد -->
         <div class="fh-stat-pill fh-stat-live" id="fhpage-live-total-pill">
           <span class="fh-stat-label" id="fhpage-live-total-label">ویب سائٹ پر آن لائن</span>
           <strong class="fh-stat-value" id="fhpage-live-total-count">...</strong>
         </div>
 
-        <!-- 6. اس صفحے پر براہِ راست موجود افراد -->
         <div class="fh-stat-pill fh-stat-live" id="fhpage-live-page-pill">
           <span class="fh-stat-label" id="fhpage-live-page-label">اس صفحے پر آن لائن زائرین</span>
           <strong class="fh-stat-value" id="fhpage-live-page-count">...</strong>
@@ -418,77 +430,79 @@
       });
     }
   </script>
-  
+
   <script>
-  (function () {
-    let deferredInstallPrompt = null;
+    (function () {
+      let deferredInstallPrompt = null;
 
-    const installWraps = [
-      document.getElementById('fh-install-wrap'),
-      document.getElementById('fh-sidebar-install-wrap')
-    ].filter(Boolean);
+      const installWraps = [
+        document.getElementById('fh-install-wrap'),
+        document.getElementById('fh-sidebar-install-wrap')
+      ].filter(Boolean);
 
-    const installButtons = [
-      document.getElementById('fhInstallBtn'),
-      document.getElementById('fhSidebarInstallBtn')
-    ].filter(Boolean);
+      const installButtons = [
+        document.getElementById('fhInstallBtn'),
+        document.getElementById('fhSidebarInstallBtn')
+      ].filter(Boolean);
 
-    const installGuides = [
-      document.getElementById('fhSidebarInstallGuide'),
-      document.getElementById('fhInstallGuide')
-    ].filter(Boolean);
+      const installGuides = [
+        document.getElementById('fhInstallGuide'),
+        document.getElementById('fhSidebarInstallGuide')
+      ].filter(Boolean);
 
-    if (!installButtons.length) return;
+      if (!installButtons.length) return;
 
-    const isStandalone =
-      window.matchMedia('(display-mode: standalone)').matches ||
-      window.navigator.standalone === true;
+      const isStandalone =
+        window.matchMedia('(display-mode: standalone)').matches ||
+        window.navigator.standalone === true;
 
-    if (isStandalone) {
-      installWraps.forEach((wrap) => {
-        wrap.style.display = 'none';
+      if (isStandalone) {
+        installWraps.forEach((wrap) => {
+          wrap.style.display = 'none';
+        });
+        return;
+      }
+
+      window.addEventListener('beforeinstallprompt', (event) => {
+        event.preventDefault();
+        deferredInstallPrompt = event;
+        installGuides.forEach((guide) => {
+          guide.style.display = 'none';
+        });
       });
-      return;
-    }
 
-    window.addEventListener('beforeinstallprompt', (event) => {
-      event.preventDefault();
-      deferredInstallPrompt = event;
-      installGuides.forEach((guide) => {
-        guide.style.display = 'none';
-      });
-    });
+      installButtons.forEach((btn) => {
+        btn.addEventListener('click', async () => {
+          if (deferredInstallPrompt) {
+            deferredInstallPrompt.prompt();
+            const choice = await deferredInstallPrompt.userChoice;
+            deferredInstallPrompt = null;
 
-    installButtons.forEach((btn) => {
-      btn.addEventListener('click', async () => {
-        if (deferredInstallPrompt) {
-          deferredInstallPrompt.prompt();
-          const choice = await deferredInstallPrompt.userChoice;
-          deferredInstallPrompt = null;
-
-          if (choice && choice.outcome === 'accepted') {
-            installWraps.forEach((wrap) => {
-              wrap.style.display = 'none';
-            });
+            if (choice && choice.outcome === 'accepted') {
+              installWraps.forEach((wrap) => {
+                wrap.style.display = 'none';
+              });
+            }
+          } else {
+            const isSidebarBtn = btn.id === 'fhSidebarInstallBtn';
+            const targetGuide = document.getElementById(
+              isSidebarBtn ? 'fhSidebarInstallGuide' : 'fhInstallGuide'
+            );
+            if (targetGuide) {
+              targetGuide.style.display =
+                targetGuide.style.display === 'none' ? 'block' : 'none';
+            }
           }
-        } else {
-          const sidebarGuide = document.getElementById('fhSidebarInstallGuide');
-          if (sidebarGuide) {
-            sidebarGuide.style.display =
-              sidebarGuide.style.display === 'none' ? 'block' : 'none';
-          }
-        }
+        });
       });
-    });
 
-    window.addEventListener('appinstalled', () => {
-      deferredInstallPrompt = null;
-      installWraps.forEach((wrap) => {
-        wrap.style.display = 'none';
+      window.addEventListener('appinstalled', () => {
+        deferredInstallPrompt = null;
+        installWraps.forEach((wrap) => {
+          wrap.style.display = 'none';
+        });
       });
-    });
-  })();
-</script>
-
+    })();
+  </script>
 </body>
 </html>
