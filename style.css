@@ -63,6 +63,57 @@ div[id] {
   scroll-margin-top: 95px;
 }
 
+.navbar .logo,
+.mobile-sidebar .logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.fh-brand-logo-img {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 2px solid rgba(212, 165, 116, 0.65);
+  box-shadow: 0 4px 12px rgba(62, 39, 35, 0.22);
+  background: #fff8f2;
+}
+
+.fh-sidebar-logo-img {
+  width: 38px;
+  height: 38px;
+}
+
+.fh-hero-logo-wrap {
+  display: flex;
+  justify-content: center;
+  margin: 14px auto 16px;
+}
+
+.fh-hero-logo-img {
+  width: 108px;
+  height: 108px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid rgba(212, 165, 116, 0.75);
+  box-shadow: 0 10px 26px rgba(62, 39, 35, 0.28);
+  background: #fff8f2;
+}
+
+@media (max-width: 600px) {
+  .fh-brand-logo-img {
+    width: 38px;
+    height: 38px;
+  }
+
+  .fh-hero-logo-img {
+    width: 88px;
+    height: 88px;
+  }
+}
+
 /* ===== نیویگیشن بار (Elevated Navbar) ===== */
 .navbar {
   position: sticky;
