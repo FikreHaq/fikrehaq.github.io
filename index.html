@@ -380,6 +380,51 @@ html:not(.fa-loaded) .fa-brands {
       </div>
     </section>
 
+  <button type="button" id="installAppBtn" class="btn-3d" style="display: none;">
+  ایپ انسٹال کریں <i class="fas fa-download" aria-hidden="true"></i>
+</button>
+
+<script>
+  (function () {
+    let deferredPrompt = null;
+    const installBtn = document.getElementById('installAppBtn');
+    if (!installBtn) return;
+
+    const isStandalone =
+      window.matchMedia('(display-mode: standalone)').matches ||
+      window.navigator.standalone === true;
+
+    if (isStandalone) {
+      installBtn.style.display = 'none';
+      return;
+    }
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      installBtn.style.display = 'inline-flex';
+    });
+
+    installBtn.addEventListener('click', async () => {
+      if (!deferredPrompt) return;
+      installBtn.disabled = true;
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      if (outcome === 'accepted') {
+        installBtn.style.display = 'none';
+      } else {
+        installBtn.disabled = false;
+      }
+      deferredPrompt = null;
+    });
+
+    window.addEventListener('appinstalled', () => {
+      installBtn.style.display = 'none';
+      deferredPrompt = null;
+    });
+  })();
+</script>
+
   </main>
 
   <!-- FOOTER -->
