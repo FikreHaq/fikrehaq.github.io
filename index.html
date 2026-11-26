@@ -94,6 +94,16 @@
     <li><a href="#about" class="mobile-link"><i class="fas fa-info-circle"></i> ہمارے بارے میں</a></li>
     <li><a href="#contact" class="mobile-link"><i class="fas fa-envelope"></i> رابطہ</a></li>
   </ul>
+      <div class="sidebar-footer" id="fh-sidebar-install-wrap" style="margin-top: auto; padding-top: 20px; border-top: 1px solid var(--pink-3); text-align: center;">
+      <button type="button" id="fhSidebarInstallBtn" class="btn-3d small" style="width: 100%; justify-content: center; cursor: pointer;">
+        <i class="fas fa-download" aria-hidden="true"></i> ایپ انسٹال کریں
+      </button>
+
+      <div id="fhSidebarInstallGuide" style="display: none; margin-top: 10px; padding: 10px 12px; border-radius: 8px; background: #fff8f2; border: 1px solid #d7ccc8; color: #3e2723; font-size: 0.85rem; line-height: 1.7; text-align: right;">
+        اگر براہِ راست پرامپٹ نہ آئے تو براؤزر کے اوپر یا نیچے دائیں کونے میں <strong>تین نقطوں (⋮)</strong> پر کلک کریں اور <strong>Install app</strong> یا <strong>Add to Home screen</strong> منتخب کریں۔
+      </div>
+      </div>
+  
   <div style="margin-top: auto; padding-top: 20px; border-top: 1px solid var(--pink-3); text-align: center;">
     <a href="#scholars" class="btn-3d small" style="width: 100%; justify-content: center;">
       بیانات سنیں <i class="fas fa-headphones"></i>
@@ -414,5 +424,77 @@
       });
     }
   </script>
+  
+  <script>
+  (function () {
+    let deferredInstallPrompt = null;
+
+    const installWraps = [
+      document.getElementById('fh-install-wrap'),
+      document.getElementById('fh-sidebar-install-wrap')
+    ].filter(Boolean);
+
+    const installButtons = [
+      document.getElementById('fhInstallBtn'),
+      document.getElementById('fhSidebarInstallBtn')
+    ].filter(Boolean);
+
+    const installGuides = [
+      document.getElementById('fhSidebarInstallGuide'),
+      document.getElementById('fhInstallGuide')
+    ].filter(Boolean);
+
+    if (!installButtons.length) return;
+
+    const isStandalone =
+      window.matchMedia('(display-mode: standalone)').matches ||
+      window.navigator.standalone === true;
+
+    if (isStandalone) {
+      installWraps.forEach((wrap) => {
+        wrap.style.display = 'none';
+      });
+      return;
+    }
+
+    window.addEventListener('beforeinstallprompt', (event) => {
+      event.preventDefault();
+      deferredInstallPrompt = event;
+      installGuides.forEach((guide) => {
+        guide.style.display = 'none';
+      });
+    });
+
+    installButtons.forEach((btn) => {
+      btn.addEventListener('click', async () => {
+        if (deferredInstallPrompt) {
+          deferredInstallPrompt.prompt();
+          const choice = await deferredInstallPrompt.userChoice;
+          deferredInstallPrompt = null;
+
+          if (choice && choice.outcome === 'accepted') {
+            installWraps.forEach((wrap) => {
+              wrap.style.display = 'none';
+            });
+          }
+        } else {
+          const sidebarGuide = document.getElementById('fhSidebarInstallGuide');
+          if (sidebarGuide) {
+            sidebarGuide.style.display =
+              sidebarGuide.style.display === 'none' ? 'block' : 'none';
+          }
+        }
+      });
+    });
+
+    window.addEventListener('appinstalled', () => {
+      deferredInstallPrompt = null;
+      installWraps.forEach((wrap) => {
+        wrap.style.display = 'none';
+      });
+    });
+  })();
+</script>
+
 </body>
 </html>
