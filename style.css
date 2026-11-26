@@ -20,7 +20,7 @@
   --gradient-soft: linear-gradient(135deg, #F5E6D3 0%, #E8C9B0 100%);
   --gradient-premium: linear-gradient(135deg, #C9A88A 0%, #D4A574 50%, #B8866B 100%);
 
-  /* اوپر ابھرے ہوئے باکسز کے لیے نرم ایلیویشن شیڈو متغیرات */
+  /* اوپر ابھرے ہوئے باکسز، بٹنز اور اسکرول بٹن کے لیے نرم ایلیویشن شیڈو متغیرات */
   --top-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.92);
   --elevated-shadow:
     0 14px 32px -4px rgba(61, 40, 23, 0.11),
@@ -61,6 +61,91 @@ body {
 section[id],
 div[id] {
   scroll-margin-top: 95px;
+}
+
+/* ===== بٹنوں اور اسکرول بٹن پر یکساں ابھرا ہوا شیڈو ایفیکٹ ===== */
+.btn,
+.btn-3d,
+.btn-primary,
+.btn-secondary,
+.btn-outline,
+.action-btn,
+button[class*="btn"] {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.45),
+    0 14px 28px -4px rgba(61, 40, 23, 0.22),
+    0 6px 14px -2px rgba(139, 94, 60, 0.16) !important;
+  transition: transform 0.25s var(--ease-smooth), box-shadow 0.25s var(--ease-smooth), background-color 0.25s ease, color 0.25s ease !important;
+}
+
+.btn:hover,
+.btn-3d:hover,
+.btn-primary:hover,
+.btn-secondary:hover,
+.btn-outline:hover,
+.action-btn:hover,
+button[class*="btn"]:hover {
+  transform: translate3d(0, -4px, 0) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.55),
+    0 22px 40px -6px rgba(61, 40, 23, 0.28),
+    0 10px 20px -4px rgba(139, 94, 60, 0.2) !important;
+}
+
+.btn:active,
+.btn-3d:active,
+.btn-primary:active,
+.btn-secondary:active,
+.btn-outline:active,
+.action-btn:active,
+button[class*="btn"]:active {
+  transform: translate3d(0, 1px, 0) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.35),
+    0 8px 18px -4px rgba(61, 40, 23, 0.2) !important;
+}
+
+/* اسکرول بٹن (Scroll to Top / Scroll Button) */
+.scroll-top,
+.scroll-to-top,
+.back-to-top,
+.scroll-btn,
+#scrollTopBtn,
+#backToTop {
+  background: var(--gradient-main);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.5),
+    0 16px 32px -4px rgba(61, 40, 23, 0.26),
+    0 6px 14px -2px rgba(139, 94, 60, 0.18);
+  transition: transform 0.28s var(--ease-smooth), box-shadow 0.28s var(--ease-smooth), opacity 0.25s ease;
+  will-change: transform, box-shadow;
+}
+
+.scroll-top:hover,
+.scroll-to-top:hover,
+.back-to-top:hover,
+.scroll-btn:hover,
+#scrollTopBtn:hover,
+#backToTop:hover {
+  transform: translate3d(0, -5px, 0) scale(1.04);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.6),
+    0 24px 44px -6px rgba(61, 40, 23, 0.34),
+    0 10px 22px -4px rgba(139, 94, 60, 0.24);
+}
+
+.scroll-top:active,
+.scroll-to-top:active,
+.back-to-top:active,
+.scroll-btn:active,
+#scrollTopBtn:active,
+#backToTop:active {
+  transform: translate3d(0, 1px, 0) scale(0.99);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.35),
+    0 8px 18px -4px rgba(61, 40, 23, 0.22);
 }
 
 /* ===== نیویگیشن بار (Elevated Navbar) ===== */
