@@ -40,6 +40,15 @@
 
   <!-- Font Awesome آئیکنز -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script>
+  if (document.fonts) {
+    document.fonts.ready.then(function () {
+      document.documentElement.classList.add('fa-loaded');
+    });
+  } else {
+    document.documentElement.classList.add('fa-loaded');
+  }
+</script>
 
   <!-- مرکزی اسٹائل شیٹس -->
   <link rel="stylesheet" href="style.css">
