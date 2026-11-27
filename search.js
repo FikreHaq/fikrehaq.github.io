@@ -394,25 +394,39 @@ document.addEventListener("DOMContentLoaded", function() {
         const isSearchingActive = (rawQuery.length > 0 || (inputField && document.activeElement === inputField));
         manageMiddleGaps(isSearchingActive);
 
-        // اگر صرف "نمبر + کومہ" لکھا گیا ہو (مثلاً "5," یا "5،") تو صرف اسی نمبر کا کارڈ دکھائیں
-        const trailingCommaNumberMatch = query.match(/^(\d+)\s*[,،٫]\s*$/);
-        const isTrailingCommaNumber = Boolean(trailingCommaNumberMatch);
-        const trailingCommaNumberValue = trailingCommaNumberMatch ? parseInt(trailingCommaNumberMatch[1], 10) : null;
+        // ہر کومے کے بعد والے حصے کو الگ چیک کریں تاکہ ہر نمبر کے بعد کومہ لگانے سے وہ نمبر سرچ میں آتا جائے
+        const endsWithComma = /[,،٫]\s*$/.test(query);
+        const rawParts = query.split(/[,،٫]+/);
+        const nonEmptyGroups = rawParts.map(g => g.trim()).filter(g => g.length > 0);
+        const allGroupsAreNumbers = nonEmptyGroups.length > 0 && nonEmptyGroups.every(g => /^\d+$/.test(g));
+
+        // اگر صارف ابھی صرف نمبر اور کومے لکھ رہا ہے (مثلاً "15," یا "15,58,36,")
+        const isNumberCommaOnlyMode = endsWithComma && allGroupsAreNumbers;
 
         let conditions = [];
-        if (query && !isTrailingCommaNumber) {
-            const groups = query.split(/[,،٫]+/).map(g => g.trim()).filter(g => g.length > 0);
-            conditions = groups.map(group => {
+        if (query) {
+            for (let p = 0; p < rawParts.length; p++) {
+                const group = rawParts[p].trim();
+                if (!group) continue;
+
+                const isLastPart = (p === rawParts.length - 1);
                 const rangeMatch = group.match(/^(\d+)\s*-\s*(\d+)$/);
+
                 if (rangeMatch) {
                     let s = parseInt(rangeMatch[1], 10), e = parseInt(rangeMatch[2], 10);
-                    return { type: 'range', min: Math.min(s, e), max: Math.max(s, e) };
+                    conditions.push({ type: 'range', min: Math.min(s, e), max: Math.max(s, e) });
                 } else if (/^\d+$/.test(group)) {
-                    return { type: 'exact', value: parseInt(group, 10), stringVal: group };
+                    const numVal = parseInt(group, 10);
+                    // اگر اس نمبر کے بعد کومہ لگایا گیا ہے (یا یہ نمبر-کومہ موڈ میں ہے) تو صرف اسی کارڈ نمبر کو میچ کریں
+                    if (!isLastPart || endsWithComma) {
+                        conditions.push({ type: 'cardNumberOnly', value: numVal });
+                    } else {
+                        conditions.push({ type: 'exact', value: numVal, stringVal: group });
+                    }
                 } else {
-                    return { type: 'text', words: group.split(/\s+/).filter(w => w.length > 0).map(w => superNormalize(w)) };
+                    conditions.push({ type: 'text', words: group.split(/\s+/).filter(w => w.length > 0).map(w => superNormalize(w)) });
                 }
-            });
+            }
         }
 
         const tabChanged = (lastTabState !== activeCategoryTab);
@@ -433,15 +447,15 @@ document.addEventListener("DOMContentLoaded", function() {
                 }
 
                 let categoryMatches = (activeCategoryTab === "ALL" || item.type === activeCategoryTab);
-                let textMatches = true;
+                let textMatches = (conditions.length === 0);
 
-                if (isTrailingCommaNumber) {
-                    textMatches = (item.number === trailingCommaNumberValue);
-                } else if (conditions.length > 0) {
+                if (categoryMatches && conditions.length > 0) {
                     textMatches = false;
                     for (let c = 0; c < conditions.length; c++) {
                         let cond = conditions[c];
-                        if (cond.type === 'range') {
+                        if (cond.type === 'cardNumberOnly') {
+                            if (item.number === cond.value) { textMatches = true; break; }
+                        } else if (cond.type === 'range') {
                             if (item.number >= cond.min && item.number <= cond.max) { textMatches = true; break; }
                         } else if (cond.type === 'exact') {
                             if (item.number === cond.value || item.text.includes(cond.stringVal)) { textMatches = true; break; }
@@ -453,6 +467,12 @@ document.addEventListener("DOMContentLoaded", function() {
                             if (allWordsMatch && cond.words.length > 0) { textMatches = true; break; }
                         }
                     }
+                }
+
+                // اگر صرف نمبر کے بعد کومہ ہو تو یقینی بنائیں کہ صرف وہی نمبر والے کارڈز رہیں
+                if (isNumberCommaOnlyMode && categoryMatches) {
+                    const matchedNum = conditions.some(cond => cond.type === 'cardNumberOnly' && cond.value === item.number);
+                    textMatches = matchedNum;
                 }
 
                 if (categoryMatches && textMatches) {
