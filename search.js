@@ -298,6 +298,63 @@ document.addEventListener("DOMContentLoaded", function() {
     const infoBtn = document.getElementById('infoBtn');
     const clearBtn = document.getElementById('clearSearch');
     const modal = document.getElementById("helpModal");
+    const closeModalBtn = document.getElementById("closeModal");
+    const okModalBtn = document.getElementById("okBtn");
+
+    // پاپ اپ کو براہِ راست body میں منتقل کریں تاکہ کسی والد عنصر کے transform/overflow سے متاثر نہ ہو
+    if (modal && modal.parentElement !== document.body) {
+        document.body.appendChild(modal);
+    }
+
+    function openHelpModal(e) {
+        if (e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+        if (!modal) return;
+        modal.style.setProperty("display", "flex", "important");
+        requestAnimationFrame(() => {
+            modal.classList.add("modal-active");
+        });
+        document.documentElement.style.overflow = "hidden";
+    }
+
+    function closeHelpModal(e) {
+        if (e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+        if (!modal) return;
+        modal.classList.remove("modal-active");
+        document.documentElement.style.overflow = "";
+        setTimeout(() => {
+            if (!modal.classList.contains("modal-active")) {
+                modal.style.removeProperty("display");
+            }
+        }, 240);
+    }
+
+    if (infoBtn && modal) {
+        infoBtn.addEventListener("click", openHelpModal);
+    }
+    if (closeModalBtn && modal) {
+        closeModalBtn.addEventListener("click", closeHelpModal);
+    }
+    if (okModalBtn && modal) {
+        okModalBtn.addEventListener("click", closeHelpModal);
+    }
+    if (modal) {
+        modal.addEventListener("click", function(e) {
+            if (e.target === modal) {
+                closeHelpModal(e);
+            }
+        });
+    }
+    document.addEventListener("keydown", function(e) {
+        if (e.key === "Escape" && modal && modal.classList.contains("modal-active")) {
+            closeHelpModal(e);
+        }
+    });
         
     let currentSearchState = false; 
     
@@ -331,7 +388,7 @@ document.addEventListener("DOMContentLoaded", function() {
         let query = normalizeNumbers(rawQuery);
         let visibleCount = 0;
 
-        if(infoBtn) infoBtn.style.display = rawQuery.length > 0 ? 'none' : 'block';
+        if(infoBtn) infoBtn.style.display = rawQuery.length > 0 ? 'none' : 'flex';
         if(clearBtn) clearBtn.style.display = (rawQuery.length > 0 || activeCategoryTab !== "ALL") ? 'flex' : 'none';
 
         const isSearchingActive = (rawQuery.length > 0 || (inputField && document.activeElement === inputField));
@@ -411,11 +468,6 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         });
     }
-
-    if(infoBtn && modal) infoBtn.onclick = () => modal.classList.add("modal-active");
-    if(document.getElementById("closeModal") && modal) document.getElementById("closeModal").onclick = () => modal.classList.remove("modal-active");
-    if(document.getElementById("okBtn") && modal) document.getElementById("okBtn").onclick = () => modal.classList.remove("modal-active");
-    window.addEventListener('click', (e) => { if (modal && e.target == modal) modal.classList.remove("modal-active"); });
 
     wrapLinksCustomSite();
     
