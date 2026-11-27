@@ -1,0 +1,153 @@
+ .fh-social-section {
+    padding: 28px 16px 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .fh-social-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    width: 100%;
+    max-width: 460px;
+    padding: 10px 14px;
+  }
+
+  .fh-dumbbell-btn {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-decoration: none;
+    height: 64px;
+    border-radius: 50px;
+    padding: 0 12px;
+    color: #ffffff;
+    transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .fh-dumbbell-btn:hover {
+    transform: translateY(-4px) scale(1.015);
+  }
+
+  .fh-dumbbell-btn:active {
+    transform: translateY(1px) scale(0.98);
+  }
+
+  .fh-fb-theme {
+    background: linear-gradient(135deg, #1877F2 0%, #0d5bc4 100%);
+    box-shadow: 0 10px 25px rgba(24, 119, 242, 0.35), inset 0 2px 3px rgba(255, 255, 255, 0.35);
+  }
+
+  .fh-fb-theme:hover {
+    box-shadow: 0 14px 30px rgba(24, 119, 242, 0.48), inset 0 2px 3px rgba(255, 255, 255, 0.45);
+  }
+
+  .fh-wa-theme {
+    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+    box-shadow: 0 10px 25px rgba(37, 211, 102, 0.35), inset 0 2px 3px rgba(255, 255, 255, 0.35);
+  }
+
+  .fh-wa-theme:hover {
+    box-shadow: 0 14px 30px rgba(37, 211, 102, 0.48), inset 0 2px 3px rgba(255, 255, 255, 0.45);
+  }
+
+  .fh-orb {
+    position: relative;
+    width: 82px;
+    height: 82px;
+    border-radius: 50%;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    border: 4px solid #ffffff;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.22);
+    transition: transform 0.35s ease;
+    z-index: 2;
+    overflow: hidden;
+  }
+
+  .fh-orb-right {
+    margin-right: -18px;
+  }
+
+  .fh-orb-right img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+
+  .fh-orb-left {
+    margin-left: -18px;
+  }
+
+  .fh-fb-theme .fh-orb-left {
+    background: radial-gradient(circle at 30% 30%, #ffffff, #eef5ff);
+    border-color: #1877F2;
+  }
+
+  .fh-wa-theme .fh-orb-left {
+    background: radial-gradient(circle at 30% 30%, #ffffff, #eafbf0);
+    border-color: #25D366;
+  }
+
+  .fh-orb-left svg {
+    width: 44px;
+    height: 44px;
+    transition: transform 0.35s ease;
+  }
+
+  .fh-dumbbell-btn:hover .fh-orb-left svg {
+    transform: scale(1.12) rotate(-6deg);
+  }
+
+  .fh-dumbbell-btn:hover .fh-orb-right {
+    transform: scale(1.06);
+  }
+
+  .fh-text-area {
+    flex-grow: 1;
+    text-align: center;
+    padding: 0 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    line-height: 1.5;
+  }
+
+  .fh-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    white-space: nowrap;
+  }
+
+  @media (max-width: 420px) {
+    .fh-dumbbell-btn {
+      height: 58px;
+    }
+    .fh-orb {
+      width: 72px;
+      height: 72px;
+    }
+    .fh-orb-right {
+      margin-right: -14px;
+    }
+    .fh-orb-left {
+      margin-left: -14px;
+    }
+    .fh-orb-left svg {
+      width: 38px;
+      height: 38px;
+    }
+    .fh-title {
+      font-size: 1.08rem;
+    }
+  }
