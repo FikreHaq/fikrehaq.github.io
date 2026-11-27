@@ -399,6 +399,49 @@ html:not(.fa-loaded) .fa-brands {
     </section>
   </main>
 
+<section class="fh-social-section" aria-label="سوشل میڈیا لنکس">
+  <div class="fh-social-wrapper">
+    <a href="https://www.facebook.com/FikreHaq?mibextid=ZbWKwL" target="_blank" rel="noopener noreferrer" class="fh-dumbbell-btn fh-fb-theme" aria-label="فکر حق">
+      <div class="fh-orb fh-orb-right">
+        <img src="https://fikrehaq.github.io/icon-512.png" alt="فکرِ حق لوگو">
+      </div>
+      <div class="fh-text-area">
+        <span class="fh-title">فکرِ حق</span>
+      </div>
+      <div class="fh-orb fh-orb-left">
+        <svg viewBox="0 0 24 24" fill="#1877F2" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047v-2.66c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.971H15.83c-1.491 0-1.956.93-1.956 1.886v2.264h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/>
+        </svg>
+      </div>
+    </a>
+
+    <a href="https://whatsapp.com/channel/0029VaCjK2OA89MeHf8w2N1b" target="_blank" rel="noopener noreferrer" class="fh-dumbbell-btn fh-wa-theme" aria-label="اعلامیۂ فکرِ حق">
+      <div class="fh-orb fh-orb-right">
+        <img src="https://fikrehaq.github.io/icon-512.png" alt="فکرِ حق لوگو">
+      </div>
+      <div class="fh-text-area">
+        <span class="fh-title">اعلامیۂ فکرِ حق</span>
+      </div>
+      <div class="fh-orb fh-orb-left">
+        <svg viewBox="0 0 24 24" fill="#25D366" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M12.031 0C5.385 0 0 5.385 0 12.031c0 2.12.553 4.19 1.605 6.017L.064 24l6.113-1.603a11.98 11.98 0 0 0 5.854 1.52h.005c6.645 0 12.03-5.386 12.03-12.031A11.954 11.954 0 0 0 20.542 3.52 11.953 11.953 0 0 0 12.031 0zm6.992 17.213c-.296.835-1.72 1.596-2.385 1.696-.614.092-1.391.131-2.244-.14-.517-.164-1.181-.383-2.032-.75-3.575-1.543-5.91-5.143-6.088-5.381-.179-.238-1.454-1.934-1.454-3.69 0-1.756.92-2.619 1.247-2.976.327-.357.713-.446.95-.446.238 0 .475.002.683.012.219.011.513-.083.802.613.297.714 1.01 2.469 1.099 2.648.089.178.148.386.03.624-.119.238-.178.386-.357.595-.178.208-.375.465-.535.624-.178.178-.364.371-.156.728.208.357.924 1.524 1.984 2.469 1.363 1.215 2.512 1.592 2.869 1.77.356.179.564.149.772-.089.208-.238.891-1.04 1.129-1.397.238-.357.475-.297.802-.178.327.119 2.079.981 2.435 1.159.357.179.594.268.683.417.089.148.089.862-.207 1.697z"/>
+        </svg>
+      </div>
+    </a>
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll('.fh-dumbbell-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      this.style.transform = 'scale(0.96)';
+      setTimeout(() => {
+        this.style.transform = '';
+      }, 150);
+    });
+  });
+</script>
+
   <!-- FOOTER -->
   <footer class="fh-footer" id="fhpage-custom-footer" dir="rtl" lang="ur">
     <div class="fh-footer-inner" id="fhpage-footer-inner-box">
