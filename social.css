@@ -1,8 +1,9 @@
- .fh-social-section {
-    padding: 28px 16px 36px;
+  .fh-social-section {
+    padding: 32px 16px 40px;
     display: flex;
     justify-content: center;
     align-items: center;
+    font-family: 'Noto Nastaliq Urdu', 'Amiri', serif;
   }
 
   .fh-social-wrapper {
@@ -10,8 +11,26 @@
     flex-direction: column;
     gap: 28px;
     width: 100%;
-    max-width: 460px;
-    padding: 10px 14px;
+    max-width: 480px;
+    padding: 8px 16px;
+  }
+
+  .fh-social-intro {
+    text-align: center;
+    font-size: 0.98rem;
+    line-height: 2.15;
+    color: #3d2c24;
+    background: linear-gradient(180deg, #fff8fa 0%, #fff0f5 100%);
+    border: 1px solid #f2cad8;
+    border-radius: 20px;
+    padding: 16px 18px;
+    margin: 0 0 4px 0;
+    box-shadow: 0 6px 18px rgba(139, 94, 60, 0.08);
+  }
+
+  .fh-social-intro strong {
+    color: #9e1b52;
+    font-weight: 700;
   }
 
   .fh-dumbbell-btn {
@@ -20,45 +39,45 @@
     align-items: center;
     justify-content: space-between;
     text-decoration: none;
-    height: 64px;
+    height: 66px;
     border-radius: 50px;
     padding: 0 12px;
     color: #ffffff;
-    transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+    transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s ease;
     user-select: none;
     -webkit-tap-highlight-color: transparent;
   }
 
   .fh-dumbbell-btn:hover {
-    transform: translateY(-4px) scale(1.015);
+    transform: translateY(-3px) scale(1.012);
   }
 
-  .fh-dumbbell-btn:active {
-    transform: translateY(1px) scale(0.98);
+  .fh-dumbbell-btn.is-pressed {
+    transform: translateY(1px) scale(0.975);
   }
 
   .fh-fb-theme {
-    background: linear-gradient(135deg, #1877F2 0%, #0d5bc4 100%);
-    box-shadow: 0 10px 25px rgba(24, 119, 242, 0.35), inset 0 2px 3px rgba(255, 255, 255, 0.35);
+    background: linear-gradient(135deg, #1877F2 0%, #0b53b8 100%);
+    box-shadow: 0 10px 24px rgba(24, 119, 242, 0.32), inset 0 2px 3px rgba(255, 255, 255, 0.35);
   }
 
   .fh-fb-theme:hover {
-    box-shadow: 0 14px 30px rgba(24, 119, 242, 0.48), inset 0 2px 3px rgba(255, 255, 255, 0.45);
+    box-shadow: 0 14px 30px rgba(24, 119, 242, 0.44), inset 0 2px 3px rgba(255, 255, 255, 0.45);
   }
 
   .fh-wa-theme {
-    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
-    box-shadow: 0 10px 25px rgba(37, 211, 102, 0.35), inset 0 2px 3px rgba(255, 255, 255, 0.35);
+    background: linear-gradient(135deg, #25D366 0%, #0f7a6d 100%);
+    box-shadow: 0 10px 24px rgba(37, 211, 102, 0.32), inset 0 2px 3px rgba(255, 255, 255, 0.35);
   }
 
   .fh-wa-theme:hover {
-    box-shadow: 0 14px 30px rgba(37, 211, 102, 0.48), inset 0 2px 3px rgba(255, 255, 255, 0.45);
+    box-shadow: 0 14px 30px rgba(37, 211, 102, 0.44), inset 0 2px 3px rgba(255, 255, 255, 0.45);
   }
 
   .fh-orb {
     position: relative;
-    width: 82px;
-    height: 82px;
+    width: 84px;
+    height: 84px;
     border-radius: 50%;
     background: #ffffff;
     display: flex;
@@ -67,7 +86,7 @@
     flex-shrink: 0;
     border: 4px solid #ffffff;
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.22);
-    transition: transform 0.35s ease;
+    transition: transform 0.3s ease;
     z-index: 2;
     overflow: hidden;
   }
@@ -81,6 +100,7 @@
     height: 100%;
     object-fit: cover;
     border-radius: 50%;
+    display: block;
   }
 
   .fh-orb-left {
@@ -100,15 +120,15 @@
   .fh-orb-left svg {
     width: 44px;
     height: 44px;
-    transition: transform 0.35s ease;
+    transition: transform 0.3s ease;
   }
 
   .fh-dumbbell-btn:hover .fh-orb-left svg {
-    transform: scale(1.12) rotate(-6deg);
+    transform: scale(1.1) rotate(-5deg);
   }
 
   .fh-dumbbell-btn:hover .fh-orb-right {
-    transform: scale(1.06);
+    transform: scale(1.05);
   }
 
   .fh-text-area {
@@ -119,34 +139,45 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    line-height: 1.5;
+    line-height: 1.6;
   }
 
   .fh-title {
-    font-size: 1.25rem;
+    font-size: 1.28rem;
     font-weight: 700;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.22);
     white-space: nowrap;
   }
 
   @media (max-width: 420px) {
+    .fh-social-intro {
+      font-size: 0.88rem;
+      line-height: 2.05;
+      padding: 14px 14px;
+    }
+
     .fh-dumbbell-btn {
       height: 58px;
     }
+
     .fh-orb {
-      width: 72px;
-      height: 72px;
+      width: 74px;
+      height: 74px;
     }
+
     .fh-orb-right {
       margin-right: -14px;
     }
+
     .fh-orb-left {
       margin-left: -14px;
     }
+
     .fh-orb-left svg {
       width: 38px;
       height: 38px;
     }
+
     .fh-title {
       font-size: 1.08rem;
     }
