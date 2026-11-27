@@ -72,7 +72,7 @@ body::before {
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  opacity: 0.15;                  /* پہلے سے روشن (پہلے 0.055 تھا) */
+  opacity: 0.25;                  /* پہلے سے روشن (پہلے 0.055 تھا) */
   border-radius: 48px;            /* گول کنارے */
   filter: grayscale(25%) blur(0.2px);
   pointer-events: none;
