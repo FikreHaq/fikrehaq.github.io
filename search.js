@@ -394,8 +394,13 @@ document.addEventListener("DOMContentLoaded", function() {
         const isSearchingActive = (rawQuery.length > 0 || (inputField && document.activeElement === inputField));
         manageMiddleGaps(isSearchingActive);
 
+        // اگر صرف "نمبر + کومہ" لکھا گیا ہو (مثلاً "5," یا "5،") تو صرف اسی نمبر کا کارڈ دکھائیں
+        const trailingCommaNumberMatch = query.match(/^(\d+)\s*[,،٫]\s*$/);
+        const isTrailingCommaNumber = Boolean(trailingCommaNumberMatch);
+        const trailingCommaNumberValue = trailingCommaNumberMatch ? parseInt(trailingCommaNumberMatch[1], 10) : null;
+
         let conditions = [];
-        if (query) {
+        if (query && !isTrailingCommaNumber) {
             const groups = query.split(/[,،٫]+/).map(g => g.trim()).filter(g => g.length > 0);
             conditions = groups.map(group => {
                 const rangeMatch = group.match(/^(\d+)\s*-\s*(\d+)$/);
@@ -428,9 +433,12 @@ document.addEventListener("DOMContentLoaded", function() {
                 }
 
                 let categoryMatches = (activeCategoryTab === "ALL" || item.type === activeCategoryTab);
-                let textMatches = (conditions.length === 0);
+                let textMatches = true;
 
-                if (categoryMatches && conditions.length > 0) {
+                if (isTrailingCommaNumber) {
+                    textMatches = (item.number === trailingCommaNumberValue);
+                } else if (conditions.length > 0) {
+                    textMatches = false;
                     for (let c = 0; c < conditions.length; c++) {
                         let cond = conditions[c];
                         if (cond.type === 'range') {
