@@ -59,6 +59,42 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* ===== پس منظر کا مدھم پروفیشنل لوگو (Watermark Logo) ===== */
+body::before {
+  content: "";
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(70vw, 520px);
+  height: min(70vw, 520px);
+  background-image: url('icon-512.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.055;              /* پروفیشنل مدھم پن — چاہیں تو 0.04 تا 0.08 کے درمیان رکھیں */
+  filter: grayscale(25%) blur(0.3px);
+  pointer-events: none;        /* کلکس/اسکرول میں رکاوٹ نہیں بنے گا */
+  z-index: 0;                  /* تمام مواد کے پیچھے رہے گا */
+  mix-blend-mode: multiply;    /* کریم پس منظر کے ساتھ نرمی سے گھل مل جائے */
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* ہیرو سیکشن کے اپنی ::before کی وجہ سے لوگو وہاں ہلکا پھیکا ہو */
+.hero::before {
+  z-index: 1;
+}
+
+/* سیکشنز کو لوگو کے اوپر رکھنے کے لیے */
+section,
+.navbar,
+.mobile-sidebar,
+.sidebar-overlay {
+  position: relative;
+  z-index: 1;
+}
+
 section[id],
 div[id] {
   scroll-margin-top: 95px;
