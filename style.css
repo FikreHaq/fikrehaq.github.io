@@ -66,17 +66,18 @@ body::before {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: min(70vw, 520px);
-  height: min(70vw, 520px);
+  width: min(85vw, 680px);        /* پہلے سے بڑا */
+  height: min(85vw, 680px);
   background-image: url('icon-512.png');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  opacity: 0.055;              /* پروفیشنل مدھم پن — چاہیں تو 0.04 تا 0.08 کے درمیان رکھیں */
-  filter: grayscale(25%) blur(0.3px);
-  pointer-events: none;        /* کلکس/اسکرول میں رکاوٹ نہیں بنے گا */
-  z-index: 0;                  /* تمام مواد کے پیچھے رہے گا */
-  mix-blend-mode: multiply;    /* کریم پس منظر کے ساتھ نرمی سے گھل مل جائے */
+  opacity: 0.10;                  /* پہلے سے روشن (پہلے 0.055 تھا) */
+  border-radius: 48px;            /* گول کنارے */
+  filter: grayscale(20%) blur(0.2px);
+  pointer-events: none;
+  z-index: 0;
+  mix-blend-mode: multiply;
   user-select: none;
   -webkit-user-drag: none;
 }
@@ -93,11 +94,6 @@ section,
 .sidebar-overlay {
   position: relative;
   z-index: 1;
-}
-
-section[id],
-div[id] {
-  scroll-margin-top: 95px;
 }
 
 /* ===== لوگو ڈیزائن ===== */
