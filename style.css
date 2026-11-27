@@ -529,7 +529,7 @@ div[id] {
 
 /* ===== عمومی سیکشنز (Ultra-Fast Large Page Virtualization) ===== */
 section {
-  padding: 88px 18px;
+  padding: 68px 18px;
   position: relative;
   content-visibility: auto;
   contain-intrinsic-size: auto 650px;
