@@ -1,41 +1,42 @@
-/* ========================================================
-   ADVANCED MEDIA PLAYER FOR 3D CARDS (Theme Matched & Optimized)
-   ======================================================== */
-
 .fh-card-player-dropdown {
     display: grid;
     grid-template-rows: 0fr;
-    transition: grid-template-rows 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+    transition: grid-template-rows 0.38s var(--ease-smooth), margin-top 0.38s var(--ease-smooth);
     width: 100%;
     margin-top: 0;
     contain: layout style paint;
 }
+
 .fh-card-player-dropdown.fh-open {
     grid-template-rows: 1fr;
-    margin-top: 15px;
+    margin-top: 14px;
 }
+
 .fh-dropdown-inner {
     overflow: hidden;
-    background: rgba(255, 255, 255, 0.92);
-    border-top: 1.5px solid rgba(212, 165, 116, 0.3);
-    border-radius: 0 0 16px 16px;
-    box-shadow: 0 10px 25px var(--shadow-pink);
+    background: var(--cream);
+    border: 1px solid rgba(212, 165, 116, 0.45);
+    border-radius: 16px;
+    box-shadow: var(--elevated-shadow), var(--top-highlight);
 }
 
 .fh-media-wrapper {
-    padding: 18px !important;
+    padding: 16px !important;
     width: 100% !important;
     box-sizing: border-box !important;
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 12px;
 }
 
+/* --- آڈیو پلیئر (آڈیو بار سب سے اوپر) --- */
 .fh-inline-audio {
     width: 100%;
     outline: none;
     border-radius: 50px;
-    margin-top: 8px;
+    background: var(--pink-1);
+    box-shadow: inset 0 1px 3px var(--shadow-pink);
 }
 
 .fh-controls {
@@ -43,16 +44,16 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    gap: 16px !important;
+    gap: 14px !important;
     width: 100%;
-    margin-bottom: 12px;
 }
 
 .fh-skip-btn {
     background: var(--gradient-soft);
-    border: 1px solid rgba(212, 165, 116, 0.4);
+    border: 1px solid rgba(212, 165, 116, 0.55);
     border-radius: 50px;
-    padding: 8px 16px;
+    padding: 8px 15px;
+    height: 38px;
     font-size: 13px;
     font-weight: 700;
     color: var(--brown-3);
@@ -62,58 +63,109 @@
     align-items: center;
     justify-content: center;
     gap: 6px;
-    transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.05);
+    transition: transform 0.25s var(--ease-smooth), background 0.25s var(--ease-smooth), box-shadow 0.25s var(--ease-smooth);
+    box-shadow: 0 4px 10px -2px var(--shadow-pink), var(--top-highlight);
 }
+
 .fh-skip-btn i {
     font-size: 13px;
     color: var(--brown-2);
 }
+
 .fh-skip-btn:hover {
-    background: var(--pink-2);
+    background: var(--gradient-premium);
+    color: var(--dark);
     transform: translateY(-1px);
+    box-shadow: 0 8px 16px -4px var(--shadow-pink), var(--top-highlight);
 }
+
 .fh-skip-btn:active {
-    transform: scale(0.95);
+    transform: scale(0.96);
 }
+
 .fh-skip-btn.long-press-active {
-    transform: scale(0.93);
-    background: var(--pink-2);
+    transform: scale(0.94);
+    background: var(--gradient-main);
+    color: #fff;
     animation: fh-pulse-animation 0.8s infinite alternate;
 }
 
-/* --- Capsule Loader --- */
+.fh-skip-btn.long-press-active i {
+    color: #fff;
+}
+
+/* --- درمیان میں پروفیشنل ڈاؤن لوڈ آئیکن بٹن + اسٹیٹس انڈیکیٹر --- */
+.fh-center-download-group {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.fh-audio-download-icon-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    text-decoration: none !important;
+    background: var(--gradient-main);
+    color: #fff !important;
+    border: 1px solid rgba(107, 68, 35, 0.35);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    cursor: pointer;
+    transition: transform 0.25s var(--ease-smooth), box-shadow 0.25s var(--ease-smooth), filter 0.25s var(--ease-smooth);
+    box-shadow: 0 6px 14px -3px var(--shadow-brown), var(--top-highlight);
+}
+
+.fh-audio-download-icon-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 22px -4px var(--shadow-brown), var(--top-highlight);
+    filter: brightness(1.04);
+}
+
+.fh-audio-download-icon-btn:active {
+    transform: scale(0.94);
+}
+
+/* --- کیپسول لوڈر --- */
 .fh-capsule-loader {
-    width: 68px;
-    height: 34px;
-    background: var(--cream);
-    border: 1.5px solid var(--pink-3);
+    width: 54px;
+    height: 32px;
+    background: var(--pink-1);
+    border: 1px solid rgba(212, 165, 116, 0.55);
     border-radius: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 5px;
+    gap: 4px;
+    box-shadow: inset 0 1px 2px var(--shadow-pink);
 }
+
 .fh-capsule-loader .fh-bar {
-    width: 4px;
-    height: 12px;
+    width: 3.5px;
+    height: 11px;
     background-color: var(--brown-2);
     border-radius: 50px;
     transform-origin: center;
     animation: fh-bar-breathe 2s infinite ease-in-out;
 }
+
 .fh-capsule-loader.fh-playing .fh-bar {
     animation: fh-bar-dance 0.45s infinite ease-in-out alternate;
+    background-color: var(--brown-3);
 }
-.fh-capsule-loader.fh-playing .fh-bar:nth-child(1) { animation-delay: 0.1s; height: 18px; }
-.fh-capsule-loader.fh-playing .fh-bar:nth-child(2) { animation-delay: 0.3s; height: 22px; }
-.fh-capsule-loader.fh-playing .fh-bar:nth-child(3) { animation-delay: 0s; height: 14px; }
+
+.fh-capsule-loader.fh-playing .fh-bar:nth-child(1) { animation-delay: 0.1s; height: 16px; }
+.fh-capsule-loader.fh-playing .fh-bar:nth-child(2) { animation-delay: 0.3s; height: 20px; }
+.fh-capsule-loader.fh-playing .fh-bar:nth-child(3) { animation-delay: 0s; height: 13px; }
 
 .fh-capsule-loader.fh-loading {
-    background: rgba(0, 0, 0, 0.03);
-    border-color: var(--pink-2);
+    background: rgba(232, 201, 176, 0.45);
+    border-color: var(--pink-3);
     animation: fh-capsule-pulse 0.8s infinite alternate ease-in-out;
 }
+
 .fh-capsule-loader.fh-loading .fh-bar {
     height: 6px;
     width: 6px;
@@ -121,24 +173,17 @@
     animation: fh-bar-loading 0.5s infinite ease-in-out alternate;
 }
 
-/* --- Audio & Document Actions --- */
-.fh-audio-actions {
+/* --- دستاویزات / گوگل ڈرائیو / آرکائیو ایکشن بٹنز --- */
+.fh-doc-actions {
     display: flex !important;
     width: 100% !important;
-    margin-top: 12px !important;
-}
-
-.fh-pdf-actions {
-    display: flex !important;
-    width: 100% !important;
-    gap: 12px !important;
-    margin-bottom: 12px !important;
+    gap: 10px !important;
 }
 
 .fh-action-btn {
     flex: 1 !important;
     height: 42px !important;
-    padding: 0 18px !important;
+    padding: 0 16px !important;
     font-size: 14px !important;
     gap: 8px !important;
     border-radius: 50px !important;
@@ -149,10 +194,10 @@
     display: inline-flex !important;
     align-items: center !important;
     justify-content: center !important;
-    transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease !important;
-    box-shadow: 0 3px 6px rgba(0,0,0,0.06) !important;
+    transition: transform 0.25s var(--ease-smooth), background 0.25s var(--ease-smooth), box-shadow 0.25s var(--ease-smooth) !important;
     border: 1px solid transparent !important;
 }
+
 .fh-action-btn i {
     font-size: 14px;
     line-height: 1;
@@ -161,57 +206,86 @@
 .fh-btn-read {
     background: var(--gradient-soft) !important;
     color: var(--brown-3) !important;
-    border-color: var(--pink-3) !important;
+    border-color: rgba(212, 165, 116, 0.6) !important;
+    box-shadow: 0 4px 12px -2px var(--shadow-pink), var(--top-highlight) !important;
 }
-.fh-btn-read:hover {
-    background: var(--pink-2) !important;
+
+.fh-btn-read:hover,
+.fh-btn-read.is-active {
+    background: var(--gradient-premium) !important;
+    color: var(--dark) !important;
     transform: translateY(-1px) !important;
+    box-shadow: 0 10px 20px -4px var(--shadow-pink), var(--top-highlight) !important;
 }
 
 .fh-btn-download {
     background: var(--gradient-main) !important;
     color: #fff !important;
-    border-color: var(--brown-2) !important;
-}
-.fh-btn-download:hover {
-    opacity: 0.96;
-    transform: translateY(-1px) !important;
-    box-shadow: 0 6px 14px rgba(0,0,0,0.1) !important;
+    border-color: rgba(107, 68, 35, 0.35) !important;
+    box-shadow: 0 6px 14px -3px var(--shadow-brown), var(--top-highlight) !important;
 }
 
-/* --- Dynamic Iframe Dropdowns --- */
+.fh-btn-download:hover {
+    transform: translateY(-1px) !important;
+    box-shadow: 0 12px 24px -4px var(--shadow-brown), var(--top-highlight) !important;
+}
+
+/* --- ڈائنامک ڈراپ ڈاؤن باکس (مطالعہ / پریویو) --- */
 .fh-dynamic-iframe-box {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.38s var(--ease-smooth), margin-top 0.38s var(--ease-smooth);
     overflow: hidden;
     min-height: 0;
     width: 100%;
+    margin-top: 0;
 }
+
+.fh-dynamic-iframe-box.fh-sub-open {
+    grid-template-rows: 1fr;
+    margin-top: 6px;
+}
+
 .fh-iframe-inner {
+    overflow: hidden;
+    min-height: 0;
     width: 100% !important;
-    border: 1px solid var(--pink-3) !important;
+    border: 1px solid rgba(212, 165, 116, 0.5) !important;
     border-radius: 12px !important;
-    overflow: hidden !important;
     background: #fff;
+    box-shadow: var(--elevated-shadow);
 }
+
 .fh-iframe-inner iframe {
     width: 100% !important;
     height: 100% !important;
     border: none !important;
     display: block !important;
 }
-.fh-iframe-inner.fh-type-pdf, .fh-iframe-inner.fh-type-document {
+
+.fh-iframe-inner.fh-type-pdf,
+.fh-iframe-inner.fh-type-document {
     height: 480px !important;
 }
+
 .fh-iframe-inner.fh-type-audio {
-    height: 75px !important;
+    height: 90px !important;
 }
-.fh-iframe-inner.fh-type-video, .fh-iframe-container-video {
+
+.fh-iframe-inner.fh-type-video,
+.fh-iframe-container-video {
     width: 100% !important;
     aspect-ratio: 16 / 9 !important;
     border-radius: 12px !important;
     overflow: hidden !important;
+    box-shadow: var(--elevated-shadow);
 }
-.fh-iframe-inner.fh-type-image, .image-preview {
+
+.fh-iframe-inner.fh-type-image,
+.image-preview {
     width: 100% !important;
+    max-height: 520px;
+    object-fit: contain;
     border-radius: 12px !important;
-    box-shadow: 0 4px 12px var(--shadow-pink);
+    box-shadow: var(--elevated-shadow);
 }
