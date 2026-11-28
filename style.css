@@ -59,27 +59,29 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* ===== پس منظر کا مدھم پروفیشنل لوگو (Watermark Logo) ===== */
+/* ===== پس منظر کا پروفیشنل واٹر مارک لوگو ===== */
 body::before {
   content: "";
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: min(85vw, 680px);        /* پہلے سے بڑا */
-  height: min(85vw, 680px);
+  width: min(80vw, 640px);
+  height: min(80vw, 640px);
   background-image: url('icon-512.png');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  opacity: 0.16;                  /* پہلے سے روشن (پہلے 0.055 تھا) */
-  border-radius: 48px;            /* گول کنارے */
-  filter: grayscale(25%) blur(0.2px);
+  opacity: 0.15;
+  border-radius: 50%;
+  filter: grayscale(30%) blur(0.5px) brightness(1.05);
   pointer-events: none;
   z-index: 0;
   mix-blend-mode: multiply;
   user-select: none;
   -webkit-user-drag: none;
+  mask-image: radial-gradient(circle, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.6) 60%, transparent 85%);
+  -webkit-mask-image: radial-gradient(circle, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.6) 60%, transparent 85%);
 }
 
 /* ہیرو سیکشن کے اپنی ::before کی وجہ سے لوگو وہاں ہلکا پھیکا ہو */
@@ -164,19 +166,20 @@ section,
   }
 }
 
-/* ===== نیویگیشن بار (Elevated Navbar) ===== */
+/* ===== پروفیشنل نیویگیشن بار (Premium Elevated Navbar) ===== */
 .navbar {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(253, 249, 244, 0.92);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(212, 165, 116, 0.42);
+  background: rgba(253, 249, 244, 0.96);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid rgba(212, 165, 116, 0.38);
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.9),
-    0 10px 28px -4px rgba(61, 40, 23, 0.09);
-  padding: 15px 0;
+    inset 0 1px 0 rgba(255, 255, 255, 0.95),
+    0 8px 32px -4px rgba(61, 40, 23, 0.12),
+    0 2px 8px -2px rgba(139, 94, 60, 0.08);
+  padding: 16px 0;
   contain: layout style;
   transform: translateZ(0);
 }
